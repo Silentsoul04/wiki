@@ -4,11 +4,11 @@ title: ECC
 
 ## Overview
 
-ECC is called elliptic curve encryption, EllipseCurve Cryptography, which is a public key cryptography based on elliptic
-curve mathematics. Unlike traditional encryption methods based on the difficulty of large-scale factorization, ECC
-relies on the difficulty of solving the discrete logarithm problem of elliptic curves. Its main advantage is that it can
-maintain the same password strength while using a shorter key length than other methods. Currently, the finite field
-mainly used in the elliptic curve has
+ECC is called elliptic curve encryption, which is a public key cryptography based on elliptic curve mathematics. Unlike
+traditional encryption methods based on the difficulty of large-scale factorization, ECC relies on the difficulty of
+solving the discrete logarithm problem of elliptic curves. Its main advantage is that it can maintain the same password
+strength while using a shorter key length than other methods. Currently, the finite field mainly used in the elliptic
+curve has
 
 - The integer field $GF(p)$, which is modulo prime, is usually more efficient on general purpose processors.
 - The Galois Field $GF(2^m)$ with a feature of 2 can be designed with dedicated hardware.
@@ -24,11 +24,13 @@ All coefficients in the finite element $GF(p)$ are elements, where $p$ is a larg
 
 Of course, not all elliptic curves are suitable for encryption. The most common equations are as follows
 
-$$y^2=x^3%2Bax%2Bb$$
+$$y^2=x^3+ax+b$$
 
-Where $4a^3%2B27b ^ 2 \bmod p \neq 0$
+Where $4a^3+27b ^ 2 \bmod p \neq 0$.
 
-We call all the solutions $(x, y)$, $(x \in Fp, y \in Fp)$ of the equation, and a set called "infinity point"(O) as an
+![curve](../../../assets/img/asymmetric/Curve_Cryptography_fig01.gif)
+
+We call all the solutions $(x, y)$, $(x \in Fp, y \in Fp)$ of the equation, and a set called "infinity point"($O$) as an
 ellipse defined on $Fp$. The curve is denoted as $E(Fp)$.
 
 Generally defining elliptic curve passwords requires the following conditions
@@ -38,10 +40,10 @@ closure, etc.), set $p \in E(Fq)$, and the $t$ satisfying the following conditio
 
 $$p \oplus p \oplus \ldots \oplus p = O$$
 
-There are a total of $t$ $p$ participating in the operation. Here we call $t$ the period of $p$. In addition, for $Q \in
-E(Fq)$, there is a positive integer $m$ such that the following formula holds, defining $m=log_pq$
+Here we call $t$ the period of $p$. In addition, for $Q \in E(Fq)$, there is a positive integer $m$ such that the
+following formula holds, defining $m=log_pq$
 
-$Q=m \cdot p = p \oplus p \oplus \ldots \oplus p$ ($m$ $p$ participating in the operation)
+$$Q=m \cdot p = p \oplus p \oplus \ldots \oplus p$$
 
 In addition, suppose $G$ is the generator of the $E_q (a,b)$, that is, all the elements in it can be generated, and the
 order is the smallest positive integer $n$ satisfying $nG=O$.
@@ -64,7 +66,7 @@ The public key is $P_a$ and the private key is $n_a$.
 `User B` is sending a message $m$ to `User A`, assuming that message $m$ has been encoded as a point on the elliptic
 curve, the encryption steps are as follows
 
-1. Query user A's public key $E_q(a,b), q, P_a,G$.
+1. Query `user A's` public key $E_q(a,b), q, P_a,G$.
 2. Select the random number $k$ in the interval of $(1, q-1)$.
 3. Calculate the point $(x_1,y_1)=kG$ based on A's public key.
 4. Calculate the point $(x_2,y_2)=kP_a$. If it is $O$, restart from the second step.
@@ -78,10 +80,9 @@ The decryption steps are as follows
 1. Calculate the point $n_a(x_1,y_1)=n_akG=kP_a=(x_2,y_2)$ using the private key.
 2. Calculate the message $m=C-(x_2,y_2)$.
 
-### Key point
-
-The key point here is that even if we know $(x_1,y_1)$, it is difficult to know $k$, which is determined by the
-difficulty of the discrete logarithm problem.
+!!! warning "Key point"
+    The key point here is that even if we know $(x_1,y_1)$, it is difficult to know $k$, which is determined by the
+    difficulty of the discrete logarithm problem.
 
 ## Example
 
@@ -129,7 +130,3 @@ difficulty of the discrete logarithm problem.
     [+] and: 3549912
     [+] x+y: 5720914
     ```
-
-## Reference
-
-- <https://github.com/sonickun/ctf-crypto-writeups/tree/master/2013/seccon-ctf-quals/cryptanalysis>

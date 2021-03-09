@@ -103,6 +103,10 @@ nav:
           - discrete-log:
               - 'crypto/asymmetric/discrete-log/introduction.md'
               - 'crypto/asymmetric/discrete-log/introduction.ru.md'
+              - 'crypto/asymmetric/discrete-log/elgamal.md'
+              - 'crypto/asymmetric/discrete-log/elgamal.ru.md'
+              - 'crypto/asymmetric/discrete-log/ecc.md'
+              - 'crypto/asymmetric/discrete-log/ecc.ru.md'
 
 extra:
   version: 0.0.1
