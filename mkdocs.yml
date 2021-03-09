@@ -2,6 +2,7 @@ site_name: Horde Wiki
 copyright: Copyright &copy; 2021 Illia Novak
 site_author: anakilivo
 repo_url: https://github.com/anakilivo/wiki
+edit_uri: edit/main/docs/
 repo_name: anakilivo/wiki
 theme:
   name: material
