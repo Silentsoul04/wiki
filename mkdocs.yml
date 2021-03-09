@@ -38,6 +38,7 @@ plugins:
           asymmetric: Asimmetric
           discrete-log: Discrete Log
           lattice: Lattice
+          rsa: Rsa
         ru:
           misc: Разное
           archive: Архив
@@ -51,6 +52,7 @@ plugins:
           asymmetric: Ассиметрическая
           discrete-log: Дискретный Логарифм
           lattice: Пространственная Решетка
+          rsa: Rsa
 nav:
   - index.md
   - index.ru.md
@@ -118,6 +120,9 @@ nav:
               - 'crypto/asymmetric/discrete-log/elgamal.ru.md'
               - 'crypto/asymmetric/discrete-log/ecc.md'
               - 'crypto/asymmetric/discrete-log/ecc.ru.md'
+          - rsa:
+              - 'crypto/asymmetric/rsa/introduction.md'
+              - 'crypto/asymmetric/rsa/introduction.ru.md'
           - 'crypto/asymmetric/knapsack.md'
           - 'crypto/asymmetric/knapsack.ru.md'
 extra:
