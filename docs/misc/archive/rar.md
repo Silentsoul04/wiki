@@ -1,5 +1,5 @@
 ---
-title: Rar-archive
+title: Rar
 ---
 
 ## File format
@@ -17,7 +17,7 @@ Each of its blocks is roughly divided into the following fields:
 | HEAD_SIZE  | 2     | Block Size                        |
 | ADD_SIZE   | 4     | Optional Fields - Add Block Size  |
 
-The file header of the Rar archive is `52 61 72 21 1A 07 00`.
+The file header of the Rar archive is `52 61 72 21 1A 07 00`(hex), `Rar!\x1a\x07\x00`(bytes).
 
 Following the file header (0x526172211A0700) is the marker block (MARK_HEAD) followed by the File Header.
 

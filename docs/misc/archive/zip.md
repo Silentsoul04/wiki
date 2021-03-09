@@ -1,5 +1,5 @@
 ---
-title: Zip-archive
+title: Zip
 ---
 
 ## File Structure
@@ -13,8 +13,8 @@ The `ZIP` file is mainly composed of three parts, respectively
 Each compressed source file or directory in the compressed source file data area is a record, where
 
 - *local file header* - the file header is used to identify the beginning of the file, and the information of the
-  compressed file is recorded. The file header identifier here starts with a fixed value of `50 4B 03 04` and is also
-  important for the header of `ZIP`.
+  compressed file is recorded. The file header identifier here starts with a fixed value of `50 4B 03 04`(hex), 
+  `PK\x03\x04`(bytes) and is also important for the header of `ZIP`.
 - *file data* - file data records the data of the corresponding compressed file
 - *data descriptor* - the data descriptor is used to identify the end of compression of the file. This structure will
   only appear if the 3 bit of the general tag field in the corresponding *local file header* is set to 1. After
@@ -90,60 +90,59 @@ noting that `CRC32` in `ZIP` is the checksum value of the unencrypted file.
 This has led to an attack based on `CRC32`.
 
 - There is very little content in the file (mostly in the game, it is about `4 bytes`)
-- Encrypted password is very long
+- An encrypted password is very long
 
 Instead of blasting the password of the compressed package, we directly blast the contents of the source file (usually
 visible strings) to obtain the desired information.
 
-For example, we create a new `flag.txt` with the content `123` and encrypt it with the password `!QAZXSW@#EDCVFR$`.
-
-![example-1](../../assets/img/zip/example-1.png)
-
-And we went to calculate the `CRC32` value of the file and found that it matches the `CRC32` value in the above figure.
-
-```shell
-File: flag.txt
-Size: 3
-Time: Tue, 29 Aug 2017 10:38:10 +0800
-MD5: 202cb962ac59075b964b07152d234b70
-SHA1: 40bd001563085fc35165329ea1ff5c5ecbdbbeef
-CRC32: 884863D2
-```
-
-!!! warning 
-    The `CRC32` value of all possible strings we enumerated during blasting is to correspond to the `CRC32`
-    value in the compressed source file data area.
-
-=== "Python"
-
-```python
-import binascii
-import itertools
-from string import ascii_letters, digits
-
-alph = ascii_letters + digits + '+/='
-crcdict = {}
-
-print('computing all possible CRCs...')
-for x in itertools.product(list(alph), repeat=3):
-    st = ''.join(x).encode()
-    crc = hex(binascii.crc32(st))[2:]
-    crcdict[crc] = st
-print('Done!')
-
-f = open('flag.zip', 'rb')
-data = f.read()
-f.close()
-crc = data[14:18][::-1].hex()
-if crc in crcdict:
-    print(crcdict[crc])
-else:
-    print("FAILED!")
-```
-
-#### Example
+### Example 
 
 ??? example "Abctf-2016: Zippy"
+    For example, we create a new `flag.txt` with the content `123` and encrypt it with the password `!QAZXSW@#EDCVFR$`.
+
+    ![example-1](../../assets/img/zip/example-1.png)
+
+    And we went to calculate the `CRC32` value of the file and found that it matches the `CRC32` value in the above 
+    figure.
+
+    ```shell
+    File: flag.txt
+    Size: 3
+    Time: Tue, 29 Aug 2017 10:38:10 +0800
+    MD5: 202cb962ac59075b964b07152d234b70
+    SHA1: 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+    CRC32: 884863D2
+    ```
+    
+    !!! warning 
+        The `CRC32` value of all possible strings we enumerated during blasting is to correspond to the `CRC32`
+        value in the compressed source file data area.
+
+    ```python
+    import binascii
+    import itertools
+    from string import ascii_letters, digits
+    
+    alph = ascii_letters + digits + '+/='
+    crcdict = {}
+    
+    print('computing all possible CRCs...')
+    for x in itertools.product(list(alph), repeat=3):
+        st = ''.join(x).encode()
+        crc = hex(binascii.crc32(st))[2:]
+        crcdict[crc] = st
+    print('Done!')
+    
+    f = open('flag.zip', 'rb')
+    data = f.read()
+    f.close()
+    crc = data[14:18][::-1].hex()
+    if crc in crcdict:
+        print(crcdict[crc])
+    else:
+        print("FAILED!")
+    ```
+
     According to the file size in each compressed package, it can be inferred that the `CRC32` attack method is used, and
     the contents of each compressed package are obtained, and then an encrypted compressed package is obtained after
     the `Base64` decoding, and the blast is obtained by `flag`.
@@ -184,8 +183,8 @@ compression algorithm.
 
     **First step, analyze the compressed package file**
     
-    After we downloaded this tarball, we saw that the file name is ***.zip**. We can immediately think of several ways to
-    crack the zip package. We extract the zip file and find that there are two files, respectively, `Desktop.zip`
+    After we downloaded this tarball, we saw that the file name is ***.zip**. We can immediately think of several ways 
+    to crack the zip package. We extract the zip file and find that there are two files, respectively, `Desktop.zip`
     and `readme.txt`, let's see what is written in `readme.txt`?
     
     ![readme](../../assets/img/zip/readme.png)
@@ -198,17 +197,18 @@ compression algorithm.
     **Step 2, analyze the crack method**
     
     This topic got the hand, we first found that the extracted file and the `Desktop.zip` tarball contain the same
-    file `readme.txt`, and did not give other relevant information, and the file size is greater than `12Byte`, We compare
-    the `readme.txt` in the compressed package with the value of `CRC32` in `readme.txt` in the original compressed package.
-    We find that the two values are the same, which means that the extracted `readme.txt` is encrypted and compressed. The
-    plaintext of `readme.txt` in the package, so we can boldly guess that this is probably a plaintext encryption.
+    file `readme.txt`, and did not give other relevant information, and the file size is greater than `12Byte`, We 
+    compare the `readme.txt` in the compressed package with the value of `CRC32` in `readme.txt` in the original 
+    compressed package. We find that the two values are the same, which means that the extracted `readme.txt` is 
+    encrypted and compressed. The plaintext of `readme.txt` in the package, so we can boldly guess that this is 
+    probably a plaintext encryption.
     
     ![compare](../../assets/img/zip/compare.png)
     
     **Step 3, try plaintext attack**
     
-    Now that we know that it is a plaintext attack, we will crack the compressed package. Since the extracted readme.txt is
-    the plaintext of `readme.txt` in the encrypted archive, compress `readme.txt` to * *.zip** file, then fill in the
+    Now that we know that it is a plaintext attack, we will crack the compressed package. Since the extracted readme.txt
+    is the plaintext of `readme.txt` in the encrypted archive, compress `readme.txt` to * *.zip** file, then fill in the
     corresponding path in the software to start plaintext attack, here we will introduce different methods of clear-text
     attack under `Windows` and `Ubuntu`.
     
@@ -252,7 +252,7 @@ compression algorithm.
     
     The parameter options we used are as follows:
     
-    ```shell
+    ```text
     -C: target file to be cracked (including path)
     -c: crack the name of the plaintext file in the file (the path does not include the system path, starting from the 
     zip file level)
@@ -275,14 +275,7 @@ compression algorithm.
     
     **The pit is coming**
     
-    It seems that everything is going well. It took more than two hours. Why did I write in the blog garden and I ran for
-    two hours without running out? Or if a friend has encountered the same problem as me, I am obviously the same as you,
-    why can't I run out of results?
-    
-    You may have overlooked some details. Someone once thought about how the original compression package was compressed?
-    And what is the way we generate the `readme.zip` and how to generate it? I just didn't make it because of this
-    problem for three months. If you don't believe it, we can look at the second method and use `ARCHPR` for plaintext
-    attack under `Windows`.
+    It seems that everything is going well, but it took more than two hours.
     
     Method 2, `ARCHPR` for plaintext attack
     
@@ -326,7 +319,7 @@ compression algorithm.
 In the *core directory area* in the `ZIP` format above, we emphasize a `2 bytes` called the general purpose bit flag,
 which has different meanings.
 
-```shell
+```text
 Bit 0: If set, indicates that the file is encrypted.
 (For Method 6 - Imploding)
 Bit 1: If the compression method used was type 6,
