@@ -1,7 +1,7 @@
 Lattice has at least two meanings in mathematics
 
 - Define a partial order set $L$ on a non-empty finite set that satisfies any element $a, b$ in set $L$ such that $a, b$
-  has a maximum lower bound, and a minimum upper bound in L.
+  has a maximum lower bound, and a minimum upper bound in $L$.
   See [Lattice](<https://en.wikipedia.org/wiki/Lattice_(order)>) for details.
 - The definition in group theory is a subset of $R^n$ that satisfies a certain property. Of course, it can also be other
   groups.

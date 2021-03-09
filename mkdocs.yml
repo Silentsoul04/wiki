@@ -37,6 +37,7 @@ plugins:
           crypto: Crypto
           asymmetric: Asimmetric
           discrete-log: Discrete Log
+          lattice: Lattice
         ru:
           misc: Разное
           archive: Архив
@@ -49,6 +50,7 @@ plugins:
           crypto: Криптография
           asymmetric: Ассиметрическая
           discrete-log: Дискретный Логарифм
+          lattice: Пространственная Решетка
 nav:
   - index.md
   - index.ru.md
@@ -100,6 +102,15 @@ nav:
       - 'crypto/introduction.md'
       - 'crypto/introduction.ru.md'
       - asymmetric:
+          - lattice:
+              - 'crypto/asymmetric/lattice/introduction.md'
+              - 'crypto/asymmetric/lattice/introduction.ru.md'
+              - 'crypto/asymmetric/lattice/overview.md'
+              - 'crypto/asymmetric/lattice/overview.ru.md'
+              - 'crypto/asymmetric/lattice/lattice-reduction.md'
+              - 'crypto/asymmetric/lattice/lattice-reduction.ru.md'
+              - 'crypto/asymmetric/lattice/cvp.md'
+              - 'crypto/asymmetric/lattice/cvp.ru.md'
           - discrete-log:
               - 'crypto/asymmetric/discrete-log/introduction.md'
               - 'crypto/asymmetric/discrete-log/introduction.ru.md'

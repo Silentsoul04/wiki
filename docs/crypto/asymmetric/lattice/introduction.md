@@ -1,10 +1,10 @@
 ## Lattice Definition
 
-The lattice is the linear combination of all integer coefficients of $n (m\geq n)$ linearly independent vectors $b_i(
-1\leq i \leq n)$ of the $m$-dimensional Euclidean space $R^m$, ie $L(B)=\{\sum_{i=1}^{n}x_ib_i:x_i \in Z, 1 \leq i \leq
+The lattice is the linear combination of all integer coefficients of $n$ ($m\geq n$) linearly independent vectors $b_i$ 
+($1\leq i \leq n$) of the $m$-dimensional Euclidean space $R^m$, ie $L(B)=\{\sum_{i=1}^{n}x_ib_i:x_i \in Z, 1 \leq i \leq
 n\}$
 
-Here B is a collection of n vectors, we call
+Here $B$ is a collection of $n$ vectors, we call
 
 - These $n$ vectors a set of bases of the lattice $L$.
 - The rank of the lattice $L$ is $n$.
