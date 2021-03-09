@@ -39,7 +39,7 @@ can be detected by JSteg, JPHide, OutGuess, Invisible Information hidden by steg
 appendX, and Camouflage, and also has hidden information embedded in Jphide, outguess, and jsteg-shell methods based on
 the dictionary brute force cryptography method.
 
-```shell
+```text
 -q Displays only images that may contain hidden content.
 -n Enables checking the JPEG header function to reduce the false positive rate. If enabled, all files with annotated areas will be treated as if they were not embedded. If the version number in the JFIF identifier of the JPEG file is not 1.1, OutGuess detection is disabled.
 -s Modifies the sensitivity of the detection algorithm. The default value of this value is 1. The matching degree of the detection result is directly proportional to the sensitivity of the detection algorithm. The larger the value of the algorithm sensitivity, the more likely the detected suspicious file contains sensitive information.

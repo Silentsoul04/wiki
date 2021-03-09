@@ -2,137 +2,133 @@
 title: PNG
 ---
 
-## File format
+## Формат файла
 
-For a `PNG` file, the file header is always described by fixed-bit bytes, and the remaining part is composed of more
-than 3 `PNG` data blocks (chunks) in a specific order.
+Для файла `PNG` заголовок файла всегда описывается байтами с фиксированным битом, а оставшаяся часть состоит из более
+чем 3 блоков данных `PNG` (фрагментов) в определенном порядке.
 
-File header `89 50 4E 47 0D 0A 1A 0A` + data block + data block + data block...
+Заголовок файла `89 50 4E 47 0D 0A 1A 0A` + блок данных + блок данных + блок данных ...
 
-### Data block (chunk)
+### Блок данных (чанк)
 
-`PNG` defines two types of data blocks, one is called critical chunks, which are standard data blocks, and the other is
-called ancillary chunks, which are optional data blocks. The key data block defines 4 standard data blocks, each `PNG`
-file must contain them, and PNG reading and writing software must also support these data blocks.
+`PNG` определяет два типа блоков данных: один называется критическими блоками, которые являются стандартными блоками
+данных, а другой называется вспомогательными блоками, которые являются необязательными блоками данных. Ключевой блок
+данных определяет 4 стандартных блока данных, каждый файл PNG должен содержать их, и программное обеспечение для чтения
+и записи `PNG` также должно поддерживать эти блоки данных.
 
-| Data block signature | Data block name                       | Multiple data blocks | Optional           | Location restrictions      |
-| :------------------: | :-----------------------------------: | :------------------: | :----------------: | :------------------------: |
-| IHDR                 | File header data block                | :white_check_mark:   | :white_check_mark: | First piece                |
-| cHRM                 | Base color and white point data block | :white_check_mark:   | :heavy_check_mark: | Before PLTE and IDAT       |
-| gAMA                 | Image data block                      | :white_check_mark:   | :heavy_check_mark: | Before PLTE and IDAT       |
-| sBIT                 | Sample effective bit data block       | :white_check_mark:   | :heavy_check_mark: | Before PLTE and IDAT       |
-| PLTE                 | Palette data block                    | :white_check_mark:   | :heavy_check_mark: | Before IDAT                |
-| bKGD                 | Background color data block           | :white_check_mark:   | :heavy_check_mark: | After PLTE before IDAT     |
-| hIST                 | Image histogram data block            | :white_check_mark:   | :heavy_check_mark: | After PLTE before IDAT     |
-| tRNS                 | Image transparent data block          | :white_check_mark:   | :heavy_check_mark: | After PLTE before IDAT     |
-| oFFs                 | Private public data block             | :white_check_mark:   | :heavy_check_mark: | Before IDAT                |
-| pHYs                 | Physical pixel size data block        | :white_check_mark:   | :heavy_check_mark: | Before IDAT                |
-| sCAL                 | Private public data block             | :white_check_mark:   | :heavy_check_mark: | Before IDAT                |
-| IDAT                 | Image data block                      | :heavy_check_mark:   | :white_check_mark: | Continuous with other IDAT |
-| tIME                 | Image last modified time data block   | :white_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| tEXt                 | Text message data block               | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| zTXt                 | Compressed text data block            | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| fRAc                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| gIFg                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| gIFt                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| gIFx                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| IEND                 | End of image data                     | :white_check_mark:   | :white_check_mark: | Last data block            |
+| Подпись блока данных | Имя блока данных                                       | Неск. блоков данных  | Необязательно      | Ограничения по местоположению |
+| :------------------: | :----------------------------------------------------: | :------------------: | :----------------: | :---------------------------: |
+| IHDR                 | Блок данных заголовка файла                            | :x:                  | :x:                | Начальная часть               |
+| cHRM                 | Блок данных основного цвета и точки белого             | :x:                  | :white_check_mark: | Перед PLTE и IDAT             |
+| gAMA                 | Блок данных изображения                                | :x:                  | :white_check_mark: | Перед PLTE и IDAT             |
+| sBIT                 | Пример эффективного блока битовых данных               | :x:                  | :white_check_mark: | Перед PLTE и IDAT             |
+| PLTE                 | Блок данных палитры                                    | :x:                  | :white_check_mark: | Перед IDAT                    |
+| bKGD                 | Блок данных о цвете фона                               | :x:                  | :white_check_mark: | После PLTE перед IDAT         |
+| hIST                 | Блок данных гистограммы изображения                    | :x:                  | :white_check_mark: | После PLTE перед IDAT         |
+| tRNS                 | Блок данных прозрачного изображения                    | :x:                  | :white_check_mark: | После PLTE перед IDAT         |
+| oFFs                 | Частный публичный блок данных                          | :x:                  | :white_check_mark: | Перед IDAT                    |
+| pHYs                 | Блок данных физического размера пикселя                | :x:                  | :white_check_mark: | Перед IDAT                    |
+| sCAL                 | Частный публичный блок данных                          | :x:                  | :white_check_mark: | Перед IDAT                    |
+| IDAT                 | Блок данных изображения                                | :white_check_mark:   | :x:                | Продолжается с другими IDAT   |
+| tIME                 | Блок данных времени последнего изменения изображения   | :x:                  | :white_check_mark: | Не ограничено                 |
+| tEXt                 | Блок данных текстового сообщения                       | :white_check_mark:   | :white_check_mark: | Не ограничено                 |
+| zTXt                 | Блок сжатых текстовых данных                           | :white_check_mark:   | :white_check_mark: | Не ограничено                 |
+| fRAc                 | Частный публичный блок данных                          | :white_check_mark:   | :white_check_mark: | Не ограничено                 |
+| gIFg                 | Частный публичный блок данных                          | :white_check_mark:   | :white_check_mark: | Не ограничено                 |
+| gIFt                 | Частный публичный блок данных                          | :white_check_mark:   | :white_check_mark: | Не ограничено                 |
+| gIFx                 | Частный публичный блок данных                          | :white_check_mark:   | :white_check_mark: | Не ограничено                 |
+| IEND                 | Конец данных изображения                               | :x:                  | :x:                | Последний блок данных         |
 
-There is a unified data structure for each data block, and each data block consists of 4 parts
+Для каждого блока данных существует унифицированная структура данных, и каждый блок данных состоит из 4 частей.
 
-| Name            | Bytes    | Description                                                                                          |
-| :-------------: | :------: | :--------------------------------------------------------------------------------------------------: |
-| Length          | 4        | Specify the length of the data field in the data block, and its length does not exceed (231-1) bytes |
-| Chunk Type Code | 4        | The data block type code consists of ASCII letters (A-Z and a-z)                                     |
-| Chunk Data      | Variable | Store data specified in accordance with Chunk Type Code                                              |
-| CRC             | 4        | Store the cyclic redundancy code used to detect errors                                               |
+| Имя            | Байт      | Описание                                                                        |
+| :------------: | :-------: | :-----------------------------------------------------------------------------: |
+| Длина          | 4         | Укажите длину поля данных в блоке данных, и его длина не превышает (231-1) байт |
+| Код типа чанка | 4         | Код типа блока данных состоит из букв ASCII (A-Z и a-z)                         |
+| Данные чанка   | Изменчиво | Хранить данные, указанные в соответствии с кодом типа блока                     |
+| CRC            | 4         | Сохраните циклический избыточный код, используемый для обнаружения ошибок       |
 
-The value in the CRC (Cyclic Redundancy Check) field is calculated from the data in the Chunk Type Code field and Chunk
-Data field.
+Значение в поле CRC (Циклическая проверка избыточности) вычисляется на основе данных в поле Код типа чанка и Данные
+чанка.
 
 ### IHDR
 
-File header data block IHDR (Header Chunk): It contains the basic information of the image data stored in the PNG file.
-It is composed of 13 bytes and appears as the first data block in the PNG data stream, and a PNG data stream There can
-only be one file header data block in
+Блок данных заголовка файла IHDR(Заголовок чанка): он содержит основную информацию о данных изображения, хранящихся в
+файле `PNG`. Он состоит из 13 байтов и отображается как первый блок данных в потоке данных `PNG` и поток данных `PNG`. В
+нем может быть только один блок данных заголовка файла.
 
-Among them, we are concerned about the content of the first 8 bytes
+Среди них нас беспокоит содержимое первых 8 байтов.
 
-| Dimension name | Bytes | Description            |
-| :------------: | :---: | :--------------------: |
-| Width          | 4     | Image width, in pixels |
-| Height         | 4     | Image height in pixels |
+| Название измерения | Байт  | Описание                   |
+| :----------------: | :---: | :------------------------: |
+| Ширина             | 4     | Ширина картинку в пикселях |
+| Высота             | 4     | Высота картинку в пикселях |
 
-We often change the height or width of a picture to make a picture incomplete to achieve the purpose of hiding
-information.
+Мы часто меняем высоту или ширину изображения, чтобы сделать изображение неполным, чтобы скрыть информацию.
 
 ![pngihdr](../../assets/img/pictures/pngihdr.png)
 
-It can be found that this picture cannot be opened in Kali, prompting `IHDR CRC error`, and the picture viewer that
-comes with Windows 10 can be opened, which reminds us that the IHDR block has been artificially tampered with, so we try
-to modify the picture. The height or width of the hidden string is found.
+Можно обнаружить, что это изображение не может быть открыто в Kali, что вызывает `IHDR CRC error`, и можно открыть
+средство просмотра изображений, которое поставляется с Windows 10, что напоминает нам, что блок `IHDR` был искусственно
+изменен, поэтому мы пытаемся изменить рисунок. Найдена высота или ширина скрытой строки.
 
 ## Example
 
-> WDCTF-finals-2017
+??? example "WDCTF-finals-2017"
+    Наблюдая за файлом, вы можете обнаружить, что заголовок и ширина файла ненормальны.
 
-Observing the file, you can find that the file header and width are abnormal
+    ```text
+    00000000  80 59 4e 47 0d 0a 1a 0a  00 00 00 0d 49 48 44 52  |.YNG........IHDR|
+    00000010  00 00 00 00 00 00 02 f8  08 06 00 00 00 93 2f 8a  |............../.|
+    00000020  6b 00 00 00 04 67 41 4d  41 00 00 9c 40 20 0d e4  |k....gAMA...@ ..|
+    00000030  cb 00 00 00 20 63 48 52  4d 00 00 87 0f 00 00 8c  |.... cHRM.......|
+    00000040  0f 00 00 fd 52 00 00 81  40 00 00 7d 79 00 00 e9  |....R...@..}y...|
+    ...
+    ```
 
-```hex
+    Здесь следует отметить, что ширина файла не может быть изменена произвольно. Его необходимо обработать, чтобы 
+    получить ширину в соответствии со значением CRC блока `IHDR`, иначе ошибка отображения изображения не сможет 
+    получить флаг.
 
-00000000  80 59 4e 47 0d 0a 1a 0a  00 00 00 0d 49 48 44 52  |.YNG........IHDR|
-00000010  00 00 00 00 00 00 02 f8  08 06 00 00 00 93 2f 8a  |............../.|
-00000020  6b 00 00 00 04 67 41 4d  41 00 00 9c 40 20 0d e4  |k....gAMA...@ ..|
-00000030  cb 00 00 00 20 63 48 52  4d 00 00 87 0f 00 00 8c  |.... cHRM.......|
-00000040  0f 00 00 fd 52 00 00 81  40 00 00 7d 79 00 00 e9  |....R...@..}y...|
-...
+    ```python
+    import binascii
+    import struct
+    
+    misc = open("misc4.png", "rb").read()
+    for i in range(1024):
+        data = misc[12:16] + struct.pack('>i', i) + misc[20:29]
+        crc32 = binascii.crc32(data) & 0xffffffff
+        if crc32 == 0x932f8a6b:
+            print(i)
+    ```
 
-```
+    После получения значения ширины 709 восстановите изображение, чтобы получить флаг.
 
-It should be noted here that the file width cannot be arbitrarily modified. It needs to be blasted to get the width
-according to the CRC value of the IHDR block, otherwise the image display error cannot get the flag.
-
-```python
-
-import binascii
-import struct
-
-misc = open("misc4.png", "rb").read()
-for i in range(1024):
-    data = misc[12:16] + struct.pack('>i', i) + misc[20:29]
-    crc32 = binascii.crc32(data) & 0xffffffff
-    if crc32 == 0x932f8a6b:
-        print(i)
-
-```
-
-After getting the width value of 709, restore the picture to get the flag.
-
-![](../../assets/img/pictures/misc4.png)
+    ![](../../assets/img/pictures/misc4.png)
 
 ### PLTE
 
-The palette data block PLTE (palette chunk): It contains the color transformation data related to the indexed-color
-image. It is only related to the indexed-color image and should be placed in the image data chunk. prior to. The true
-color PNG data stream can also have palette data blocks, the purpose is to facilitate non-true color display programs to
-use it to quantify the image data, thereby displaying the image.
+Блок данных палитры `PLTE` (блок палитры): он содержит данные преобразования цвета, относящиеся к изображению с 
+индексированными цветами. Он относится только к изображению с индексированными цветами и должен быть помещен в блок 
+данных изображения. Поток данных `PNG` с истинным цветом может также иметь блоки данных палитры, цель состоит в том, 
+чтобы облегчить использование программ отображения не истинных цветов для количественной оценки данных изображения, тем
+самым отображая изображение.
 
 ### IDAT
 
-Image data chunk IDAT (image data chunk): It stores actual data, and the data stream can contain multiple consecutive
-image data chunks.
+Блок данных изображения `IDAT` (блок данных изображения): он хранит фактические данные, а поток данных может содержать 
+несколько последовательных блоков данных изображения.
 
-- Store image number data
-- The data stream can contain multiple consecutive image data blocks
-- Compression using a derived algorithm of the `LZ77` algorithm
-- Can be decompressed with `zlib`
+- Сохранение данных о номере изображения
+- Поток данных может содержать несколько последовательных блоков данных изображения.
+- Сжатие с использованием производного алгоритма алгоритма `LZ77`.
+- Можно распаковать с помощью `zlib`
 
-It is worth noting that the IDAT block will only continue with a new block when the previous block is full.
+Стоит отметить, что блок `IDAT` продолжит работу с новым блоком только тогда, когда предыдущий блок будет заполнен.
 
-Use `pngcheck` to view this `PNG` file
+Используйте `pngcheck` для просмотра этого файла `PNG`
 
 ```shell
-
 λ .\pngcheck.exe -v sctf.png
 File: sctf.png (1421461 bytes)
   chunk IHDR at offset 0x0000c, length 13
@@ -149,95 +145,89 @@ File: sctf.png (1421461 bytes)
   chunk IDAT at offset 0x15aff7, length 138
   chunk IEND at offset 0x15b08d, length 0
 No errors detected in sctf.png (28 chunks, 36.8% compression).
-
 ```
 
-As you can see, the length of the normal block is full at 65524, while the length of the penultimate IDAT block is
-45027, and the length of the last is 138. Obviously the last IDAT block is problematic because it should have been
-Merged into the penultimate block that is not full.
+Как видите, длина нормального блока составляет 65524, в то время как длина предпоследнего блока `IDAT` равна 45027, а 
+длина последнего - 138. Очевидно, что последний блок `IDAT` проблематичен, потому что он должен был быть объединен с 
+предпоследним блоком, который не заполнен.
 
-Use `python zlib` to decompress the content of the redundant IDAT block. At this time, pay attention to removing the
-length, data block type and the CRC check value at the end.
+Используйте `python zlib` для распаковки содержимого избыточного блока `IDAT`. В это время обратите внимание на удаление 
+длины, типа блока данных и контрольного значения `CRC` в конце.
 
 ```python
-
 import zlib
 import binascii
 
 IDAT = binascii.unhexlify("789...667")
 result = binascii.hexlify(zlib.decompress(IDAT))
 print(result)
-
 ```
 
 ### IEND
 
-Image end data IEND (image trailer chunk): It is used to mark the end of the PNG file or data stream, and must be placed
-at the end of the file.
+Данные конца изображения `IEND` (фрагмент трейлера изображения): используются для обозначения конца файла `PNG` или 
+потока данных и должны быть помещены в конец файла.
 
-```
-
+```text
 00 00 00 00 49 45 4E 44 AE 42 60 82
-
 ```
 
-The length of the IEND data block is always `00 00 00 00`, and the data identifier is always IEND `49 45 4E 44`.
-Therefore, the CRC code is always `AE 42 60 82`.
+Длина блока данных `IEND` всегда `00 00 00 00`, а идентификатор данных всегда `IEND` `49 45 4E 44`. Следовательно, код 
+`CRC` всегда `AE 42 60 82`.
 
-### Remaining auxiliary data blocks
+### Оставшиеся блоки вспомогательных данных
 
-- bKGD（background color）
-- cHRM（primary chromaticities and white point），The so-called whiteness refers to the whiteness produced on the display
-  when R=G=B=maximum
-- gAMA（image gamma）
-- hIST（image histogram）
-- pHYs（physical pixel dimensions）
-- sBIT（significant bits）
-- tEXt（textual data）
-- tIME （image last-modification time）
-- tRNS （transparency）
-- zTXt （compressed textual data）
+- bKGD (цвет фона)
+- cHRM (первичная цветность и точка белого)
+  Так называемая белизна относится к белизне, создаваемой на дисплее, когда R = G = B = максимум
+- gAMA (гамма изображения)
+- hIST (гистограмма изображения)
+- pHYs (физические размеры в пикселях)
+- sBIT (значащие биты)
+- tEXt (текстовые данные)
+- tIME (время последнего изменения изображения)
+- tRNS (прозрачность)
+- zTXt (сжатые текстовые данные)
 
 ## LSB
 
-LSB stands for Least Significant Bit, the least significant bit. The number of images in a PNG file is generally
-composed of the three primary colors of RGB (red, green, and blue). Each color occupies 8 bits, and the value range
-is `0x00` to `0xFF`, that is, there are 256 colors. Color, that is, 16,777,216 colors.
+LSB означает наименьший значащий бит, младший значащий бит. Количество изображений в файле PNG обычно состоит из трех 
+основных цветов RGB (красного, зеленого и синего). Каждый цвет занимает 8 бит, а диапазон значений от `0x00` до `0xFF`,
+то есть 256 цветов. Цвет, то есть 16,777,216 цветов.
 
-Human eyes can distinguish about 10 million different colors, which means that human eyes cannot distinguish about
-6,777,216 remaining colors.
+Человеческие глаза могут различать около 10 миллионов различных цветов, а это означает, что человеческие глаза не могут 
+различать около 6,777,216 оставшихся цветов.
 
-LSB steganography is to modify the lowest binary bit (LSB) of the RGB color components, each color will have 8 bits, LSB
-steganography is to modify the lowest 1 bit in the image number, and human eyes will not notice the before and after
-Change, each pixel can carry 3 bits of information.
+Стеганография `LSB` предназначена для изменения самого младшего двоичного разряда (`LSB`) компонентов цвета `RGB`, 
+каждый цвет будет иметь 8 бит, стеганография `LSB` будет изменять самый низкий 1 бит в номере изображения, и 
+человеческий глаз не заметит до и после изменения, каждый пиксель может нести 3 бита информации.
 
 ![lsb](../../assets/img/pictures/lsb.jpg)
 
-If you are looking for such hidden traces of LSB, there is a
-tool [Stegsolve](<http://www.caesum.com/handbook/Stegsolve.jar>) is an artifact that can assist us in our analysis.
+Если вы ищете такие скрытые следы LSB, существует инструмент [Stegsolve](<http://www.caesum.com/handbook/Stegsolve.jar>)
+- артефакт, который может помочь нам в нашем анализе.
 
-You can observe the information of each channel through the buttons below, for example, view the information of the
-lowest 8th bit plane of the R channel.
+Вы можете просматривать информацию о каждом канале с помощью кнопок ниже, например, просматривать информацию о самой 
+низкой 8-й битовой плоскости R-канала.
 
 ![lsb1](../../assets/img/pictures/lsb1.png)
 
-When using Stegsolve to view the information of LSB, you must carefully catch the abnormal points and catch the clues of
-LSB steganography.
+При использовании `Stegsolve` для просмотра информации `LSB` вы должны тщательно улавливать аномальные точки и
+улавливать подсказки стеганографии `LSB`.
 
 ### Example
 
-> HCTF - 2016 - Misc
+??? example "HCTF - 2016 - Misc"
+    Информация этого вопроса скрыта в младших битах трех каналов `RGB`, и канал можно указать для извлечения с помощью 
+    `Stegsolve --> Analyze --> Data Extract`.
 
-The information of this question is hidden in the lowest bits of the three RGB channels, and the channel can be
-specified for extraction with the help of `Stegsolve-->Analyse-->Data Extract`.
+    ![hctfsolve](../../assets/img/pictures/hctfsolve.png)
+    
+    Вы можете найти заголовок `zip`. После сохранения в виде сжатого пакета с корзиной для сохранения откройте и 
+    запустите в нем файл `ELF`, чтобы получить последний флаг.
 
-![hctfsolve](../../assets/img/pictures/hctfsolve.png)
-
-You can find the `zip` header. After saving it as a compressed package with `save bin`, open and run the ELF file in it
-to get the final flag.
-
-More research on LSB can be found [here](<https://zhuanlan.zhihu.com/p/23890677>).
+    Дополнительные исследования LSB можно найти [здесь](<https://zhuanlan.zhihu.com/p/23890677>).
 
 ## Tools
 
-[Stepic](<http://domnit.org/stepic/doc/>)
+- [Stepic](<http://domnit.org/stepic/doc/>)

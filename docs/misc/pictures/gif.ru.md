@@ -57,9 +57,9 @@ title: GIF
 
 Блок представляет собой блок с одним полем, который указывает конец потока данных. Возьмите фиксированное значение 0x3b.
 
-См. [gif format image detail analysis](<http://www.jianshu.com/p/df52f1511cf8>)
+См. [анализ деталей изображения в формате gif](<http://www.jianshu.com/p/df52f1511cf8>)
 
-## Space axis
+## Пространственная ось
 
 Поскольку динамические характеристики GIF состоят из изображений одного кадра, комбинация изображений каждого кадра и
 нескольких кадров изображений становится носителем скрытой информации.
@@ -85,9 +85,8 @@ cake-0.png  cake-1.png  cake-2.png  cake-3.png  cake.gif
     for i in range(2):
         for j in range(2):
             pot = "cake-{}.png".format(j + i * 2)
-    
-    potImage = Image.open(pot)
-    flag.paste(potImage, (j * 225, i * 225))
+            potImage = Image.open(pot)
+            flag.paste(potImage, (j * 225, i * 225))
     flag.save('./flag.png')
     ```
 

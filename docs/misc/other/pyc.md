@@ -54,6 +54,10 @@ the version is lower than python3.5. The middle instruction has no arguments but
 The principle is to use the redundant space in the python bytecode file to hide the complete payload code into these
 fragmented spaces.
 
-**Ref**: [A steganographic tool for embedding Payload in Python bytecode – Stegosaurus](<http://www.freebuf.com/sectool/129357.html>)
+## Reference
 
-**Challenges**: [WHCTF-2017:Py-Py-Py](<https://www.xctf.org.cn/library/details/whctf-writeup/>)
+- [A steganographic tool for embedding Payload in Python bytecode – Stegosaurus](<http://www.freebuf.com/sectool/129357.html>)
+
+## Challenges
+
+- [WHCTF-2017:Py-Py-Py](<https://www.xctf.org.cn/library/details/whctf-writeup/>)

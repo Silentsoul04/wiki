@@ -18,24 +18,24 @@ file must contain them, and PNG reading and writing software must also support t
 | Data block signature | Data block name                       | Multiple data blocks | Optional           | Location restrictions      |
 | :------------------: | :-----------------------------------: | :------------------: | :----------------: | :------------------------: |
 | IHDR                 | File header data block                | :x:                  | :x:                | First piece                |
-| cHRM                 | Base color and white point data block | :x:                  | :heavy_check_mark: | Before PLTE and IDAT       |
-| gAMA                 | Image data block                      | :x:                  | :heavy_check_mark: | Before PLTE and IDAT       |
-| sBIT                 | Sample effective bit data block       | :x:                  | :heavy_check_mark: | Before PLTE and IDAT       |
-| PLTE                 | Palette data block                    | :x:                  | :heavy_check_mark: | Before IDAT                |
-| bKGD                 | Background color data block           | :x:                  | :heavy_check_mark: | After PLTE before IDAT     |
-| hIST                 | Image histogram data block            | :x:                  | :heavy_check_mark: | After PLTE before IDAT     |
-| tRNS                 | Image transparent data block          | :x:                  | :heavy_check_mark: | After PLTE before IDAT     |
-| oFFs                 | Private public data block             | :x:                  | :heavy_check_mark: | Before IDAT                |
-| pHYs                 | Physical pixel size data block        | :x:                  | :heavy_check_mark: | Before IDAT                |
-| sCAL                 | Private public data block             | :x:                  | :heavy_check_mark: | Before IDAT                |
-| IDAT                 | Image data block                      | :heavy_check_mark:   | :x:                | Continuous with other IDAT |
-| tIME                 | Image last modified time data block   | :x:                  | :heavy_check_mark: | Unlimited                  |
-| tEXt                 | Text message data block               | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| zTXt                 | Compressed text data block            | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| fRAc                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| gIFg                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| gIFt                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
-| gIFx                 | Private public data block             | :heavy_check_mark:   | :heavy_check_mark: | Unlimited                  |
+| cHRM                 | Base color and white point data block | :x:                  | :white_check_mark: | Before PLTE and IDAT       |
+| gAMA                 | Image data block                      | :x:                  | :white_check_mark: | Before PLTE and IDAT       |
+| sBIT                 | Sample effective bit data block       | :x:                  | :white_check_mark: | Before PLTE and IDAT       |
+| PLTE                 | Palette data block                    | :x:                  | :white_check_mark: | Before IDAT                |
+| bKGD                 | Background color data block           | :x:                  | :white_check_mark: | After PLTE before IDAT     |
+| hIST                 | Image histogram data block            | :x:                  | :white_check_mark: | After PLTE before IDAT     |
+| tRNS                 | Image transparent data block          | :x:                  | :white_check_mark: | After PLTE before IDAT     |
+| oFFs                 | Private public data block             | :x:                  | :white_check_mark: | Before IDAT                |
+| pHYs                 | Physical pixel size data block        | :x:                  | :white_check_mark: | Before IDAT                |
+| sCAL                 | Private public data block             | :x:                  | :white_check_mark: | Before IDAT                |
+| IDAT                 | Image data block                      | :white_check_mark:   | :x:                | Continuous with other IDAT |
+| tIME                 | Image last modified time data block   | :x:                  | :white_check_mark: | Unlimited                  |
+| tEXt                 | Text message data block               | :white_check_mark:   | :white_check_mark: | Unlimited                  |
+| zTXt                 | Compressed text data block            | :white_check_mark:   | :white_check_mark: | Unlimited                  |
+| fRAc                 | Private public data block             | :white_check_mark:   | :white_check_mark: | Unlimited                  |
+| gIFg                 | Private public data block             | :white_check_mark:   | :white_check_mark: | Unlimited                  |
+| gIFt                 | Private public data block             | :white_check_mark:   | :white_check_mark: | Unlimited                  |
+| gIFx                 | Private public data block             | :white_check_mark:   | :white_check_mark: | Unlimited                  |
 | IEND                 | End of image data                     | :x:                  | :x:                | Last data block            |
 
 There is a unified data structure for each data block, and each data block consists of 4 parts
@@ -52,9 +52,9 @@ Data field.
 
 ### IHDR
 
-File header data block IHDR (Header Chunk): It contains the basic information of the image data stored in the PNG file.
-It is composed of 13 bytes and appears as the first data block in the PNG data stream, and a PNG data stream There can
-only be one file header data block in
+File header data block `IHDR` (Header Chunk): It contains the basic information of the image data stored in the `PNG` 
+file. It is composed of 13 bytes and appears as the first data block in the `PNG` data stream, and a `PNG` data stream.
+There can only be one file header data block in
 
 Among them, we are concerned about the content of the first 8 bytes
 
@@ -69,15 +69,15 @@ information.
 ![pngihdr](../../assets/img/pictures/pngihdr.png)
 
 It can be found that this picture cannot be opened in Kali, prompting `IHDR CRC error`, and the picture viewer that
-comes with Windows 10 can be opened, which reminds us that the IHDR block has been artificially tampered with, so we try
-to modify the picture. The height or width of the hidden string is found.
+comes with Windows 10 can be opened, which reminds us that the `IHDR` block has been artificially tampered with, so we 
+try to modify the picture. The height or width of the hidden string is found.
 
 ## Example
 
 ??? example "WDCTF-finals-2017"
     Observing the file, you can find that the file header and width are abnormal
 
-    ```hex
+    ```text
     00000000  80 59 4e 47 0d 0a 1a 0a  00 00 00 0d 49 48 44 52  |.YNG........IHDR|
     00000010  00 00 00 00 00 00 02 f8  08 06 00 00 00 93 2f 8a  |............../.|
     00000020  6b 00 00 00 04 67 41 4d  41 00 00 9c 40 20 0d e4  |k....gAMA...@ ..|
@@ -87,7 +87,7 @@ to modify the picture. The height or width of the hidden string is found.
     ```
 
     It should be noted here that the file width cannot be arbitrarily modified. It needs to be blasted to get the width
-    according to the CRC value of the IHDR block, otherwise the image display error cannot get the flag.
+    according to the CRC value of the `IHDR` block, otherwise the image display error cannot get the flag.
 
     ```python
     import binascii
@@ -107,14 +107,14 @@ to modify the picture. The height or width of the hidden string is found.
 
 ### PLTE
 
-The palette data block PLTE (palette chunk): It contains the color transformation data related to the indexed-color
-image. It is only related to the indexed-color image and should be placed in the image data chunk. prior to. The true
-color PNG data stream can also have palette data blocks, the purpose is to facilitate non-true color display programs to
-use it to quantify the image data, thereby displaying the image.
+The palette data block `PLTE` (palette chunk): It contains the color transformation data related to the indexed-color
+image. It is only related to the indexed-color image and should be placed in the image data chunk. The true
+color `PNG` data stream can also have palette data blocks, the purpose is to facilitate non-true color display programs
+to use it to quantify the image data, thereby displaying the image.
 
 ### IDAT
 
-Image data chunk IDAT (image data chunk): It stores actual data, and the data stream can contain multiple consecutive
+Image data chunk `IDAT` (image data chunk): It stores actual data, and the data stream can contain multiple consecutive
 image data chunks.
 
 - Store image number data
@@ -122,7 +122,7 @@ image data chunks.
 - Compression using a derived algorithm of the `LZ77` algorithm
 - Can be decompressed with `zlib`
 
-It is worth noting that the IDAT block will only continue with a new block when the previous block is full.
+It is worth noting that the `IDAT` block will only continue with a new block when the previous block is full.
 
 Use `pngcheck` to view this `PNG` file
 
@@ -149,8 +149,8 @@ As you can see, the length of the normal block is full at 65524, while the lengt
 45027, and the length of the last is 138. Obviously the last IDAT block is problematic because it should have been
 Merged into the penultimate block that is not full.
 
-Use `python zlib` to decompress the content of the redundant IDAT block. At this time, pay attention to removing the
-length, data block type and the CRC check value at the end.
+Use `python zlib` to decompress the content of the redundant `IDAT` block. At this time, pay attention to removing the
+length, data block type and the `CRC` check value at the end.
 
 ```python
 import zlib
@@ -163,15 +163,15 @@ print(result)
 
 ### IEND
 
-Image end data IEND (image trailer chunk): It is used to mark the end of the PNG file or data stream, and must be placed
-at the end of the file.
+Image end data `IEND` (image trailer chunk): It is used to mark the end of the `PNG` file or data stream, and must be 
+placed at the end of the file.
 
-```
+```text
 00 00 00 00 49 45 4E 44 AE 42 60 82
 ```
 
-The length of the IEND data block is always `00 00 00 00`, and the data identifier is always IEND `49 45 4E 44`.
-Therefore, the CRC code is always `AE 42 60 82`.
+The length of the `IEND` data block is always `00 00 00 00`, and the data identifier is always `IEND` `49 45 4E 44`.
+Therefore, the `CRC` code is always `AE 42 60 82`.
 
 ### Remaining auxiliary data blocks
 
@@ -228,4 +228,4 @@ LSB steganography.
 
 ## Tools
 
-[Stepic](<http://domnit.org/stepic/doc/>)
+- [Stepic](<http://domnit.org/stepic/doc/>)

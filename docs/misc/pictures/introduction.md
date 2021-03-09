@@ -2,7 +2,7 @@ Image files are a good source of hacker culture, so various image files often ap
 
 Image files come in a variety of complex formats and can be used for a variety of analysis and decryption involving
 metadata, loss of information and lossless compression, verification, steganography or visual data encoding, all of
-which are important directions in Misc. . There are a lot of knowledge points (including basic file formats, common
+which are important directions in Misc. There are a lot of knowledge points (including basic file formats, common
 steganography and steganography software), and some places need to be deeply understood.
 
 ## Metadata
@@ -14,15 +14,15 @@ steganography and steganography software), and some places need to be deeply und
 Hidden information in metadata is the most basic method in the game, usually used to hide some key `Hint` information or
 some important information such as `password`.
 
-You can view this type of metadata by right-clicking on the --> property, or by using the `strings` command. In
-general, some hidden information (strange strings) often appears in the header or trailer.
+You can view this type of metadata by right-clicking on the property, or by using the `strings` command. In
+general, some hidden information (strange strings) often appears in the header.
 
 Next, we introduce an `identify` command, which is used to get the format and characteristics of one or more image
 files.
 
 `-format` is used to specify the information displayed, and flexible use of its `-format` parameter can bring a lot of
 convenience to solving
-problems. [format specific meaning of each parameter](<https://www.imagemagick.org/script/escape.php>)
+problems. [Format specific meaning of each parameter](<https://www.imagemagick.org/script/escape.php>)
 
 ### Example
 

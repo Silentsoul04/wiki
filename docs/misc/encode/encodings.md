@@ -36,7 +36,7 @@ Replace the number corresponding to the ascii code with a hexadecimal representa
 ??? example "2018 DEFCON Quals ghettohackers: Throwback"
     The title is described below
 
-    ```
+    ```text
     Anyo!e!howouldsacrificepo!icyforexecu!!onspeedthink!securityisacomm!ditytop!urintoasy!tem!
     ```
 
@@ -52,7 +52,7 @@ Replace the number corresponding to the ascii code with a hexadecimal representa
 
     In turn, you can get assuming that 0 characters are spaces, because this just makes the original readable.
 
-    ```
+    ```text
     dark logic
     ```
 
@@ -123,7 +123,7 @@ signs. E.g:
 
     Output:
     
-    ```
+    ```text
     flag{BASE64_i5_amaz1ng}
     ```
 
@@ -158,10 +158,6 @@ See [Xxencoding - Wikipedia](<https://en.wikipedia.org/wiki/Xxencoding>) for spe
 ## URL Encoding
 
 See [URL Encoding - Wikipedia](<https://en.wikipedia.org/wiki/Percent-encoding>).
-
-### Features
-
-- numerous percent signs
 
 ## Unicode encoding
 

@@ -1,10 +1,6 @@
 The audio-related CTF topics mainly use steganography strategies, which are mainly divided into MP3 steganography, LSB
 steganography, waveform steganography, spectrum steganography, and so on.
 
-## Common means
-
-Information that can be found through `binwalk` and `strings` is not detailed.
-
 ## MP3 steganography
 
 ### Principle
@@ -59,7 +55,7 @@ thereby extracting and converting the final flag.
 
     ![3](../../assets/img/audio/3.png)
 
-    The high is 1 low and 0 is converted to get the `01` string.
+    The high is 1, low is 0 and is converted to get the `01` string.
     
     ```
     110011011011001100001110011111110111010111011000010101110101010110011011101011101110110111011110011111101
@@ -88,7 +84,7 @@ that sounds a bit murmur or harsh.
 ### Principle
 
 Similar to the LSB steganography in image steganography, there is also a corresponding LSB steganography in the audio.
-The [Silenteye](<http://silenteye.v1kings.io/>) tool can be used mainly as follows:
+The [Silenteye](<http://silenteye.v1kings.io/>) tool can be used mainly as follows.
 
 !!! info 
     SilentEye is a cross-platform application design for an easy use of steganography, in this case hiding messages 
@@ -102,7 +98,7 @@ The [Silenteye](<http://silenteye.v1kings.io/>) tool can be used mainly as follo
 
     ![2](../../assets/img/audio/2.png)
 
-## Extension
+## Reference
 
 - [LSB in Audio](<https://ethackal.github.io/2015/10/05/derbycon-ctf-wav-steganography/>)
 - [Stealth Summary](<http://bobao.360.cn/learning/detail/243.html>)

@@ -84,9 +84,8 @@ cake-0.png  cake-1.png  cake-2.png  cake-3.png  cake.gif
     for i in range(2):
         for j in range(2):
             pot = "cake-{}.png".format(j + i * 2)
-    
-    potImage = Image.open(pot)
-    flag.paste(potImage, (j * 225, i * 225))
+            potImage = Image.open(pot)
+            flag.paste(potImage, (j * 225, i * 225))
     flag.save('./flag.png')
     ```
 

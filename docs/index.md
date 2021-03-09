@@ -1,4 +1,4 @@
-# Horde CTF Wiki
+## Horde CTF Wiki
 
 Welcome to **Horde CTF Wiki**！
 
