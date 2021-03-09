@@ -267,7 +267,7 @@ compression algorithm.
     
     ![pkcrack-to-flag](../../assets/img/zip/pkcrack-to-flag-02.png)
     
-    ![pkcrack-to-flag](.../../assets/img/zip/pkcrack-to-flag-03.png)
+    ![pkcrack-to-flag](../../assets/img/zip/pkcrack-to-flag-03.png)
     
     ![pkcrack-to-flag](../../assets/img/zip/pkcrack-to-flag-04.png)
     

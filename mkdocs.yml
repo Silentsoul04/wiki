@@ -3,6 +3,15 @@ copyright: Copyright &copy; 2021 Illia Novak
 site_author: anakilivo
 repo_url: https://github.com/anakilivo/wiki
 repo_name: anakilivo/wiki
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: red
+  logo: assets/horde.png
+  favicon: assets/horde.png
+  icon:
+    repo: fontawesome/brands/github-square
 plugins:
   - search:
       min_search_length: 3
@@ -14,15 +23,74 @@ plugins:
       languages:
         en: english
         ru: русский
-theme:
-  name: material
-  palette:
-    scheme: slate
-    primary: red
-  logo: assets/horde.png
-  favicon: assets/horde.png
-  icon:
-    repo: fontawesome/brands/github-square
+      translate_nav:
+        en:
+          misc: Misc
+          archive: Archive
+          audio: Audio
+          disk-memory: Disc Memory
+          encode: Encode
+          pictures: Pictures
+          other: Other
+          crypto: Crypto
+          web: Web
+        ru:
+          misc: Разное
+          archive: Архив
+          audio: Аудио
+          disk-memory: Дисковая Память
+          encode: Кодирование
+          pictures: Изображения
+          other: Другое
+          crypto: Криптография
+          web: Веб
+nav:
+  - index.md
+  - index.ru.md
+  - misc:
+      - archive:
+          - 'misc/archive/rar.md'
+          - 'misc/archive/rar.ru.md'
+          - 'misc/archive/zip.md'
+          - 'misc/archive/zip.ru.md'
+      - audio:
+          - 'misc/audio/introduction.md'
+          - 'misc/audio/introduction.ru.md'
+      - disk-memory:
+          - 'misc/disk-memory/introduction.md'
+          - 'misc/disk-memory/introduction.ru.md'
+      - encode:
+          - 'misc/encode/communication.md'
+          - 'misc/encode/communication.ru.md'
+          - 'misc/encode/encodings.md'
+          - 'misc/encode/encodings.ru.md'
+          - 'misc/encode/modern.md'
+          - 'misc/encode/modern.ru.md'
+      - pictures:
+          - 'misc/pictures/introduction.md'
+          - 'misc/pictures/introduction.ru.md'
+          - 'misc/pictures/jpg.md'
+          - 'misc/pictures/jpg.ru.md'
+          - 'misc/pictures/png.md'
+          - 'misc/pictures/png.ru.md'
+          - 'misc/pictures/gif.md'
+          - 'misc/pictures/gif.ru.md'
+      - other:
+          - 'misc/other/pyc.md'
+          - 'misc/other/pyc.ru.md'
+  - web:
+      - 'web/introduction.md'
+      - 'web/introduction.ru.md'
+      - 'web/php.md'
+      - 'web/php.ru.md'
+      - 'web/sqli.md'
+      - 'web/sqli.ru.md'
+      - 'web/xss.md'
+      - 'web/xss.ru.md'
+      - 'web/ssrf.md'
+      - 'web/ssrf.ru.md'
+      - 'web/csrf.md'
+      - 'web/csrf.ru.md'
 extra:
   version: 0.0.1
   social:

@@ -64,6 +64,6 @@ See more details [RAR](<https://forensicswiki.xyz/wiki/index.php?title=RAR>)
 The pseudo-encryption of the RAR file is visible on the bit-marker field in the header of the file. This bit can be
 clearly seen with the 010 Editor. Modifying this bit can cause pseudo-encryption.
 
-![rar-pe](../../assets/rar-pe.png)
+![rar-pe](../../assets/img/zip/rar-pe.png)
 
 The rest of the plaintext attacks are still the same as those described in the ZIP.

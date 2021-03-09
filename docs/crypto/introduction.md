@@ -1,51 +1,54 @@
-[RU](./introduction.md) | [EN](./introduction-en.md)
+Cryptography can generally be divided into classical cryptography and modern cryptography.
 
-Криптографию в целом можно разделить на классическую криптографию и современную криптографию.
+Among them, classical cryptography, as a practical art, its coding and deciphering usually depends on the creativity and
+skill of designers and adversaries, and does not clearly define the original cryptography. Classical cryptography mainly
+includes the following aspects:
 
-Среди них классическая криптография, как практическое искусство, ее кодирование и расшифровка обычно зависит от творческих способностей и навыков проектировщиков и противников и не дает четкого определения исходной криптографии. Классическая криптография в основном включает следующие аспекты:
+- Monoalphabetic Cipher
+- Polyalphabetic Cipher
+- Strange encryption
 
-- Моноалфавитный шифр
-- Полиалфавитный шифр
-- Странное шифрование
+Modern cryptography originated from many related theories in the middle and late 20th century. In 1949, Shan Shan
+published a classic paper entitled "Communication Theory of Security Systems", marking the beginning of modern
+cryptography. Modern cryptography mainly includes the following aspects:
 
-Современная криптография возникла из большого количества связанных теорий в середине и конце 20 века. В 1949 году Шань Шань опубликовал классическую статью под названием «Коммуникационная теория систем безопасности», положившая начало современной криптографии. Современная криптография в основном включает в себя следующие аспекты:
+- Symmetric Cryptography, represented by DES, AES, and RC4.
+- Asymmetric Cryptography, represented by RSA, ElGamal, elliptic curve encryption.
+- Hash function, represented by MD5, SHA-1, SHA-512, etc.
+- Digital Signature, represented by RSA signature, ElGamal signature, and DSA signature.
 
-- Симметричная криптография, представленная DES, AES и RC4.
-- Асимметричная криптография, представленная RSA, ElGamal, шифрованием по эллиптической кривой.
-- Хеш-функция, представленная MD5, SHA-1, SHA-512 и т. Д.
-- Цифровая подпись, представленная подписью RSA, подписью Эль-Гамаля и подписью DSA.
+Among them, the symmetric encryption system is mainly divided into two ways:
 
-Среди них система симметричного шифрования в основном делится на два направления:
+- Block Cipher, also known as block cipher.
+- Stream Cipher, also known as stream cipher.
 
-- Блочный шифр, также известный как блочный шифр.
-- Потоковый шифр, также известный как потоковый шифр.
+In general, the fundamental goal of password designers is to protect information and information systems.
 
-В общем, основная цель разработчиков паролей - защита информации и информационных систем.
+- Confidentiality (Confidentiality)
+- Integrity
+- Availability
+- Authentication
+- Non-repudiation
 
-- Конфиденциальность (конфиденциальность)
-- Честность
-- Доступность
-- Аутентификация
-- Безотказность
+Among them, the first three are called the three elements of CIA for information security.
 
-Среди них первые три называются тремя элементами ЦРУ по информационной безопасности.
+For password crackers, it is generally necessary to find a way to identify the cryptographic algorithm, and then brute
+force, or use the cryptosystem vulnerability to crack. Of course, it is also possible to bypass the corresponding
+detection by constructing a false hash value or a digital signature.
 
-Для взломщиков паролей обычно необходимо найти способ идентифицировать криптографический алгоритм, а затем использовать грубую силу или использовать уязвимость криптосистемы для взлома. Конечно, также можно обойти соответствующее обнаружение, построив ложное значение хеш-функции или цифровую подпись.
+In general, we will assume that the attacker knows the cryptosystem to be cracked, and the attack types are usually
+divided into the following four types:
 
-В целом мы предполагаем, что злоумышленник знает, что криптосистема должна быть взломана, и типы атак обычно делятся на следующие четыре типа:
+| Attack Type              | Description                                                                                |
+| :----------------------: | :----------------------------------------------------------------------------------------: |
+| Ciphertext attack        | Only has ciphertext                                                                        |
+| Known plaintext attack   | Have ciphertext and corresponding plaintext                                                |
+| Select plaintext attack  | Have encryption permission, can encrypt the plaintext and get the corresponding ciphertext |
+| Select ciphertext attack | Have decryption permission, can decrypt the ciphertext and get the corresponding plaintext |
 
-
-
-| Тип атаки                            | Описание                                                                                                          |
-| :----------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
-| Атака зашифрованного текста          | есть только зашифрованный текст                                                                                   |
-| Известная атака открытым текстом     | Имеют зашифрованный текст и соответствующий открытый текст                                                        |
-| Выбрать атаку открытым текстом       | Имеет разрешение на шифрование, может зашифровать открытый текст и получить соответствующий зашифрованный текст   |
-| Выбрать атаку зашифрованного текста  | Имеет разрешение на расшифровку, может расшифровать зашифрованный текст и получить соответствующий открытый текст |
-
-Порекомендуйте некоторую информацию здесь
+Recommend some information here
 
 - [Khan Academy Open Class](<http://open.163.com/special/Khan/moderncryptography.html>)
 - [In-depth cryptography - Principles and Applications of Common Encryption Technologies](./files/Understanding%20Cryptography%20by%20Christof%20Paar%20.pdf)
-- [Cryptolaps](<https://cryptopals.com/>), куча упражнений по криптографии..
+- [Cryptolaps](<https://cryptopals.com/>), a bunch of cryptography exercises.
 - [Wikipedia-Cryptography](<https://en.wikipedia.org/wiki/Cryptography>)

@@ -1,192 +1,210 @@
-[RU](./knapsack.md) | [EN](./knapsack-en.md)
+## Backpack problem
 
-## Проблема с рюкзаком
+First, let's introduce the backpack problem. Suppose a backpack can weigh $W$. Now there are n items with weights of 
+$a_1, a_2,\ldots, a_n$. We want to ask which items can fit the backpack. Filled up and each item can only be loaded 
+once. This is actually solving such a problem.
 
-Во-первых, давайте познакомимся с проблемой рюкзака. Предположим, рюкзак может весить W. Теперь есть n предметов с весом <img src="https://render.githubusercontent.com/render/math?math=a_1, a_2,\ldots, a_n">. Мы хотим спросить, какие предметы подходят для рюкзака. Заполнено и каждый элемент можно загрузить только один раз. Это фактически решает такую ​​проблему.
+$$x_1a_1 + x_2a_2 +, \ldots, + x_na_n = W$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=x_1a_1 + x_2a_2 +, \ldots, + x_na_n = W"></p>
+All of these $x_i$ can only be $0$ and $1$. Obviously we have to enumerate all the combinations of $n$ items to solve
+this problem, and the complexity is $2^n$, which is the beauty of backpack encryption.
 
-Все эти <img src="https://render.githubusercontent.com/render/math?math=x_i"> могут быть только 0 и 1. Очевидно, мы должны перечислить все комбинации из n элементов, чтобы решить эту проблему, а сложность составляет <img src="https://render.githubusercontent.com/render/math?math=2^n">, что является преимуществом шифрования рюкзака.
+When encrypting, if we want to encrypt the plaintext as $x$, then we can represent it as an `n`-bit binary number and then
+multiply it by $a_i$ to get the encrypted result.
 
-При шифровании, если мы хотим зашифровать открытый текст как x, мы можем представить его как n-битное двоичное число, а затем умножить его на <img src="https://render.githubusercontent.com/render/math?math=a_i">, чтобы получить зашифрованный результат.
+But what should I do when decrypting? We did make it difficult for others to decrypt the ciphertext, but we really have
+no way to decrypt the ciphertext.
 
-Но что делать при расшифровке? Мы действительно затруднили расшифровку зашифрованного текста для других, но у нас действительно нет возможности расшифровать зашифрованный текст.
+But when $a_i$ is super-incremental, we have a solution. The so-called super-increment means that the sequence satisfies
+the following conditions.
 
-Но когда <img src="https://render.githubusercontent.com/render/math?math=a_i"> супер-инкрементально, у нас есть решение. Так называемый супер-инкремент означает, что последовательность удовлетворяет следующим условиям.
+$$a_i>\sum_{k=1}^{i-1}a_k$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=a_i>\sum_{k=1}^{i-1}a_k"></p>
+That is, the ith number is greater than the sum of all the previous numbers.
 
-То есть i-е число больше суммы всех предыдущих чисел.
+Why can you decrypt it if you meet such a condition? This is because if the encrypted result is greater than $a_n$, the
+preceding coefficient must be $1$. On the contrary, the equation cannot be established anyway. Therefore, we can get the
+corresponding plaintext immediately.
 
-Зачем его расшифровывать, если встречается такое условие? Это потому, что если зашифрованный результат больше, чем <img src="https://render.githubusercontent.com/render/math?math=a_n">, предыдущий коэффициент должен быть 1. Напротив, уравнение не может быть установлено в любом случае. Следовательно, мы можем сразу получить соответствующий открытый текст.
+However, this has another problem. Since $a_i$ is public, if the attacker intercepts the ciphertext, it is easy to crack
+such a password. In order to make up for this problem, an encryption algorithm such as Merkle–Hellman appears. We can
+use the initial backpack set as the private key, the transformed backpack set as the public key, and then slightly
+change the encryption process.
 
-Однако здесь есть другая проблема. Поскольку <img src="https://render.githubusercontent.com/render/math?math=a_i"> является общедоступным, если злоумышленник перехватит зашифрованный текст, такой пароль легко взломать. Чтобы решить эту проблему, появляется алгоритм шифрования, такой как Меркл – Хеллман. Мы можем использовать начальный набор пакетов в качестве закрытого ключа, преобразованный набор пакетов в качестве открытого ключа, а затем немного изменить процесс шифрования.
+Although the super-increment sequence is mentioned here, it is not said how it is generated.
 
-Хотя здесь упоминается последовательность супер-приращения, не говорится, как она создается.
+## Merkle–Hellman
 
-## Меркл – Хеллман
+### Public private key generation
 
-### Генерация публичного приватного ключа
+#### Generating a private key
 
-#### Генерация закрытого ключа
+The private key is our initial backpack set. Here we use the super-increment sequence, how to generate it? We can assume
+that $a_1=1$, then $a_2$ is greater than $1$, and similarly can generate subsequent values in turn.
 
-Приватный ключ - это наш начальный рюкзак. Здесь мы используем последовательность супер-инкремента, как ее сгенерировать? Мы можем предположить, что <img src="https://render.githubusercontent.com/render/math?math=a_1=1">, тогда <img src="https://render.githubusercontent.com/render/math?math=a_2"> больше 1, и аналогично может генерировать последующие значения по очереди.
+#### Generating a public key
 
-#### Генерация открытого ключа
+In the process of generating a public key, the operation of modular multiplication is mainly used.
 
-В процессе генерации открытого ключа в основном используется операция модульного умножения.
+First, we generate the modulus m of the modular multiplication, here we want to make sure
 
-Сначала мы генерируем модуль m модульного умножения, здесь мы хотим убедиться, что
+$$m>\sum_{i=1}^{i=n}a_i$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=m>\sum_{i=1}^{i=n}a_i"></p>
+Second, we choose the multiplier $w$ of the modular multiplication as the private key and ensure
 
-Во-вторых, мы выбираем множитель w модульного умножения в качестве закрытого ключа и гарантируем
+$$gcd(w,m)=1$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=gcd(w,m)=1"></p>
+After that, we can generate the public key by the following formula.
 
-После этого мы можем сгенерировать открытый ключ по следующей формуле.
+$$b_i \equiv w a_i \bmod m$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=b_i \equiv w a_i \bmod m"></p>
+And this new backpack set $b_i$ and m as the public key.
 
-И этот новый рюкзак установил $ b_i $ и m в качестве открытого ключа.
+### Encryption and decryption
 
-### Шифрование и дешифрование
+#### Encryption
 
-#### Шифрование
+Suppose we want to encrypt the plaintext as $v$, each bit is $v_i$, then the result of our encryption is
 
-Предположим, мы хотим зашифровать открытый текст как v, каждый бит равен <img src="https://render.githubusercontent.com/render/math?math=v_i">, тогда результат нашего шифрования будет
+$$\sum_{i=1}^{n}i=b_iv_i \ m way$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=\sum_{i=1}^{n}i=b_iv_i \ m way"></p>
+#### Decryption
 
-#### Расшифровка
+For the decryption side, we can first ask for the inverse of $m^{-1}$ for $m$.
 
-Что касается расшифровки, мы можем сначала запросить обратную величину <img src="https://render.githubusercontent.com/render/math?math=m^{-1}"> для m.
+Then we can multiply the obtained ciphertext by $w^{-1}$ to get the plaintext, because
 
-Затем мы можем умножить полученный зашифрованный текст на <img src="https://render.githubusercontent.com/render/math?math=w^{-1}", чтобы получить открытый текст, потому что
+$$\sum_ {i = 1} ^ {w} i = n ^ {- 1} b_iv_i \ way m = \ sum_ {i = 1} ^ {n} i = a_iv_i \ m way$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=\sum_ {i = 1} ^ {w} i = n ^ {- 1} b_iv_i \ way m = \ sum_ {i = 1} ^ {n} i = a_iv_i \ m way"></p>
+here has
 
-здесь есть
+$$b_i \equiv w a_i \bmod m$$
 
-<p><img src="https://render.githubusercontent.com/render/math?math=b_i \equiv w a_i \bmod m"></p>
+The encrypted message for each block is less than $m$, so the result is naturally plaintext.
 
-Зашифрованное сообщение для каждого блока меньше m, поэтому результат, естественно, является открытым текстом.
+### Broken
 
-### Сломанный
+The system was deciphered two years after the proposed encryption system. The basic idea of deciphering is that we do
+not necessarily need to find the correct multiplier $w$ (ie trapdoor information), just find the arbitrary modulus `m'`
+and The multiplier `w'` can be used to generate a super-incrementing backpack vector by using `w'` to multiply the
+public backpack vector B.
 
-Система была расшифрована через два года после предложенной системы шифрования. Основная идея дешифрования заключается в том, что нам не обязательно находить правильный множитель w (т.е. информацию о лазейке), просто найдите произвольный модуль `m'`, и множитель `w'` можно использовать для генерации супер-увеличивающегося вектора рюкзака с помощью `w'` умножить вектор рюкзака B.
+### Examples
 
-### Примеры
+??? example "Archaic in 2014 ASIS Cyber Security Contest Quals"
+    [topic link](<https://github.com/ctfs/write-ups-2014/tree/b02bcbb2737907dd0aa39c5d4df1d1e270958f54/asis-ctf-quals-2014/archaic>)
 
-В качестве примера мы возьмем Archaic in 2014 ASIS Cyber ​​Security Contest Quals, [ссылка на тему](<https://github.com/ctfs/write-ups-2014/tree/b02bcbb2737907dd0aa39c5d4df1d1e270958f54/asis-ctf-quals-2014/archaic>).
+    First look at the source program
+    
+    ```python
+    secret = 'CENSORED'
+    msg_bit = bin(int(secret.encode('hex'), 16))[2:]
+    ```
+    
+    First we get all the bits of secret.
+    
+    Second, use the following function to get the keypair, including the public and private keys.
 
-Сначала посмотрите на исходную программу
+    ```python
+    keyPair = makeKey(curtain(msg_bit))
+    ```
+    
+    Carefully analyze the makekey function as follows
 
-```python
-secret = 'CENSORED'
-msg_bit = bin(int(secret.encode('hex'), 16))[2:]
-```
-
-Сначала мы получаем все кусочки секрета.
-
-Во-вторых, используйте следующую функцию, чтобы получить пару ключей, включая открытый и закрытый ключи.
-
-```python
-keyPair = makeKey(curtain(msg_bit))
-```
-
-Тщательно проанализируйте функцию makekey следующим образом
-
-```python
-import gmpy2
-import random
-
-
-def makeKey(n):
-    priv_key = [random.randint(1, 4 ** n)]
-    s = priv_key[0]
-    for i in range(1, n):
-        priv_key.append(random.randint(s + 1, 4 ** (n + i)))
-        s += priv_key[i]
-
-    q = random.randint(priv_key[n-1] + 1, 2 * priv_key[n-1])
-    r = random.randint(1, q)
-    while gmpy2.gcd(r, q) != 1:
+    ```python
+    import gmpy2
+    import random
+    
+    
+    def makeKey(n):
+        priv_key = [random.randint(1, 4 ** n)]
+        s = priv_key[0]
+        for i in range(1, n):
+            priv_key.append(random.randint(s + 1, 4 ** (n + i)))
+            s += priv_key[i]
+    
+        q = random.randint(priv_key[n - 1] + 1, 2 * priv_key[n - 1])
         r = random.randint(1, q)
+        while gmpy2.gcd(r, q) != 1:
+            r = random.randint(1, q)
+    
+        pub_key = [r * w % q for w in priv_key]
+        return priv_key, q, r, pub_key
+    ```
 
-    pub_key = [r * w % q for w in priv_key]
-    return priv_key, q, r, pub_key
+    It can be seen that prikey is a super-incremental sequence, and the obtained $q$ is larger than the sum of all the 
+    numbers in prikey. In addition, we get $r$, which is exactly the same as $q$, which indicates that the encryption is 
+    a backpack encryption.
+    
+    Sure enough, the encryption function is to multiply each bit of the message by the corresponding public key and sum.
+    
+    ```python
+    def encrypt(msg, pub_key):
+        cipher = 0
+        for i, bit in enumerate(msg):
+            cipher += int(bit) * pub_key[i]
+        return bin(cipher)[2:]
+    ```
 
-```
+    For the cracked script we use the script
+    on [GitHub](<https://github.com/ctfs/write-ups-2014/tree/b02bcbb2737907dd0aa39c5d4df1d1e270958f54/asis-ctf-quals-2014/archaic>).
+    Make some simple modifications.
 
-Можно видеть, что priv_key - это супер-инкрементная последовательность, и полученное q больше суммы всех чисел в priv_key. Кроме того, мы получаем r, что в точности совпадает с q, что указывает на то, что шифрование является шифрованием рюкзака.
-
-Разумеется, функция шифрования состоит в умножении каждого бита сообщения на соответствующий открытый ключ и сумму.
-
-```python
-def encrypt(msg, pub_key):
-    cipher = 0
-    for i, bit in enumerate(msg):
-        cipher += int(bit) * pub_key[i]
-    return bin(cipher)[2:]
-```
-
-Для взломанного скрипта мы используем скрипт на [GitHub](<https://github.com/ctfs/write-ups-2014/tree/b02bcbb2737907dd0aa39c5d4df1d1e270958f54/asis-ctf-quals-2014/archaic>). Сделайте несколько простых изменений.
-
-```python
-import binascii
-
-
-# open the public key and strip the spaces so we have a decent array
-fileKey = open('pub.Key', 'rb')
-pubKey = fileKey.read().replace(' ', '').replace('L', '').strip('[]').split(',')
-
-nbit = only(pubKey)
-
-# open the encoded message
-fileEnc = open('enc.txt', 'rb')
-encoded = fileEnc.read().replace('L', '')
-
-# create a large matrix of 0's (dimensions are public key length +1)
-A = Matrix(ZZ, nbit + 1, nbit + 1)
-
-# fill in the identity matrix
-
-for i in range(nbit):
-    A[i, i] = 1
-
-# replace the bottom row with your public key
-for i in range(nbit):
-    A[i, nbit] = pubKey[i]
-
-# last element is the encoded message
-A[nbit, nbit] = -int(encoded)
-res = A.LLL()
-
-for i in range(0, nbit + 1):
-    M = res.row(i).list()
-    flag = True
-    for m in M:
-        if m != 0 and m != 1:
-            flag = False
-            break
-    if flag:
-        print(i, M)
-        M = ''.join(str(j) for j in M)
-        # remove the last bit
-        M = M[:-1]
-        M = hex(int(M, 2))[2:-1]
-        print(M)
-```
-
-Декодируется после вывода
-
-```text
-295 [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0]
-415349535f3962643364356664323432323638326331393536383830366130373036316365
->>> import binascii
->>> binascii.unhexlify('415349535f3962643364356664323432323638326331393536383830366130373036316365')
-'ASIS_9bd3d5fd2422682c19568806a07061ce'
-```
-
-Следует отметить, что матрица res, полученная с помощью LLL-атаки, содержит только значение 01, это результат, который мы хотим, потому что, когда мы шифруем открытый текст, он будет разложен на двоичные битовые строки. Кроме того, нам нужно удалить последний номер соответствующей строки.
+    ```python
+    import binascii
+    
+    # open the public key and strip the spaces so we have a decent array
+    fileKey = open('pub.Key', 'rb')
+    pubKey = fileKey.read().replace(' ', '').replace('L', '').strip('[]').split(',')
+    
+    nbit = only(pubKey)
+    
+    # open the encoded message
+    fileEnc = open('enc.txt', 'rb')
+    encoded = fileEnc.read().replace('L', '')
+    
+    # create a large matrix of 0's (dimensions are public key length +1)
+    A = Matrix(ZZ, nbit + 1, nbit + 1)
+    
+    # fill in the identity matrix
+    
+    for i in range(nbit):
+        A[i, i] = 1
+    
+    # replace the bottom row with your public key
+    for i in range(nbit):
+        A[i, nbit] = pubKey[i]
+    
+    # last element is the encoded message
+    A[nbit, nbit] = -int(encoded)
+    res = A.LLL()
+    
+    for i in range(0, nbit + 1):
+        M = res.row(i).list()
+        flag = True
+        for m in M:
+            if m != 0 and m != 1:
+                flag = False
+                break
+        if flag:
+            print(i, M)
+            M = ''.join(str(j) for j in M)
+            # remove the last bit
+            M = M[:-1]
+            M = hex(int(M, 2))[2:-1]
+            print(M)
+    ```
+    
+    Decoded after output
+    
+    ```text
+    295 [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0]
+    415349535f3962643364356664323432323638326331393536383830366130373036316365
+    >>> import binascii
+    >>> binascii.unhexlify('415349535f3962643364356664323432323638326331393536383830366130373036316365')
+    'ASIS_9bd3d5fd2422682c19568806a07061ce'
+    ```
+    
+    It should be noted that the matrix of res obtained by the LLL attack we only contains the 01 value is the result we
+    want, because when we encrypt the plaintext, it will be decomposed into binary bit strings. In addition, we need to
+    remove the last number of the corresponding row.

@@ -1,10 +1,9 @@
-With the birth of a series of new Internet products such as WEB 2.0, social network, Weibo, etc., Internet applications
-based on WEB environment are more and more extensive. In the process of enterprise informatization, various
-applications are set up on WEB platform, WEB business. The rapid development has also aroused strong concern of hackers.
-What followed is the emergence of WEB security threats. Hackers use the vulnerability of the operating system, and the
-vulnerability of the WEB service program to gain control of the WEB server, and tamper with the content of the webpage.
-Stealing important internal data, and more serious, is to embed malicious code in web pages, causing website visitors to
-be compromised.
+With the birth of a series of new Internet products such as WEB 2.0, social network, etc. Internet applications based on
+WEB environment are more and more extensive. In the process of enterprise informatization, various applications are set
+up on WEB platform, WEB business. The rapid development has also aroused strong concern of hackers. What followed is the
+emergence of WEB security threats. Hackers use the vulnerability of the operating system, and the vulnerability of the
+WEB service program to gain control of the WEB server, and tamper with the content of the webpage. Stealing important
+internal data, and more serious, is to embed malicious code in web pages, causing website visitors to be compromised.
 
 In the CTF competition, WEB is also one of the most important directions. The WEB category has a wide variety of topics,
 and the knowledge points are fragmented and time-sensitive. It can keep up with the current hotspots and be close to
@@ -120,6 +119,7 @@ Due to the negligence of web developers in the development process using Flash, 
 configuration of the cross-domain policy file (crossdomain.xml) did not cause problems. E.g:
 
 ```xml
+
 <cross-domain-policy>
     <allow-access-from domain=“*”/>
 </cross-domain-policy>

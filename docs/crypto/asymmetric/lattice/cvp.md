@@ -1,163 +1,184 @@
-[RU](./cvp.md) | [EN](./cvp-en.md)
+---
+title: CVP
+---
 
-# CVP
+CVP is a particularly important issue in Lattice-based cryptography.
 
-CVP - особенно важная проблема в криптографии на основе решеток.
-
-Основное определение задачи таково: по заданному набору базисов и векторов <img src="https://render.githubusercontent.com/render/math?math=\mathbf{v}"> для `L` найти ближайший к <img src="https://render.githubusercontent.com/render/math?math=\mathbf{v}"> вектор на `L`.
+The basic definition of the problem is as follows: Given a set of bases and vectors $\mathbf{v}$ for $L$, find the
+nearest vector to $\mathbf{v}$ on $L$.
 
 <!--
 TODO: Add more Lattice-based cryptography (CVP specifically) application intro here.
 TODO: Make intro more descriptive and rigorous.
 -->
 
-## Алгоритмы
+## Algorithms
 
-### Алгоритм ближайшего самолета Бабая
+### Babai's nearest plane algorithm
 
 <!--
 TODO: Add intro
 -->
 
-Алгоритм вводит набор решетки `L` (ранг `n`), основу `B` и целевой вектор <img src="https://render.githubusercontent.com/render/math?math=\mathbf{t}">, чтобы получить приближенное решение проблемы CVP.
+The algorithm inputs a set of lattice $L$ (rank is $n$) base $B$ and a target vector $\mathbf{t}$ to output an
+approximate solution to the CVP problem.
 
-- Коэффициент аппроксимации равен <img src="https://render.githubusercontent.com/render/math?math=\gamma = 2^{\frac{n}{2}}">
+- The approximation factor is $\gamma = 2^{\frac{n}{2}}$
 
-Конкретный алгоритм:
+Specific algorithm:
 
-![babai_1](../img/babai_1.png)
+![babai_1](../../../assets/img/asymmetric/babai_1.png)
 
-- Где <img src="https://render.githubusercontent.com/render/math?math=c_j"> - округление коэффициентов в ортогонализации Грама-Шмидта, которое является округлением <img src="https://render.githubusercontent.com/render/math?math=proj_{b_{j}}(b)">.
+- Where $c_j$ is the rounding of the coefficients in the Gram-schmidt orthogonalization, which is the rounding of $proj_
+  {b_{j}}(b)$.
 
-Для личного понимания второго шага алгоритма: найдите линейную комбинацию, наиболее близкую к <img src="https://render.githubusercontent.com/render/math?math=\mathbf{t}"> в базе `B` после базиса решетки и ортогонализации.
+For the personal understanding of the second step of the algorithm: find a linear combination closest to $\mathbf{t}$ in
+the base $B$ after the lattice basis and the orthogonalization.
 
-### Техника округления Бабая
+### Babai’s Rounding Technique
 
-Этот алгоритм представляет собой вариант `алгоритма ближайшей плоскости Бабая`.
+This algorithm is a variant of `Babai's nearest plane algorithm`.
 
-Шаги могут быть выражены как:
+The steps can be expressed as:
 
 N = rank(B), w = target
-- <img src="https://render.githubusercontent.com/render/math?math=B' = LLL(B)">
-- Найдите линейную комбинацию <img src="https://render.githubusercontent.com/render/math?math=[l_0, \ldots, l_N]"> такую, что <img src="https://render.githubusercontent.com/render/math?math=w = sum(l_i * b'_i)">.
-- (<img src="https://render.githubusercontent.com/render/math?math=b'_i"> - `i`-й вектор в LLL-редуцированном базисе `B'`)
-- Округлить каждое <img src="https://render.githubusercontent.com/render/math?math=l_i"> до ближайшего целого числа <img src="https://render.githubusercontent.com/render/math?math=l'_i">.
-- Результат <img src="https://render.githubusercontent.com/render/math?math=v = sum(l'_i * b'_i)">
 
-## Связанная информация
+- $B' = LLL(B)$
+- Find a linear combination $[l_0, \ldots, l_N]$ such that $w = sum(l_i * b'_i)$.
+- ($b'_i$ is the `i`-th vector in the `LLL`-reduced basis `B'`)
+- Round each $l_i$ to it's closest integer $l'_i$.
+- Result $v = sum(l'_i * b'_i)$
 
-### Проблема со скрытым номером
+## Related information
 
-Определение HNP следующее:
+### Hidden number problem
 
-Учитывая простое число `p`, множество <img src="https://render.githubusercontent.com/render/math?math=t \in \mathbb{F}_p"> и каждый соответствующий <img src="https://render.githubusercontent.com/render/math?math=MSB_{l,p}(\alpha t)">, найдите соответствующий <img src="https://render.githubusercontent.com/render/math?math=\alpha">.
+The definition of HNP is as follows:
 
-- <img src="https://render.githubusercontent.com/render/math?math=MSB_{l,p}(x)"> означает любое целое число `u`, которое удовлетворяет <img src="https://render.githubusercontent.com/render/math?math=|(x \mod p) - u| \le \frac{p}{2^{l+1}}">, что примерно соответствует `l` старшим разрядам <img src="https://render.githubusercontent.com/render/math?math=x \mod p">.
+Given the prime $p$, many $t \in \mathbb{F}_p$ and each corresponding $MSB_{l,p}(\alpha t)$, find the corresponding
+$\alpha$.
 
-Согласно описанию в ссылке 3, когда <img src="https://render.githubusercontent.com/render/math?math=l \approx \log^{\frac{1}{2}}{p}">, следующий алгоритм может решить HNP:
+- $MSB_{l,p}(x)$ means any integer $u$ that satisfies $|(x \mod p) - u| \le \frac{p}{2^{l+1}}$, which is
+  approximately $l$ most significant digits of $x \mod p$.
 
-Мы можем превратить эту проблему в проблему CVP на решетке, порожденной матрицей:
+According to the description in Reference 3, when $l \approx \log^{\frac{1}{2}}{p}$, the following algorithm can solve
+HNP:
 
-<p><img src="https://render.githubusercontent.com/render/math?math=[ \begin{matrix} p, 0, \ldots, 0, 0 \\ 0, p, \ddots, \vdots, \vdots \\ \vdots, \ddots, \ddots, 0, \vdots \\ 0, 0, \dots, p, 0 \\ t_1, t_2, \ldots, t_{n}, \frac{1}{2^{l+1}} \end{matrix}]"></p>
+We can turn this problem into a CVP problem on the lattice generated by the matrix:
 
-Нам нужно найти ближайший вектор из <img src="https://render.githubusercontent.com/render/math?math=\mathbf{u}=(u_1, u_2, \ldots, u_{n}, 0)"> на решетке, поэтому здесь мы можем использовать `алгоритм ближайшей плоскости Бабая`. Наконец, мы можем получить набор векторов <img src="https://render.githubusercontent.com/render/math?math=\mathbf{v}=(\alpha \cdot t_1 \mod p, \alpha \cdot t_2 \mod p, \dots, \frac{\alpha}{2^{l+1} })">, который вычисляет <img src="https://render.githubusercontent.com/render/math?math=\alpha">.
+$$[ \begin{matrix} p, 0, \ldots, 0, 0 \\ 0, p, \ddots, \vdots, \vdots \\ \vdots, \ddots, \ddots, 0, \vdots \\ 0, 0, \dots, p, 0 \\ t_1, t_2, \ldots, t_{n}, \frac{1}{2^{l+1}} \end{matrix}]$$
 
-### BCTF 2018 - guess_number
+We need to find the nearest vector from $\mathbf{u}=(u_1, u_2, \ldots, u_{n}, 0)$ on the lattice, so here we can
+use `Babai's nearest plane algorithm`. Finally we can get a set of vectors $\mathbf{v}=(\alpha \cdot t_1 \mod p, \alpha
+\cdot t_2 \mod p, \dots, \frac{\alpha}{2^{l+1} })$, which calculates $\alpha$.
 
-В теме представлен код на стороне сервера:
+### Example
 
-```python
-import random, sys
+??? example "BCTF 2018 - guess_number"
+    The topic provides server-side code:
+    
+    ```python
+    import random, sys
+    
+    from flag import FLAG
+    
+    import gmpy2
+    
+    
+    def msb(k, x, p):
+        delta = p >> (k + 1)
+        ui = random.randint(x - delta, x + delta)
+        return ui
+    
+    
+    def main():
+        p = gmpy2.next_prime(2 ** 160)
+        for _ in range(5):
+            alpha = random.randint(1, p - 1)
+            t = u = []
+            k = 10
+            for i in range(22):
+                t.append(random.randint(1, p - 1))
+                u.append(msb(k, alpha * t[i] % p, p))
+            print(str(t))
+            print(p(u))
+            guess = input('Input your guess number: ')
+            guess = int(guess)
+            if guess != alpha:
+                exit(0)
+    
+    
+    if __name__ == "__main__":
+        main()
+        print(FLAG)
+    ```
 
-from flag import FLAG
+    As you can see, the program performs a total of 5 rounds. In each round, the program generates a random $\alpha$ and
+    22 random $t_i$. For each $t_i$, the program will take $u_i = MSB_{10,p}(\alpha\cdot{t_i\mod{p}})$ and send it to 
+    the client. We need to calculate the corresponding $\alpha$ based on the provided $t_i$ and $u_i$. As you can see, 
+    the problem is a typical Hidden number problem, so you can use the above algorithm to solve:
 
-import gmpy2
-
-
-def msb(k, x, p):
-    delta = p >> (k + 1)
-    ui = random.randint(x - delta, x + delta)
-    return ui
-
-def main():
-    p = gmpy2.next_prime(2**160)
-    for _ in range(5):
-        alpha = random.randint(1, p - 1)
-        t = u = []
-        k = 10
+    ```python
+    import socket
+    
+    import ast
+    import telnetlib
+    
+    # HOST, PORT = 'localhost', 9999
+    HOST, PORT = '60.205.223.220', 9999
+    
+    s = socket.socket()
+    s.connect((HOST, PORT))
+    f = s.makefile('rw', 0)
+    
+    
+    def recv_until(f, delim='\n'):
+        buf = ''
+        while not buf.endswith(delim):
+            buf += f.read(1)
+        return buf
+    
+    
+    p = 1461501637330902918203684832716283019655932542983
+    k = 10
+    
+    
+    def solve_hnp(t, u):
+        def babai(A, w):
+            A = A.LLL(delta=0.75)
+            G = A.gram_schmidt()[0]
+            t = w
+            for i in reversed(range(A.nrows())):
+                c = ((t * G[i]) / (G[i] * G[i])).round()
+                t -= A[i] * c
+            return w - t
+    
+        # http://www.isg.rhul.ac.uk/~sdg/igor-slides.pdf
+        M = Matrix(RationalField(), 23, 23)
         for i in range(22):
-            t.append(random.randint(1, p - 1))
-            u.append(msb(k, alpha * t[i] % p, p))
-        print(str(t))
-        print (p (u))
-        guess = input('Input your guess number: ')
-        guess = int(guess)
-        if guess != alpha:
-            exit(0)
+            M[i, i] = p
+            M[22, i] = t[i]
+    
+        M[22, 22] = 1 / (2 ** (k + 1))
+        closest = babai(M, vector(u + [0]))
+        return (closest[-1] * (2 ** (k + 1))) % p
+    
+    
+    for i in range(5):
+        t = ast.literal_eval(f.readline().strip())
+        u = ast.literal_eval(f.readline().strip())
+        alpha = solve_hnp(t, u)
+        recv_until(f, 'number: ')
+        s.send(str(alpha) + '\n')
+    
+    t = telnetlib.Telnet()
+    t.sock = s
+    t.interact()
+    ```
 
-if __name__ == "__main__":
-    main()
-    print(FLAG)
-```
+## Reference
 
-Как видите, программа выполняет всего 5 раундов. В каждом раунде программа генерирует случайный <img src="https://render.githubusercontent.com/render/math?math=\alpha"> и 22 случайных <img src="https://render.githubusercontent.com/render/math?math=t_i">. Для каждого <img src="https://render.githubusercontent.com/render/math?math=t_i"> программа возьмет <img src="https://render.githubusercontent.com/render/math?math=u_i = MSB_{10,p}(\alpha\cdot{t_i\mod{p}})"> и отправит его клиенту. Нам нужно вычислить соответствующий <img src="https://render.githubusercontent.com/render/math?math=\alpha"> на основе предоставленных <img src="https://render.githubusercontent.com/render/math?math=t_i"> и <img src="https://render.githubusercontent.com/render/math?math=u_i">. Как видите, проблема является типичной проблемой со скрытым числом, поэтому вы можете использовать приведенный выше алгоритм для решения:
-
-```python
-import socket
-
-import ast
-import telnetlib
-
-#HOST, PORT = 'localhost', 9999
-HOST, PORT = '60.205.223.220', 9999
-
-s = socket.socket()
-s.connect((HOST, PORT))
-f = s.makefile('rw', 0)
-
-def recv_until(f, delim='\n'):
-    buf = ''
-    while not buf.endswith(delim):
-        buf += f.read(1)
-    return buf
-
-p = 1461501637330902918203684832716283019655932542983
-k = 10
-
-def solve_hnp(t, u):
-    def babai(A, w):
-        A = A.LLL(delta=0.75)
-        G = A.gram_schmidt()[0]
-        t = w
-        for i in reversed(range(A.nrows())):
-            c = ((t * G[i]) / (G[i] * G[i])).round()
-            t -= A[i] * c
-        return w - t
-    # http://www.isg.rhul.ac.uk/~sdg/igor-slides.pdf
-    M = Matrix(RationalField(), 23, 23)
-    for i in range(22):
-        M[i, i] = p
-        M[22, i] = t[i]
-
-    M[22, 22] = 1 / (2 ** (k + 1))
-    closest = babai(M, vector(u + [0]))
-    return (closest[-1] * (2 ** (k + 1))) % p
-
-for i in range(5):
-    t = ast.literal_eval(f.readline().strip())
-    u = ast.literal_eval(f.readline().strip())
-    alpha = solve_hnp(t, u)
-    recv_until(f, 'number: ')
-    s.send(str(alpha) + '\n')
-
-t = telnetlib.Telnet()
-t.sock = s
-t.interact()
-```
-
-## Справка
-
-- [Лекция 3 - алгоритм CVP](<https://cims.nyu.edu/~regev/teaching/lattices_fall_2004/ln/cvp.pdf>)
-- [Википедия](<https://en.wikipedia.org/wiki/Lattice_problem>)
-- [Игра в прятки в конечных полях: проблема скрытых чисел и ее приложения](<http://www.isg.rhul.ac.uk/~sdg/igor-slides.pdf>)
+- [Lecture 3 - CVP algorithm](<https://cims.nyu.edu/~regev/teaching/lattices_fall_2004/ln/cvp.pdf>)
+- [Wikipedia](<https://en.wikipedia.org/wiki/Lattice_problem>)
+- [Playing “Hide-and-Seek” in Finite Fields: Hidden Number Problem and Its Applications](<http://www.isg.rhul.ac.uk/~sdg/igor-slides.pdf>)
 - [CryptoBook](<https://www.math.auckland.ac.nz/~sgal018/crypto-book/ch18.pdf>)
