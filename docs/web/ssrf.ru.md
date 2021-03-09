@@ -4,7 +4,7 @@ title: SSRF
 
 ## SSRF Введение
 
-SSRF, подделка запросов на стороне сервера, подделка запросов к серверу - это уязвимость, созданная злоумышленником для
+SSRF, подделка запросов на стороне сервера, подделка запросов к серверу — это уязвимость, созданная злоумышленником для
 формирования запроса, инициированного сервером. Как правило, целью атаки SSRF является внутренняя система, недоступная
 из внешней сети.
 
@@ -33,78 +33,78 @@ SSRF, подделка запросов на стороне сервера, по
 
 1. `file_get_contents`
 
-```php
-<?php
-if (isset($_POST['url'])) { 
-    $content = file_get_contents($_POST['url']); 
-    $filename ='./images/'.rand().';img1.jpg'; 
-    file_put_contents($filename, $content); 
-    echo $_POST['url']; 
-    $img = "<img src=\"".$filename."\"/>"; 
-}
-echo $img;
-?>
-```
-
-Этот код использует функцию `file_get_contents` для получения изображения с URL-адреса, указанного пользователем. Затем
-он сохраняется на жесткий диск со случайным именем файла и представляется пользователю.
+        ```php
+        <?php
+        if (isset($_POST['url'])) { 
+            $content = file_get_contents($_POST['url']); 
+            $filename ='./images/'.rand().';img1.jpg'; 
+            file_put_contents($filename, $content); 
+            echo $_POST['url']; 
+            $img = "<img src=\"".$filename."\"/>"; 
+        }
+        echo $img;
+        ?>
+        ```
+        
+        Этот код использует функцию `file_get_contents` для получения изображения с URL-адреса, указанного пользователем. Затем
+        он сохраняется на жесткий диск со случайным именем файла и представляется пользователю.
 
 2. `fsockopen()`
 
-```php
-<?php 
-function GetFile($host,$port,$link) { 
-    $fp = fsockopen($host, intval($port), $errno, $errstr, 30); 
-    if (!$fp) { 
-        echo "$errstr (error number $errno) \n"; 
-    } else { 
-        $out = "GET $link HTTP/1.1\r\n"; 
-        $out .= "Host: $host\r\n"; 
-        $out .= "Connection: Close\r\n\r\n"; 
-        $out .= "\r\n"; 
-        fwrite($fp, $out); 
-        $contents=''; 
-        while (!feof($fp)) { 
-            $contents.= fgets($fp, 1024); 
-        } 
-        fclose($fp); 
-        return $contents; 
-    } 
-}
-?>
-```
-
-Этот код использует функцию `fsockopen` для получения данных (файла или HTML) из URL-адреса пользователя. Эта функция
-использует сокет для установления TCP-соединения с сервером для передачи необработанных данных.
+        ```php
+        <?php 
+        function GetFile($host,$port,$link) { 
+            $fp = fsockopen($host, intval($port), $errno, $errstr, 30); 
+            if (!$fp) { 
+                echo "$errstr (error number $errno) \n"; 
+            } else { 
+                $out = "GET $link HTTP/1.1\r\n"; 
+                $out .= "Host: $host\r\n"; 
+                $out .= "Connection: Close\r\n\r\n"; 
+                $out .= "\r\n"; 
+                fwrite($fp, $out); 
+                $contents=''; 
+                while (!feof($fp)) { 
+                    $contents.= fgets($fp, 1024); 
+                } 
+                fclose($fp); 
+                return $contents; 
+            } 
+        }
+        ?>
+        ```
+        
+        Этот код использует функцию `fsockopen` для получения данных (файла или HTML) из URL-адреса пользователя. Эта функция
+        использует сокет для установления TCP-соединения с сервером для передачи необработанных данных.
 
 3. `curl_exec()`
 
-```php
-<?php 
-if (isset($_POST['url'])) {
-    $link = $_POST['url'];
-    $curlobj = curl_init();
-    curl_setopt($curlobj, CURLOPT_POST, 0);
-    curl_setopt($curlobj,CURLOPT_URL,$link);
-    curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
-    $result=curl_exec($curlobj);
-    curl_close($curlobj);
-    $filename = './curled/'.rand().'.txt';
-    file_put_contents($filename, $result); 
-    echo $result;
-}
-?>
-```
+        ```php
+        <?php 
+        if (isset($_POST['url'])) {
+            $link = $_POST['url'];
+            $curlobj = curl_init();
+            curl_setopt($curlobj, CURLOPT_POST, 0);
+            curl_setopt($curlobj,CURLOPT_URL,$link);
+            curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
+            $result=curl_exec($curlobj);
+            curl_close($curlobj);
+            $filename = './curled/'.rand().'.txt';
+            file_put_contents($filename, $result); 
+            echo $result;
+        }
+        ?>
+        ```
 
-Используйте `curl` для получения данных.
+        Используйте `curl` для получения данных.
 
 ## Сценарии, препятствующие эксплойтам SSRF
 
 - Открытый сервер OpenSSL не может использоваться в интерактивном режиме
 - Серверу нужна аутентификация (Cookies и User: Pass) не идеальна
 - Порт, ограничивающий запросы, - это обычно используемый порт http, например 80, 443, 8080, 8090.
-- Отключите нежелательные протоколы. Разрешены только запросы http и https. Может предотвратить проблемы, подобные file:
-  ///, gopher://, ftp:// и тд.
+- Отключите нежелательные протоколы. Разрешены только запросы http и https. Может предотвратить проблемы, подобные 
+  file:///, gopher://, ftp:// и тд.
 - Унифицируйте сообщение об ошибке, чтобы пользователь не мог судить о состоянии порта удаленного сервера на основе
   сообщения об ошибке.
 
@@ -171,21 +171,21 @@ header("Location: $scheme://$ip:$port/$data");
 
 - Диктовать соглашение
 
-```
-dict://fuzz.wuyun.org:8080/helo:dict
-```
+        ```text
+        dict://fuzz.wuyun.org:8080/helo:dict
+        ```
 
 - Протокол суслика
 
-```
-gopher://fuzz.wuyun.org:8080/gopher
-```
+        ```text
+        gopher://fuzz.wuyun.org:8080/gopher
+        ```
 
 - Файловый протокол
 
-```
-file:///etc/passwd
-```
+        ```text
+        file:///etc/passwd
+        ```
 
 ## Обходная поза
 
@@ -203,19 +203,19 @@ file:///etc/passwd
     - Краткий адрес `http://dwz.cn/11SMa`==&gt;`http://127.0.0.1`
     - Используйте точку `. `:`127.0.0.1`==&gt;`127.0.0.1`
     - Используйте заключенные буквенно-цифровые символы
-
-```
-ⓔⓧⓐⓜⓟⓛⓔ.ⓒⓞⓜ  >>>  example.com
-List:
-① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ 
-⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ 
-⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 
-⒜ ⒝ ⒞ ⒟ ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ 
-Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ 
-ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ 
-⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ 
-⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿
-```
+    
+    ```text
+    ⓔⓧⓐⓜⓟⓛⓔ.ⓒⓞⓜ  >>>  example.com
+    List:
+    ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ 
+    ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ 
+    ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 
+    ⒜ ⒝ ⒞ ⒟ ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ 
+    Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ 
+    ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ 
+    ⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ 
+    ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿
+    ```
 
 ## Опасность
 

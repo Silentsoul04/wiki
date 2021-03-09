@@ -32,71 +32,71 @@ There are five main types of attacks that an attacker can make using SSRF:
 ## Common backend implementation
 
 1. `file_get_contents`
-
-```php
-<?php
-if (isset($_POST['url'])) { 
-    $content = file_get_contents($_POST['url']); 
-    $filename ='./images/'.rand().';img1.jpg'; 
-    file_put_contents($filename, $content); 
-    echo $_POST['url']; 
-    $img = "<img src=\"".$filename."\"/>"; 
-}
-echo $img;
-?>
-```
-
-This code uses the `file_get_contents` function to get the image from the URL specified by the user. It is then saved to
-the hard disk with a random file name and presented to the user.
+        
+        ```php
+        <?php
+        if (isset($_POST['url'])) { 
+            $content = file_get_contents($_POST['url']); 
+            $filename ='./images/'.rand().';img1.jpg'; 
+            file_put_contents($filename, $content); 
+            echo $_POST['url']; 
+            $img = "<img src=\"".$filename."\"/>"; 
+        }
+        echo $img;
+        ?>
+        ```
+        
+        This code uses the `file_get_contents` function to get the image from the URL specified by the user. It is then saved to
+        the hard disk with a random file name and presented to the user.
 
 2. `fsockopen()`
-
-```php
-<?php 
-function GetFile($host,$port,$link) { 
-    $fp = fsockopen($host, intval($port), $errno, $errstr, 30); 
-    if (!$fp) { 
-        echo "$errstr (error number $errno) \n"; 
-    } else { 
-        $out = "GET $link HTTP/1.1\r\n"; 
-        $out .= "Host: $host\r\n"; 
-        $out .= "Connection: Close\r\n\r\n"; 
-        $out .= "\r\n"; 
-        fwrite($fp, $out); 
-        $contents=''; 
-        while (!feof($fp)) { 
-            $contents.= fgets($fp, 1024); 
-        } 
-        fclose($fp); 
-        return $contents; 
-    } 
-}
-?>
-```
-
-This code uses the `fsockopen` function to get the data (file or HTML) from the user&#39;s URL. This function uses a
-socket to establish a TCP connection with the server to transfer raw data.
+        
+        ```php
+        <?php 
+        function GetFile($host,$port,$link) { 
+            $fp = fsockopen($host, intval($port), $errno, $errstr, 30); 
+            if (!$fp) { 
+                echo "$errstr (error number $errno) \n"; 
+            } else { 
+                $out = "GET $link HTTP/1.1\r\n"; 
+                $out .= "Host: $host\r\n"; 
+                $out .= "Connection: Close\r\n\r\n"; 
+                $out .= "\r\n"; 
+                fwrite($fp, $out); 
+                $contents=''; 
+                while (!feof($fp)) { 
+                    $contents.= fgets($fp, 1024); 
+                } 
+                fclose($fp); 
+                return $contents; 
+            } 
+        }
+        ?>
+        ```
+        
+        This code uses the `fsockopen` function to get the data (file or HTML) from the user&#39;s URL. This function uses a
+        socket to establish a TCP connection with the server to transfer raw data.
 
 3. `curl_exec()`
 
-```php
-<?php 
-if (isset($_POST['url'])) {
-    $link = $_POST['url'];
-    $curlobj = curl_init();
-    curl_setopt($curlobj, CURLOPT_POST, 0);
-    curl_setopt($curlobj,CURLOPT_URL,$link);
-    curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
-    $result=curl_exec($curlobj);
-    curl_close($curlobj);
-    $filename = './curled/'.rand().'.txt';
-    file_put_contents($filename, $result); 
-    echo $result;
-}
-?>
-```
-
-Use `curl` to get the data.
+        ```php
+        <?php 
+        if (isset($_POST['url'])) {
+            $link = $_POST['url'];
+            $curlobj = curl_init();
+            curl_setopt($curlobj, CURLOPT_POST, 0);
+            curl_setopt($curlobj,CURLOPT_URL,$link);
+            curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
+            $result=curl_exec($curlobj);
+            curl_close($curlobj);
+            $filename = './curled/'.rand().'.txt';
+            file_put_contents($filename, $result); 
+            echo $result;
+        }
+        ?>
+        ```
+        
+        Use `curl` to get the data.
 
 ## Scenarios that hinder SSRF exploits
 
@@ -138,7 +138,6 @@ if (isset($_POST['url'])) {
 Construct a front page
 
 ```html
-
 <html>
 <body>
 <form name="px" method="post" action="http://127.0.0.1/ss.php">
@@ -172,21 +171,21 @@ header("Location: $scheme://$ip:$port/$data");
 
 - Dict agreement
 
-```
-dict://fuzz.wuyun.org:8080/helo:dict
-```
+        ```text
+        dict://fuzz.wuyun.org:8080/helo:dict
+        ```
 
 - Gopher protocol
 
-```
-gopher://fuzz.wuyun.org:8080/gopher
-```
+        ```text
+        gopher://fuzz.wuyun.org:8080/gopher
+        ```
 
 - File protocol
-
-```
-file:///etc/passwd
-```
+        
+        ```text
+        file:///etc/passwd
+        ```
 
 ## Bypass posture
 
@@ -205,18 +204,18 @@ file:///etc/passwd
     - Use the period `. `:`127.0.0.1`==&gt;`127.0.0.1`
     - Use enclosed alphanumerics
 
-```
-ⓔⓧⓐⓜⓟⓛⓔ.ⓒⓞⓜ  >>>  example.com
-List:
-① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ 
-⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ 
-⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 
-⒜ ⒝ ⒞ ⒟ ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ 
-Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ 
-ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ 
-⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ 
-⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿
-```
+    ```text
+    ⓔⓧⓐⓜⓟⓛⓔ.ⓒⓞⓜ  >>>  example.com
+    List:
+    ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ 
+    ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ 
+    ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 
+    ⒜ ⒝ ⒞ ⒟ ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ 
+    Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ 
+    ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ 
+    ⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ 
+    ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿
+    ```
 
 ## Hazard
 

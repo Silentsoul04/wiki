@@ -48,9 +48,9 @@ remote file inclusion.
 
 Cross-Site Request Forgery (CSRF) is an attack that causes a logged-in user to perform some action without their
 knowledge. Because the attacker does not see the response to the fake request, the CSRF attack is mainly used to perform
-actions instead of stealing user data. When the victim is a normal user, CSRF can transfer the user&#39;s funds, send
-mail, etc. without their knowledge; but if the victim is a user with administrator rights, CSRF may threaten the entire
-WEB system. Safety.
+actions instead of stealing user data. When the victim is a normal user, CSRF can transfer the users' funds, send mail,
+etc. without their knowledge, but if the victim is a user with administrator rights, CSRF may threaten the entire WEB
+system.
 
 ## SSRF server-side request forgery
 
@@ -109,9 +109,9 @@ XXE Injection is XML External Entity Injection, which is an XML external entity 
 security issues caused when processing non-secure external entity data.
 
 In the XML 1.0 standard, the concept of entities is defined in the XML document structure. Entities can be called in the
-document by pre-definition, and the identifier of the entity can access local or remote content. If
-&quot;pollution&quot; is introduced in the process Sources, after processing XML documents, can lead to security issues
-such as information leakage.
+document by pre-definition, and the identifier of the entity can access local or remote content. If pollution is
+introduced in the process Sources, after processing XML documents, can lead to security issues such as information
+leakage.
 
 ## XSCH
 
@@ -158,13 +158,12 @@ HTTP/HTTPS.
 
 ## IDS
 
-IDS is the abbreviation of English Intrusion Detection Systems, which means &quot;intrusion detection system&quot; in
-Chinese. Professionally speaking, according to a certain security policy, through the software and hardware, the network
-and system operation status are monitored, and various attack attempts, attacks or attack results are found as much as
-possible to ensure the confidentiality and integrity of the network system resources. And availability. To make an image
-metaphor: If the firewall is the door lock of a building, IDS is the monitoring system in this building. Once the thief
-climbs into the building, or the insider has an out-of-bounds behavior, only the real-time monitoring system can detect
-the situation and issue a warning.
+IDS is the abbreviation of English Intrusion Detection Systems. Professionally speaking, according to a certain security
+policy, through the software and hardware, the network and system operation status are monitored, and various attack
+attempts, attacks or attack results are found as much as possible to ensure the confidentiality and integrity of the
+network system resources and availability. To make an image metaphor: If the firewall is the door lock of a building,
+IDS is the monitoring system in this building. Once the thief climbs into the building, or the insider has an
+out-of-bounds behavior, only the real-time monitoring system can detect the situation and issue a warning.
 
 ## IPS
 
