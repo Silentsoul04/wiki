@@ -33,8 +33,10 @@ plugins:
           encode: Encode
           pictures: Pictures
           other: Other
-          crypto: Crypto
           web: Web
+          crypto: Crypto
+          asymmetric: Asimmetric
+          discrete-log: Discrete Log
         ru:
           misc: Разное
           archive: Архив
@@ -43,8 +45,10 @@ plugins:
           encode: Кодирование
           pictures: Изображения
           other: Другое
-          crypto: Криптография
           web: Веб
+          crypto: Криптография
+          asymmetric: Ассиметрическая
+          discrete-log: Дискретный Логарифм
 nav:
   - index.md
   - index.ru.md
@@ -92,6 +96,14 @@ nav:
       - 'web/ssrf.ru.md'
       - 'web/csrf.md'
       - 'web/csrf.ru.md'
+  - crypto:
+      - 'crypto/introduction.md'
+      - 'crypto/introduction.ru.md'
+      - asymmetric:
+          - discrete-log:
+              - 'crypto/asymmetric/discrete-log/introduction.md'
+              - 'crypto/asymmetric/discrete-log/introduction.ru.md'
+
 extra:
   version: 0.0.1
   social:

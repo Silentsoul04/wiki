@@ -1,32 +1,28 @@
----
-title: Discrete logarithm
----
-
 ## Basic definition
 
 When we understand discrete logarithms, let's first look at a few basic definitions.
 
-**Definition 1**
+### Definition 1
 
 In group $G$, $g$ is the generator of $G$, that is, each element in group $G$ can be written as $y=g^k$, which we call
 $k$ is the logarithm of $y$ in group $G$.
 
-**Definition 2**
+### Definition 2
 
 Let $m \geq 1$, $(a,m)=1$, let $a^d \equiv 1 \pmod m$ be the smallest positive integer $d$ called a to the exponent or
 order of modulo $m$, we will generally It is recorded as $\delta_m(a)$.
 
-**Definition 3**
+### Definition 3
 
 When $\delta_m(a)=\varphi(m)$, $a$ is called the original root of modulo $m$, which is called the original root of $m$.
 
 ## Some properties
 
-**Property 1**
+### Property 1
 
 The smallest positive integer $d$ that makes $a^d \equiv 1 \pmod m$ true must have $d \mid \varphi(m)$.
 
-**Property 2**
+### Property 2
 
 The necessary and sufficient condition for the existence of the original root of the modulo $m$ is $m=2,4,p^{\alpha},
 2p^{\alpha}$, where $p$ is an odd prime, $\alpha$ is a positive integer.

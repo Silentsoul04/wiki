@@ -49,6 +49,5 @@ divided into the following four types:
 Recommend some information here
 
 - [Khan Academy Open Class](<http://open.163.com/special/Khan/moderncryptography.html>)
-- [In-depth cryptography - Principles and Applications of Common Encryption Technologies](./files/Understanding%20Cryptography%20by%20Christof%20Paar%20.pdf)
-- [Cryptolaps](<https://cryptopals.com/>), a bunch of cryptography exercises.
+- [Cryptolaps](<https://cryptopals.com/>) a bunch of cryptography exercises.
 - [Wikipedia-Cryptography](<https://en.wikipedia.org/wiki/Cryptography>)
