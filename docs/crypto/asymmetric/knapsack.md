@@ -35,7 +35,7 @@ Although the super-increment sequence is mentioned here, it is not said how it i
 
 ## Merkle–Hellman
 
-### Public private key generation
+### Public/private key generation
 
 #### Generating a private key
 
@@ -46,7 +46,7 @@ that $a_1=1$, then $a_2$ is greater than $1$, and similarly can generate subsequ
 
 In the process of generating a public key, the operation of modular multiplication is mainly used.
 
-First, we generate the modulus m of the modular multiplication, here we want to make sure
+First, we generate the modulus $m$ of the modular multiplication, here we want to make sure
 
 $$m>\sum_{i=1}^{i=n}a_i$$
 
@@ -58,7 +58,7 @@ After that, we can generate the public key by the following formula.
 
 $$b_i \equiv w a_i \bmod m$$
 
-And this new backpack set $b_i$ and m as the public key.
+And this new backpack set $b_i$ and $m$ as the public key.
 
 ### Encryption and decryption
 
@@ -66,15 +66,15 @@ And this new backpack set $b_i$ and m as the public key.
 
 Suppose we want to encrypt the plaintext as $v$, each bit is $v_i$, then the result of our encryption is
 
-$$\sum_{i=1}^{n}i=b_iv_i \ m way$$
+$$\sum_{i=1}^{n}b_iv_i \bmod m$$
 
 #### Decryption
 
-For the decryption side, we can first ask for the inverse of $m^{-1}$ for $m$.
+For the decryption side, we can first calc for the inverse of $w^{-1}$ for $m$.
 
 Then we can multiply the obtained ciphertext by $w^{-1}$ to get the plaintext, because
 
-$$\sum_ {i = 1} ^ {w} i = n ^ {- 1} b_iv_i \ way m = \ sum_ {i = 1} ^ {n} i = a_iv_i \ m way$$
+$$\sum_{i=1}^{n}w^{-1}b_iv_i \bmod m = \sum_{i=1}^{n} a_iv_i \bmod m$$
 
 here has
 

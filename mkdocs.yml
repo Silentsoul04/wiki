@@ -107,7 +107,8 @@ nav:
               - 'crypto/asymmetric/discrete-log/elgamal.ru.md'
               - 'crypto/asymmetric/discrete-log/ecc.md'
               - 'crypto/asymmetric/discrete-log/ecc.ru.md'
-
+          - 'crypto/asymmetric/knapsack.md'
+          - 'crypto/asymmetric/knapsack.ru.md'
 extra:
   version: 0.0.1
   social:
