@@ -1,0 +1,1742 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="anakilivo">
+      
+      
+      <link rel="shortcut icon" href="../../../assets/horde.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>Zip - Horde Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="Horde Wiki" class="md-header-nav__button md-logo" aria-label="Horde Wiki">
+      
+  <img src="../../../assets/horde.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Horde Wiki
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Zip
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/anakilivo/wiki/" title="Перейти к репозиторию" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anakilivo/wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Horde Wiki" class="md-nav__button md-logo" aria-label="Horde Wiki">
+      
+  <img src="../../../assets/horde.png" alt="logo">
+
+    </a>
+    Horde Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/anakilivo/wiki/" title="Перейти к репозиторию" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anakilivo/wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.ru" class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      
+      <label class="md-nav__link" for="nav-2">
+        Разное
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Разное" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Разное
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+      
+      <label class="md-nav__link" for="nav-2-1">
+        Архив
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Архив" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Архив
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rar.ru" class="md-nav__link">
+        Rar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Zip
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        Zip
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Структура файла
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Основная атака
+  </a>
+  
+    <nav class="md-nav" aria-label="Основная атака">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Грубая сила
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crc32" class="md-nav__link">
+    CRC32
+  </a>
+  
+    <nav class="md-nav" aria-label="CRC32">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Принцип
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Пример
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Атака открытым текстом
+  </a>
+  
+    <nav class="md-nav" aria-label="Атака открытым текстом">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Принцип
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Утилиты
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Пример
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Псевдошифрование
+  </a>
+  
+    <nav class="md-nav" aria-label="Псевдошифрование">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Принцип
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2" >
+      
+      <label class="md-nav__link" for="nav-2-2">
+        Аудио
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Аудио" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Аудио
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audio/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" >
+      
+      <label class="md-nav__link" for="nav-2-3">
+        Дисковая Память
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Дисковая Память" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Дисковая Память
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../disk-memory/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" >
+      
+      <label class="md-nav__link" for="nav-2-4">
+        Кодирование
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Кодирование" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-4">
+          <span class="md-nav__icon md-icon"></span>
+          Кодирование
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encode/communication.ru" class="md-nav__link">
+        Общение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encode/encodings.ru" class="md-nav__link">
+        Кодировки
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encode/modern.ru" class="md-nav__link">
+        Современные
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5" >
+      
+      <label class="md-nav__link" for="nav-2-5">
+        Изображения
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Изображения" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-5">
+          <span class="md-nav__icon md-icon"></span>
+          Изображения
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pictures/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pictures/jpg.ru" class="md-nav__link">
+        JPG (JPEG)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pictures/png.ru" class="md-nav__link">
+        PNG
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pictures/gif.ru" class="md-nav__link">
+        GIF
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6" >
+      
+      <label class="md-nav__link" for="nav-2-6">
+        Другое
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Другое" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-6">
+          <span class="md-nav__icon md-icon"></span>
+          Другое
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/pyc.ru" class="md-nav__link">
+        Pyc
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Веб
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Веб" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Веб
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/php.ru" class="md-nav__link">
+        PHP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/sqli.ru" class="md-nav__link">
+        Sqli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/xss.ru" class="md-nav__link">
+        XSS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/ssrf.ru" class="md-nav__link">
+        SSRF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/csrf.ru" class="md-nav__link">
+        CSRF
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Криптография
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Криптография" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Криптография
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Ассиметрическая
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ассиметрическая" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Ассиметрическая
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-1" type="checkbox" id="nav-4-2-1" >
+      
+      <label class="md-nav__link" for="nav-4-2-1">
+        Пространственная Решетка
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Пространственная Решетка" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Пространственная Решетка
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/lattice/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/lattice/overview.ru" class="md-nav__link">
+        Обзор
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/lattice/lattice-reduction.ru" class="md-nav__link">
+        Решетка-редукции
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/lattice/cvp.ru" class="md-nav__link">
+        CVP
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-2" type="checkbox" id="nav-4-2-2" >
+      
+      <label class="md-nav__link" for="nav-4-2-2">
+        Дискретный Логарифм
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Дискретный Логарифм" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Дискретный Логарифм
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/discrete-log/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/discrete-log/elgamal.ru" class="md-nav__link">
+        Эль-Гамаль
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/discrete-log/ecc.ru" class="md-nav__link">
+        ECC
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-3" type="checkbox" id="nav-4-2-3" >
+      
+      <label class="md-nav__link" for="nav-4-2-3">
+        Rsa
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Rsa" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Rsa
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/rsa/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/rsa/side.channel.ru" class="md-nav__link">
+        Атака канала
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/rsa/module.attack.ru" class="md-nav__link">
+        Модульные атаки
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/rsa/e.attack.ru" class="md-nav__link">
+        Атаки на публичную экспоненту
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/rsa/d.attack.ru" class="md-nav__link">
+        Атаки на приватную экспоненту
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/asymmetric/knapsack.ru" class="md-nav__link">
+        Задача рюкзака
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Структура файла
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Основная атака
+  </a>
+  
+    <nav class="md-nav" aria-label="Основная атака">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Грубая сила
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crc32" class="md-nav__link">
+    CRC32
+  </a>
+  
+    <nav class="md-nav" aria-label="CRC32">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Принцип
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Пример
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Атака открытым текстом
+  </a>
+  
+    <nav class="md-nav" aria-label="Атака открытым текстом">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Принцип
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Утилиты
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Пример
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Псевдошифрование
+  </a>
+  
+    <nav class="md-nav" aria-label="Псевдошифрование">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Принцип
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/anakilivo/wiki/edit/main/docs/misc/archive/zip.ru.md" title="Редактировать страницу" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Zip</h1>
+                
+                <ul>
+<li><a href="../zip">english</a></li>
+</ul>
+<h2 id="_1">Структура файла</h2>
+<p>Файл <code>ZIP</code> в основном состоит из трех частей, соответственно.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Область данных сжатого исходного файла</th>
+<th align="center">Основной каталог</th>
+<th align="center">Конец каталога</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">заголовок локального файла + данные файла + дескриптор данных</td>
+<td align="center">центральный каталог</td>
+<td align="center">конец записи центрального каталога</td>
+</tr>
+</tbody>
+</table>
+<p>Каждый сжатый исходный файл или каталог в области данных сжатого исходного файла представляет собой запись, где</p>
+<ul>
+<li><em>заголовок локального файла</em> - заголовок файла используется для определения начала файла и информации о записанном
+  сжатом файле. Идентификатор заголовка файла здесь начинается с фиксированного значения 
+  <code>50 4B 03 04</code>(шестнадцатеричное), <code>PK\x03\x04</code>(байты) и также важен для заголовка <code>ZIP</code>.</li>
+<li><em>данные файла</em> - файл данных записывает данные соответствующего сжатого файла</li>
+<li><em>дескриптор данных</em> - дескриптор данных используется для определения конца сжатого файла. Эта структура появится
+  только если 3 бита поля общего тега в соответствующем <em>заголовке локального файла</em> стоит 1. После сжатия исходных
+  данных файла</li>
+<li><em>Основной каталог</em></li>
+<li>Информация каталога записанного сжатого файла и каждая запись области данных соответствует одному фрагменту данных в
+  область данных сжатого исходного файла.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Смещение</th>
+<th align="center">Байты</th>
+<th align="center">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">Сигнатура заголовка файла центрального каталога = 0x02014b50</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">Версия сделана</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">Версия необходимая для извлечения (минимальная)</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">Битовый флаг общего назначения</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">2</td>
+<td align="center">Метод сжатия</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">2</td>
+<td align="center">Время последнего изменения файла</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">2</td>
+<td align="center">Дата последнего изменения файла</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">4</td>
+<td align="center">CRC-32</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">4</td>
+<td align="center">Сжатый размер</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td align="center">4</td>
+<td align="center">Несжатый размер</td>
+</tr>
+<tr>
+<td align="center">28</td>
+<td align="center">2</td>
+<td align="center">Длина названия файла (n)</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td align="center">2</td>
+<td align="center">Длина дополнительного поля (m)</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td align="center">2</td>
+<td align="center">Длина комментария файла (k)</td>
+</tr>
+<tr>
+<td align="center">34</td>
+<td align="center">2</td>
+<td align="center">Номер диска, с которого начинается файл</td>
+</tr>
+<tr>
+<td align="center">36</td>
+<td align="center">2</td>
+<td align="center">Атрибуты внутреннего файла</td>
+</tr>
+<tr>
+<td align="center">38</td>
+<td align="center">4</td>
+<td align="center">Атрибуты внешнего файла</td>
+</tr>
+<tr>
+<td align="center">42</td>
+<td align="center">4</td>
+<td align="center">Относительное смещение местного заголовка</td>
+</tr>
+<tr>
+<td align="center">46</td>
+<td align="center">n</td>
+<td align="center">Имя файла</td>
+</tr>
+<tr>
+<td align="center">46+n</td>
+<td align="center">m</td>
+<td align="center">Дополнительное поле</td>
+</tr>
+<tr>
+<td align="center">46+n+m</td>
+<td align="center">k</td>
+<td align="center">Комментарий файла</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em>Конец записи центрального каталога(EOCD)</em> идентификатор конца файла</li>
+<li>Конец идентификатора каталога находится в конце всего пакета архива и используется для обозначения конца сжатых данных
+  каталога. Каждый сжатый файл должен иметь одну и только одну <em>EOCD</em> запись.</li>
+</ul>
+<p>См. <a href="https://pkware.cachefly.net/webdocs/APPNOTE/APPNOTE-6.2.0.txt">Официальную документацию</a></p>
+<h2 id="_2">Основная атака</h2>
+<h3 id="_3">Грубая сила</h3>
+<p>Существует две утилиты:</p>
+<ul>
+<li>Windows - ARCHPR</li>
+</ul>
+<p><img alt="1" src="../../../assets/img/zip/archpr.png" /></p>
+<p>Грубый перебор, запуск словарей, атаки с открытым текстом, все.</p>
+<ul>
+<li>Linux - <a href="https://github.com/hyc/fcrackzip">fcrackzip</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>-b Указывает, что режим разорван, 
+-c1 указывает тип пароля как чистое число, другие типы могут быть rtfm, 
+-u этот параметр очень важен или не отображает взломанный пароль, 
+-l <span class="m">5</span>-6 можно указать длину
+
+root@kali:fcrackzip -b -c1 -u test.zip
+</code></pre></div>
+<h3 id="crc32">CRC32</h3>
+<h4 id="_4">Принцип</h4>
+<p><a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check"><code>CRC</code></a> сам по себе означает избыточный контрольный код,
+а <code>CRC32</code> означает, что генерируется <code>32-битное</code> контрольное значение (<code>8</code> шестнадцатеричное число). Поскольку <code>CRC32</code>
+генерирует контрольное значение, каждый битовый <code>бит</code> исходного блока данных участвует в вычислении, поэтому, даже если
+в блоке данных изменяется только один бит, будет получено другое значение <code>CRC32</code>.</p>
+<p>Контрольная сумма <code>CRC32</code> присутствует во многих файлах, таких как файл <code>png</code>, а также контрольная сумма <code>CRC32</code>
+в <code>ZIP-архиве</code>. Стоит отметить, что <code>CRC32</code> в <code>ZIP-архиве</code> - это значение контрольной суммы незашифрованного файла.</p>
+<p>Это привело к атаке на основе <code>CRC32</code>.</p>
+<ul>
+<li>В файле очень мало содержимого (в основном в игре, это около <code>4 байтов</code>)</li>
+<li>Зашифрованный пароль очень длинный</li>
+</ul>
+<p>Вместо того, чтобы извлекать пароль сжатого пакета, мы напрямую извлекаем содержимое исходного файла (обычно видимые
+строки), чтобы получить желаемую информацию.</p>
+<h3 id="_5">Пример</h3>
+<details class="example"><summary>Abctf-2016: Zippy</summary><p>Например, мы создаем новый <code>flag.txt</code> с содержимым <code>123</code> и шифруем его паролем <code>!QAZXSW@#EDCVFR$</code>.</p>
+<p><img alt="2" src="../../../assets/img/zip/2.png" /></p>
+<p>Мы пошли вычислить значение <code>CRC32</code> для файла и обнаружили, что оно соответствует значению <code>CRC32</code> на приведенном 
+выше рисунке.</p>
+<div class="highlight"><pre><span></span><code>File: flag.txt
+Size: <span class="m">3</span>
+Time: Tue, <span class="m">29</span> Aug <span class="m">2017</span> <span class="m">10</span>:38:10 +0800
+MD5: 202cb962ac59075b964b07152d234b70
+SHA1: 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+CRC32: 884863D2
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Значение <code>CRC32</code> всех возможных строк, которые мы перечислили во время перебора, должно соответствовать значению 
+<code>CRC32</code> в области данных сжатого исходного файла.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">binascii</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">ascii_letters</span><span class="p">,</span> <span class="n">digits</span>
+
+<span class="n">alph</span> <span class="o">=</span> <span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">digits</span> <span class="o">+</span> <span class="s1">&#39;+/=&#39;</span>
+<span class="n">crcdict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;computing all possible CRCs...&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">alph</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">st</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="n">crc</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">crc32</span><span class="p">(</span><span class="n">st</span><span class="p">))[</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="n">crcdict</span><span class="p">[</span><span class="n">crc</span><span class="p">]</span> <span class="o">=</span> <span class="n">st</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">crc</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">18</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">crc</span> <span class="ow">in</span> <span class="n">crcdict</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">crcdict</span><span class="p">[</span><span class="n">crc</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FAILED!&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>В зависимости от размера файла в каждом сжатом пакете можно сделать вывод, что используется метод атаки <code>CRC32</code>, и
+получается содержимое каждого сжатого пакета, а затем после декодирования <code>Base64</code> получается зашифрованный сжатый
+пакет, и получается перебор по <code>флагу</code>.</p>
+</details>
+<h3 id="_6">Атака открытым текстом</h3>
+<h4 id="_7">Принцип</h4>
+<ol>
+<li>Зашифрованный сжатый файл</li>
+<li>Сжатые файлы для сжатых файлов, например, <code>2345</code>, сжаты <code>WinRAR</code>, <code>7z</code>. Номер версии <code>ZIP</code> и тд. можно понять через
+  атрибуты файла. Если это платформа <code>Linux</code>, используйте <code>zipinfo -v</code> для просмотра деталей <code>ZIP-пакета</code>, включая
+  алгоритмы шифрования и тд.</li>
+<li>Знать некоторое непрерывное содержимое файла в архиве (не менее <code>12 байт</code>)</li>
+</ol>
+<p>Если вам уже известна часть зашифрованного файла, например файл <code>readme.txt</code>, найденный на веб-сайте, вы можете
+попытаться взломать его.</p>
+<p>Сначала упакуйте этот текстовый файл в <code>ZIP-архив</code>, например <code>readme.txt</code> в <code>readme.zip</code>.</p>
+<p>После завершения упаковки вам необходимо подтвердить, что алгоритм сжатия, используемый обоими, одинаков. Простой способ 
+- открыть файл с помощью <code>WinRAR</code>, и тот же файл сжат с тем же объемом. Если они одинаковы, это в основном
+означает, что используемый алгоритм сжатия правильный. Если он другой, попробуйте другой алгоритм сжатия.</p>
+<h4 id="_8">Утилиты</h4>
+<ul>
+<li>Windows - ARCHPR</li>
+<li>Linux <a href="http://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html">PKCrack</a></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Рекомендуется использовать <code>ARCHPR Windows</code>. Он быстрее и стабильнее.</p>
+</div>
+<h4 id="_9">Пример</h4>
+<details class="example"><summary>2015 Guangzhou Strong Net Cup: Blasting?</summary><p>Прежде всего, у нас возник такой вопрос, название заголовка - <strong>Blasting?</strong>, очевидно, что эта проблема определенно
+заключается в использовании инструмента взлома, очень жестокого.</p>
+<p><strong>Первый шаг, проанализируйте сжатый файл пакета</strong></p>
+<p>После того, как мы загрузили этот архив, мы увидели, что имя файла - <strong>*.zip</strong>. Мы можем сразу придумать несколько
+способов взломать zip-пакет. Распаковываем zip-файл и обнаруживаем, что есть два файла, соответственно <code>Desktop.zip</code>
+и <code>readme.txt</code>, давайте посмотрим, что написано в <code>readme.txt</code>?</p>
+<p><img alt="readme" src="../../../assets/img/zip/readme.png" /></p>
+<p>После открытия это оказалось <code>qianwanbuyaogeixuanshoukandao!!!</code>, спрашивающий не хотел, чтобы игрок видел, этот 
+вопрос все еще немного интересен. Давайте посмотрим на <code>Desktop.zip</code>. Мы видим, что есть файл <code>readme.txt</code> и папка 
+<code>answer</code>. В папке <code>answer</code> есть файл <code>key.txt</code>. здесь должен быть скрыт <code>флаг</code>.</p>
+<p><strong>Шаг 2, проанализируйте метод взлома</strong></p>
+<p>Эта тема получила поддержку, мы сначала обнаружили, что извлеченный файл и <code>Desktop.zip</code> содержат один и тот же
+файл <code>readme.txt</code> и не содержат другой соответствующей информации, а размер файла превышает <code>12 байт</code>. Мы
+сравниваем <code>readme.txt</code> в сжатом пакете со значением <code>CRC32</code> в <code>readme.txt</code> в исходном сжатом пакете. Мы обнаружили, что
+эти два значения совпадают, что означает, что извлеченный файл <code>readme.txt</code> зашифрован и сжат. Открытый
+текст <code>readme.txt</code> в пакете, поэтому мы можем смело предположить, что это, вероятно, шифрование открытого текста.</p>
+<p><img alt="compare" src="../../../assets/img/zip/compare.png" /></p>
+<p><strong>Шаг 3, попробуйте атаку с открытым текстом</strong></p>
+<p>Теперь, когда мы знаем, что это атака с открытым текстом, мы взломаем сжатый пакет. Поскольку извлеченный
+файл <code>readme.txt</code> является открытым текстом файла <code>readme.txt</code> в зашифрованном архиве, сожмите файл <code>readme.txt</code> в
+файл *<em>.zip</em>, а затем заполните соответствующий путь в программном обеспечении, чтобы начать атаку открытым текстом,
+здесь мы представим различные методы атака открытым текстом под <code>Windows</code> и <code>Ubuntu</code>.</p>
+<p>Метод 1, <code>pkcrack</code> для атаки с открытым текстом</p>
+<p><code>pkcrack</code> Ссылка: <a href="https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html">https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html</a></p>
+<p>Мы можем просто написать <code>shell</code>, чтобы загрузить его:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash -ex</span>
+wget https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/pkcrack-1.2.2.tar.gz
+tar xzf pkcrack-1.2.2.tar.gz
+<span class="nb">cd</span> pkcrack-1.2.2/src
+make
+mkdir -p ../../bin
+cp extract findkey makekey pkcrack zipdecrypt ../../bin
+<span class="nb">cd</span> ../../
+</code></pre></div>
+<p>Сохраните файл в <code>pkcrack-install.sh</code> и запустите его в текущем каталоге, предоставив ему разрешение на выполнение 
+<code>x</code>.</p>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">777</span> install.sh
+</code></pre></div>
+<p>Или:</p>
+<div class="highlight"><pre><span></span><code>chmod u+x install.sh
+</code></pre></div>
+<p>Затем запустить <code>./pkcrack-install.sh</code></p>
+<p>Затем в текущем каталоге будет создана папка <code>bin</code>. Мы напрямую войдем в папку <code>bin</code> и увидим файл <code>pkcrack</code>, 
+который будет непосредственно взламывать файл.</p>
+<div class="highlight"><pre><span></span><code>./pkcrack -c readme.txt -p readme.txt -C ~/download/misc/Desktop.zip -P ~/download/misc/readme.zip -d ~/decrypt.zip
+</code></pre></div>
+<p>Мы использовали следующие параметры параметров:</p>
+<div class="highlight"><pre><span></span><code>-C: целевой файл для взлома (включая путь)
+-c: взломать имя файла с открытым текстом в файле (путь не включает системный путь, начиная с уровня zip файла)
+-P: сжатый текстовый файл
+-p: имя файла с открытым текстом в сжатом файле с открытым текстом (то есть расположение readme.txt в readme.zip)
+-d: Укажите имя файла и абсолютный путь, по которому он находится, и выведите расшифрованный zip-файл.
+</code></pre></div>
+<p>Результаты после расшифровки следующие:</p>
+<p><img alt="pkcrack-to-flag" src="../../../assets/img/zip/pkcrack-to-flag-01.png" /></p>
+<p><img alt="pkcrack-to-flag" src="../../../assets/img/zip/pkcrack-to-flag-02.png" /></p>
+<p><img alt="pkcrack-to-flag" src="../../../assets/img/zip/pkcrack-to-flag-03.png" /></p>
+<p><img alt="pkcrack-to-flag" src="../../../assets/img/zip/pkcrack-to-flag-04.png" /></p>
+<p>Мы подошли к финальному флагу: flag <strong><code>{7ip_Fi13_S0m3tim3s_s0_3a5y@}</code></strong></p>
+<p><strong>Яма приближается</strong></p>
+<p>Вроде все идет хорошо, но на это ушло больше двух часов.</p>
+<p>Метод 2, <code>ARCHPR</code> для атаки с открытым текстом</p>
+<p>Прежде всего, я предлагаю вам установить версию <code>ARCHPR 4.53</code>. Я успешно протестировал его в этой версии. Удачные
+скриншоты выглядят следующим образом:</p>
+<p><img alt="success" src="../../../assets/img/zip/success.png" /></p>
+<p>Думаю, многие из моих друзей сталкивались со следующей ситуацией при использовании <code>ARCHPR</code>:</p>
+<p><img alt="error" src="../../../assets/img/zip/error.png" /></p>
+<p>В то время я был в состоянии коллапса, и это произойдет.</p>
+<p>При более позднем обучении было обнаружено, что файлы, сжатые с помощью <code>7z</code>, были распакованы с помощью <code>7z</code>, 
+который представляет собой формат файла, использующий несколько алгоритмов сжатия для сжатия данных, и традиционный
+<code>zip</code>, <code>rar</code> по сравнению с ним степень сжатия больше, а степень сжатия алгоритм используется другой. Естественно 
+может быть несовпадение. Следовательно, мы должны проанализировать исходного человека при распаковке исходного 
+сжатого пакета и шифровании файла. Каким образом можно зашифровать и расшифровать, поэтому проблема этого вопроса очевидна. После
+проверки выяснил, что субъект сжат с помощью <code>7z</code>.</p>
+<p><strong>Попробуй еще раз</strong></p>
+<p>Мы нашли эту проблему, заходим на официальный сайт, чтобы скачать <code>7zip</code>: <a href="https://www.7-zip.org/">https://www.7-zip.org/</a></p>
+<p>Затем мы распаковываем исходный сжатый файл с помощью <code>7z</code>, а затем сжимаем <code>readme.txt</code> с помощью <code>7z</code>. Затем мы 
+можем использовать <code>ARCHPR</code> для атак с открытым текстом.</p>
+<p>Результаты приведены ниже:</p>
+<p><img alt="attack-success" src="../../../assets/img/zip/attack-success.png" /></p>
+<p>Мы разархивировали <code>Desktop_decrypted.zip</code> и проверили <code>key.txt</code> в каталоге <code>answer</code>.</p>
+<p>Итак, последний флаг: <code>flag{7ip_Fi13_S0m3tim3s_s0_3a5y@}</code></p>
+</details>
+<h3 id="_10">Псевдошифрование</h3>
+<h4 id="_11">Принцип</h4>
+<p>В <em>области основного каталога</em> в формате <code>ZIP</code> выше мы выделяем <code>2 байта</code>, называемые битовым флагом общего
+назначения, который имеет разные значения.</p>
+<div class="highlight"><pre><span></span><code>Bit 0: Если установлено, означает, что файл зашифрован.
+(For Method 6 - Imploding)
+Bit 1: Если использовался метод сжатия типа 6,
+     Imploding, тогда этот бит, если установлен, указывает
+     был использован скользящий словарь 8K. Если ясно,
+     затем использовался скользящий словарь 4K.
+...
+Bit 6: Надежное шифрование. Если этот бит установлен, вы должны
+     установите версию, необходимую для извлечения значения как минимум
+     50, и вы также должны установить бит 0. Если шифрование AES
+     используется версия, необходимая для извлечения значения, должна
+     быть не менее 51.
+...
+</code></pre></div>
+<p>В <code>010Editor</code> мы пытались изменить этот <code>1</code> бит на <code>0 -&gt; 1</code>.</p>
+<p><img alt="4" src="../../../assets/img/zip/4.png" /></p>
+<p>Снова откройте файл и обнаружите, что запрашивали пароль.</p>
+<p><img alt="5" src="../../../assets/img/zip/5.png" /></p>
+<p>Измените метод псевдошифровки:</p>
+<ul>
+<li>Измените универсальную битовую метку в <code>16</code></li>
+<li><code>binwalk -e</code> игнорирует псевдошифрование</li>
+<li>В <code>Mac OS</code> и некоторых системах <code>Linux</code> (например, <code>Kali</code>) вы можете напрямую открыть псевдошифрованный <code>ZIP-пакет</code>.</li>
+<li>Обнаружить псевдошифрованный гаджет <code>ZipCenOp.jar</code></li>
+<li>Иногда с функцией исправления <code>WinRar</code> (этот метод иногда дает чудесный эффект, не только для псевдошифровки)</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../rar.ru" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Назад
+                </span>
+                Rar
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../audio/introduction.ru" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Вперед
+                </span>
+                Введение
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Illia Novak
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/anakilivo" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/illia-novak/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+      
+      
+      <a href="mailto:anakilivo@gmail.com" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e # \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
