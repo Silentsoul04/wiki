@@ -129,6 +129,8 @@ nav:
               - 'crypto/asymmetric/rsa/module.attack.ru.md'
               - 'crypto/asymmetric/rsa/e.attack.md'
               - 'crypto/asymmetric/rsa/e.attack.ru.md'
+              - 'crypto/asymmetric/rsa/d.attack.md'
+              - 'crypto/asymmetric/rsa/d.attack.ru.md'
           - 'crypto/asymmetric/knapsack.md'
           - 'crypto/asymmetric/knapsack.ru.md'
 extra:

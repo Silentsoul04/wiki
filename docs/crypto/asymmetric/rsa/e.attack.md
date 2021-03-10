@@ -1,5 +1,5 @@
 ---
-title: Public exponent attack
+title: Public exponent attacks
 ---
 
 ## Small public key index attack
