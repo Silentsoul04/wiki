@@ -35,7 +35,7 @@ plugins:
           other: Other
           web: Web
           crypto: Crypto
-          asymmetric: Asimmetric
+          asymmetric: Asymmetric
           discrete-log: Discrete Log
           lattice: Lattice
           rsa: Rsa
@@ -127,6 +127,8 @@ nav:
               - 'crypto/asymmetric/rsa/side.channel.ru.md'
               - 'crypto/asymmetric/rsa/module.attack.md'
               - 'crypto/asymmetric/rsa/module.attack.ru.md'
+              - 'crypto/asymmetric/rsa/e.attack.md'
+              - 'crypto/asymmetric/rsa/e.attack.ru.md'
           - 'crypto/asymmetric/knapsack.md'
           - 'crypto/asymmetric/knapsack.ru.md'
 extra:
